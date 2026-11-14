@@ -1,0 +1,322 @@
+{
+ "code": {
+  "branch": "feat/reports-task-a",
+  "commit": "ba5e63b50705f47200768fa90d235ace48b2e30c",
+  "dirty": false
+ },
+ "command": [
+  "/Users/byron/dna-forge/wt-reports/dnaforge/reports.py",
+  "--pack",
+  "/Users/byron/dna-forge/biobase/reports/pack_reports"
+ ],
+ "config": {
+  "method": "parsed final-diagnosis fields + hand-written predicates"
+ },
+ "end": "2026-11-14T19:08:40+00:00",
+ "error": null,
+ "host": {
+  "hostname": "magicPRObox.local",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.9.6",
+  "user": "byron"
+ },
+ "id": "20261114T190839Z-reports-task-a-071c4c",
+ "inputs": {
+  "/Users/byron/dna-forge/biobase/reports/pack_reports/criteria.json": {
+   "bytes": 2993,
+   "sha256": "81796ff45407cd85845c9f08d0f10f540e5456592e58955dcd325fb7a9fdd4c5"
+  },
+  "/Users/byron/dna-forge/biobase/reports/pack_reports/criteria_train_answers.json": {
+   "bytes": 105066,
+   "sha256": "7d30c4dcf8e89a4574a9185ebc6f9cad38d95fb1d607a75461c6b238f19cd103"
+  },
+  "/Users/byron/dna-forge/biobase/reports/pack_reports/submission_template_criteria.json": {
+   "bytes": 362,
+   "sha256": "3e33b2e8023282f85253236d22e2ea41da252de65fab4148e071b082674a4866"
+  },
+  "/Users/byron/dna-forge/biobase/reports/pack_reports/test.jsonl": {
+   "bytes": 1671492,
+   "sha256": "2ae1c082c903c8c5928890402a570a8846c0128479f5a9226e48cf713f515e75"
+  },
+  "/Users/byron/dna-forge/biobase/reports/pack_reports/train.jsonl": {
+   "bytes": 21258379,
+   "sha256": "91f4a67ed8bbcd417ab99867af5561e80e06b84027cd7c90fce519d5c23426b1"
+  }
+ },
+ "kind": "run",
+ "metrics": {
+  "baseline_keyword_mean_f1_reported": 0.27,
+  "parser": {
+   "bad_example_ids": [],
+   "cases": 9010,
+   "cases_exact": 9010,
+   "fields": 86040,
+   "fields_exact": 86040,
+   "label_mismatches": {
+    "age_band": 0,
+    "organ": 0,
+    "pN": 0,
+    "pT": 0,
+    "report_year": 0,
+    "sex": 0
+   }
+  },
+  "test_counts": {
+   "c01": 15,
+   "c02": 14,
+   "c03": 21,
+   "c04": 6,
+   "c05": 11,
+   "c06": 8,
+   "c07": 52,
+   "c08": 50,
+   "c09": 15,
+   "c10": 7,
+   "c11": 6,
+   "c12": 15,
+   "c13": 31,
+   "c14": 25,
+   "c15": 7,
+   "c16": 7,
+   "c17": 34,
+   "c18": 16,
+   "c19": 10,
+   "c20": 77,
+   "c21": 17,
+   "c22": 25,
+   "c23": 30,
+   "c24": 36,
+   "c25": 6,
+   "c26": 7,
+   "c27": 8,
+   "c28": 14,
+   "c29": 16,
+   "c30": 22
+  },
+  "test_unparsed_organ": 0,
+  "train_mean_f1": 1.0,
+  "train_per_criterion": {
+   "c01": {
+    "f1": 1.0,
+    "n_gold": 233,
+    "n_pred": 233,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c02": {
+    "f1": 1.0,
+    "n_gold": 127,
+    "n_pred": 127,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c03": {
+    "f1": 1.0,
+    "n_gold": 206,
+    "n_pred": 206,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c04": {
+    "f1": 1.0,
+    "n_gold": 60,
+    "n_pred": 60,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c05": {
+    "f1": 1.0,
+    "n_gold": 134,
+    "n_pred": 134,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c06": {
+    "f1": 1.0,
+    "n_gold": 97,
+    "n_pred": 97,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c07": {
+    "f1": 1.0,
+    "n_gold": 367,
+    "n_pred": 367,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c08": {
+    "f1": 1.0,
+    "n_gold": 426,
+    "n_pred": 426,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c09": {
+    "f1": 1.0,
+    "n_gold": 122,
+    "n_pred": 122,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c10": {
+    "f1": 1.0,
+    "n_gold": 52,
+    "n_pred": 52,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c11": {
+    "f1": 1.0,
+    "n_gold": 137,
+    "n_pred": 137,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c12": {
+    "f1": 1.0,
+    "n_gold": 199,
+    "n_pred": 199,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c13": {
+    "f1": 1.0,
+    "n_gold": 272,
+    "n_pred": 272,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c14": {
+    "f1": 1.0,
+    "n_gold": 234,
+    "n_pred": 234,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c15": {
+    "f1": 1.0,
+    "n_gold": 42,
+    "n_pred": 42,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c16": {
+    "f1": 1.0,
+    "n_gold": 80,
+    "n_pred": 80,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c17": {
+    "f1": 1.0,
+    "n_gold": 355,
+    "n_pred": 355,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c18": {
+    "f1": 1.0,
+    "n_gold": 161,
+    "n_pred": 161,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c19": {
+    "f1": 1.0,
+    "n_gold": 86,
+    "n_pred": 86,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c20": {
+    "f1": 1.0,
+    "n_gold": 718,
+    "n_pred": 718,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c21": {
+    "f1": 1.0,
+    "n_gold": 128,
+    "n_pred": 128,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c22": {
+    "f1": 1.0,
+    "n_gold": 207,
+    "n_pred": 207,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c23": {
+    "f1": 1.0,
+    "n_gold": 262,
+    "n_pred": 262,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c24": {
+    "f1": 1.0,
+    "n_gold": 390,
+    "n_pred": 390,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c25": {
+    "f1": 1.0,
+    "n_gold": 32,
+    "n_pred": 32,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c26": {
+    "f1": 1.0,
+    "n_gold": 109,
+    "n_pred": 109,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c27": {
+    "f1": 1.0,
+    "n_gold": 65,
+    "n_pred": 65,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c28": {
+    "f1": 1.0,
+    "n_gold": 125,
+    "n_pred": 125,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c29": {
+    "f1": 1.0,
+    "n_gold": 148,
+    "n_pred": 148,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "c30": {
+    "f1": 1.0,
+    "n_gold": 248,
+    "n_pred": 248,
+    "precision": 1.0,
+    "recall": 1.0
+   }
+  }
+ },
+ "notes": [
+  "submission file is kept on the machine only; it is never committed"
+ ],
+ "outputs": {
+  "submission_criteria.json": {
+   "bytes": 12552,
+   "sha256": "1604ae1557ffad8e39c671a193fec113653984f2e8bf090791f5a15b62d88345"
+  }
+ },
+ "start": "2026-11-14T19:08:39+00:00",
+ "status": "ok"
+}
