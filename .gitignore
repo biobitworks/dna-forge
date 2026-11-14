@@ -18,4 +18,12 @@ __pycache__/
 *.pyc
 .venv/
 .DS_Store
-runs/*/submission_criteria.json
+
+# Predictions and submissions stay on the machines (they imply held-out labels)
+runs/**/*.csv
+runs/**/*.json
+!runs/**/record.json
+*.log
+
+# Full custody files with slide ids stay local
+custody/local/

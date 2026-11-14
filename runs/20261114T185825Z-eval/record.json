@@ -1,0 +1,189 @@
+{
+ "code": {
+  "branch": "feat/core-data",
+  "commit": "5d7892e7adc91df3b6633e9f06019d6232222523",
+  "dirty": true
+ },
+ "command": [
+  "/Users/byron/dna-forge/repo/dnaforge/__main__.py",
+  "--root",
+  "/Users/byron/dna-forge/biobase",
+  "eval"
+ ],
+ "config": {
+  "cmd": "eval",
+  "func": null,
+  "k": 1,
+  "models": [
+   "dinov2",
+   "hoptimus",
+   "biomedclip",
+   "gigapath"
+  ],
+  "root": "/Users/byron/dna-forge/biobase",
+  "runs": "runs"
+ },
+ "end": "2026-11-14T18:58:25+00:00",
+ "error": null,
+ "host": {
+  "hostname": "magicPRObox.local",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.9.6",
+  "user": "byron"
+ },
+ "id": "20261114T185825Z-eval",
+ "inputs": {
+  "/Users/byron/dna-forge/biobase/slides/pack_slides/slides_manifest.json": {
+   "bytes": 159539,
+   "sha256": "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/biomedclip/slide-vectors.json": {
+   "bytes": 1277550,
+   "sha256": "f7addeb24ffba2c6f5662cce2dc5471d1fe49541c680cc8844a11ac32e47d8b5"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/dinov2/slide-vectors.json": {
+   "bytes": 960326,
+   "sha256": "7f0a87c714ac00cbef10db0a8310b08696becbab63bdeb438d0b296ad09706a9"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/gigapath/slide-vectors.json": {
+   "bytes": 3370822,
+   "sha256": "a12350969f733118f9447b05aaf397cfa88ac5728b335fdaff01006137a85a05"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/hoptimus/slide-vectors.json": {
+   "bytes": 3798267,
+   "sha256": "b505ab01f0e68ed3001fda1a035dbd86c909ff422e3a9a084b9957f4ea352bd5"
+  }
+ },
+ "kind": "run",
+ "metrics": {
+  "biomedclip": {
+   "c1_acc": 0.5842105263157895,
+   "n": 190,
+   "p@1": 0.5842105263157895,
+   "p@10": 0.34105263157894744,
+   "p@5": 0.42947368421052634,
+   "supplier_holdout": {
+    "SUPP-01": {
+     "acc": 0.09803921568627451,
+     "n": 51
+    },
+    "SUPP-02": {
+     "acc": 0.1484375,
+     "n": 128
+    },
+    "SUPP-03": {
+     "acc": 0.4,
+     "n": 5
+    },
+    "SUPP-04": {
+     "acc": 0.16666666666666666,
+     "n": 6
+    }
+   }
+  },
+  "dinov2": {
+   "c1_acc": 0.5631578947368421,
+   "n": 190,
+   "p@1": 0.5631578947368421,
+   "p@10": 0.27210526315789474,
+   "p@5": 0.34105263157894744,
+   "supplier_holdout": {
+    "SUPP-01": {
+     "acc": 0.19607843137254902,
+     "n": 51
+    },
+    "SUPP-02": {
+     "acc": 0.1171875,
+     "n": 128
+    },
+    "SUPP-03": {
+     "acc": 0.2,
+     "n": 5
+    },
+    "SUPP-04": {
+     "acc": 0.0,
+     "n": 6
+    }
+   }
+  },
+  "dinov2+hoptimus+biomedclip+gigapath": {
+   "c1_acc": 0.776595744680851,
+   "n": 188,
+   "p@1": 0.776595744680851,
+   "p@10": 0.4031914893617022,
+   "p@5": 0.5372340425531915,
+   "supplier_holdout": {
+    "SUPP-01": {
+     "acc": 0.13725490196078433,
+     "n": 51
+    },
+    "SUPP-02": {
+     "acc": 0.1640625,
+     "n": 128
+    },
+    "SUPP-03": {
+     "acc": 0.3333333333333333,
+     "n": 3
+    },
+    "SUPP-04": {
+     "acc": 0.3333333333333333,
+     "n": 6
+    }
+   }
+  },
+  "gigapath": {
+   "c1_acc": 0.7872340425531915,
+   "n": 188,
+   "p@1": 0.7872340425531915,
+   "p@10": 0.44999999999999996,
+   "p@5": 0.5638297872340425,
+   "supplier_holdout": {
+    "SUPP-01": {
+     "acc": 0.2549019607843137,
+     "n": 51
+    },
+    "SUPP-02": {
+     "acc": 0.140625,
+     "n": 128
+    },
+    "SUPP-03": {
+     "acc": 0.6666666666666666,
+     "n": 3
+    },
+    "SUPP-04": {
+     "acc": 0.3333333333333333,
+     "n": 6
+    }
+   }
+  },
+  "hoptimus": {
+   "c1_acc": 0.5789473684210527,
+   "n": 190,
+   "p@1": 0.5789473684210527,
+   "p@10": 0.30578947368421056,
+   "p@5": 0.40210526315789474,
+   "supplier_holdout": {
+    "SUPP-01": {
+     "acc": 0.09803921568627451,
+     "n": 51
+    },
+    "SUPP-02": {
+     "acc": 0.140625,
+     "n": 128
+    },
+    "SUPP-03": {
+     "acc": 0.2,
+     "n": 5
+    },
+    "SUPP-04": {
+     "acc": 0.0,
+     "n": 6
+    }
+   }
+  }
+ },
+ "notes": [],
+ "outputs": {},
+ "start": "2026-11-14T18:58:25+00:00",
+ "status": "ok"
+}

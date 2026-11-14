@@ -68,8 +68,30 @@ def hash_tree(root: str | Path, files: Iterable[Path] | None = None) -> dict:
     return {"files": entries, "count": len(entries), "tree_sha256": digest}
 
 
+def path_key(rel: str) -> str:
+    """Public key for a file path: sha256 of the relative path. Anyone holding the data can recompute it,
+    but the public record does not list slide ids."""
+    return hashlib.sha256(rel.encode()).hexdigest()[:24]
+
+
+def redact(record: dict) -> dict:
+    """Public copy of an ingest record: file paths replaced by path_key(path)."""
+    pub = json.loads(json.dumps(record))
+    for sub, tree in pub.get("extracted", {}).items():
+        tree["files"] = {path_key(rel): meta for rel, meta in sorted(tree["files"].items())}
+        tree["paths_redacted"] = True
+    return pub
+
+
+def local_path(public: str | Path) -> Path:
+    """Where the full (unredacted, gitignored) copy of a public custody file lives."""
+    public = Path(public)
+    return public.parent / "local" / public.name
+
+
 def ingest(sources: list[str | Path], extracted_root: str | Path, out: str | Path) -> dict:
-    """Hash source archives and the extracted tree, and write a custody manifest."""
+    """Hash source archives and the extracted tree. Writes the full manifest to custody/local/<name>
+    (gitignored) and a redacted public manifest (no slide ids) to `out`."""
     extracted_root = Path(extracted_root)
     record = {
         "kind": "ingest",
@@ -85,8 +107,10 @@ def ingest(sources: list[str | Path], extracted_root: str | Path, out: str | Pat
     for sub in sorted(p for p in extracted_root.iterdir() if p.is_dir()):
         t = hash_tree(sub)
         record["extracted"][sub.name] = t
-    Path(out).parent.mkdir(parents=True, exist_ok=True)
-    Path(out).write_text(json.dumps(record, indent=1, sort_keys=True))
+    full = local_path(out)
+    full.parent.mkdir(parents=True, exist_ok=True)
+    full.write_text(json.dumps(record, indent=1, sort_keys=True))
+    Path(out).write_text(json.dumps(redact(record), indent=1, sort_keys=True))
     return record
 
 
@@ -94,6 +118,19 @@ def verify(manifest: str | Path, extracted_root: str | Path) -> list[str]:
     """Re-hash the extracted tree and return a list of mismatches (empty means intact)."""
     rec = json.loads(Path(manifest).read_text())
     problems = []
+    redacted = any(t.get("paths_redacted") for t in rec.get("extracted", {}).values())
+    if redacted:  # public manifest: compare by hashed path
+        root = Path(extracted_root)
+        for sub, tree in rec["extracted"].items():
+            base = root / sub
+            have = {path_key(p.relative_to(base).as_posix()): p for p in base.rglob("*") if p.is_file()} if base.exists() else {}
+            for k, meta in tree["files"].items():
+                if k not in have:
+                    problems.append(f"missing: {sub}/<{k}>")
+                elif sha256_file(have[k]) != meta["sha256"]:
+                    problems.append(f"changed: {sub}/{have[k].relative_to(base).as_posix()}")
+            problems += [f"added: {sub}/{p.relative_to(base).as_posix()}" for k, p in have.items() if k not in tree["files"]]
+        return problems
     root = Path(extracted_root)
     known = set(rec["extracted"])
     for d in sorted(p for p in root.iterdir() if p.is_dir()):
