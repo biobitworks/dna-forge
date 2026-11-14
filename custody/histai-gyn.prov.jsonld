@@ -1,0 +1,705 @@
+{
+ "@context": {
+  "dcterms": "http://purl.org/dc/terms/",
+  "fcg": "https://github.com/biobitworks/dna-forge/ns/fcg#",
+  "prov": "http://www.w3.org/ns/prov#",
+  "skos": "http://www.w3.org/2004/02/skos/core#",
+  "xsd": "http://www.w3.org/2001/XMLSchema#"
+ },
+ "@graph": [
+  {
+   "@id": "urn:sha256:216b7930a9ff58e3dffbb13adfa0b1d91e6a93b91070410e5ea56dab43bf9918",
+   "@type": "prov:Entity",
+   "dcterms:license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "dcterms:title": "HistAI WSI collection case metadata",
+   "fcg:kind": "source"
+  },
+  {
+   "@id": "urn:sha256:e9d73e7d2447fd93569bf96573fc5e71e7c6fd5e1a83841185c2884dc438d55f",
+   "@type": [
+    "prov:Entity",
+    "prov:Collection"
+   ],
+   "fcg:kind": "dataset",
+   "fcg:root": "59cbb9855ba9352944b3e9bc82b6279076f0c5289a549daf46306ad7e06a8258",
+   "prov:hadMember": [
+    {
+     "@id": "urn:sha256:ea21aee38f52565280ef56084bcfabe98467a9b194b2981179b31d41d064b1ec"
+    },
+    {
+     "@id": "urn:sha256:aba9d77f0458ccfdeec3446b5a79318493832662c6df568508d01e900dd37b25"
+    },
+    {
+     "@id": "urn:sha256:cf9c2efa32a9bba80802579395bf63515f1e8eb8e78490d0d356043cf35e7db6"
+    },
+    {
+     "@id": "urn:sha256:d42ef3e8e28653ec0f058a7f4bfcb68741aafd01f12bc5c09b1ac49d5f717002"
+    },
+    {
+     "@id": "urn:sha256:7159c0f1564b577507afe5b4f01819b214444766b700b09acaa8138bc33726d1"
+    }
+   ],
+   "prov:wasDerivedFrom": {
+    "@id": "urn:sha256:216b7930a9ff58e3dffbb13adfa0b1d91e6a93b91070410e5ea56dab43bf9918"
+   }
+  },
+  {
+   "@id": "urn:sha256:ea21aee38f52565280ef56084bcfabe98467a9b194b2981179b31d41d064b1ec",
+   "@type": [
+    "prov:Entity",
+    "prov:Collection"
+   ],
+   "dcterms:identifier": "histai-gyn/diagnostic",
+   "fcg:count": 2922,
+   "fcg:kind": "category",
+   "fcg:root": "99de1f03f9cc2343a72ed9439b8b268e8e45396e3a55eefab3d3977c8b8ea204"
+  },
+  {
+   "@id": "urn:sha256:aba9d77f0458ccfdeec3446b5a79318493832662c6df568508d01e900dd37b25",
+   "@type": [
+    "prov:Entity",
+    "prov:Collection"
+   ],
+   "dcterms:identifier": "histai-gyn/endometriosis",
+   "fcg:count": 391,
+   "fcg:kind": "category",
+   "fcg:root": "3dd6e2ff739790f66baea2ff0b8856347a56c8fd0e5f39b8703e327892ea93ea"
+  },
+  {
+   "@id": "urn:sha256:cf9c2efa32a9bba80802579395bf63515f1e8eb8e78490d0d356043cf35e7db6",
+   "@type": [
+    "prov:Entity",
+    "prov:Collection"
+   ],
+   "dcterms:identifier": "histai-gyn/pcos",
+   "fcg:count": 4,
+   "fcg:kind": "category",
+   "fcg:root": "8eb91530c29a0e05e311fd02e147a491391222bfd997c8eca427efc32990f138"
+  },
+  {
+   "@id": "urn:sha256:d42ef3e8e28653ec0f058a7f4bfcb68741aafd01f12bc5c09b1ac49d5f717002",
+   "@type": [
+    "prov:Entity",
+    "prov:Collection"
+   ],
+   "dcterms:identifier": "histai-gyn/pre-endometriosis",
+   "fcg:count": 1234,
+   "fcg:kind": "category",
+   "fcg:root": "9ee22472e6c61aaa1fa6dd6a32ed2e0bb8d5a7a68c1ebb999578cfec7bd8bd5b"
+  },
+  {
+   "@id": "urn:sha256:7159c0f1564b577507afe5b4f01819b214444766b700b09acaa8138bc33726d1",
+   "@type": [
+    "prov:Entity",
+    "prov:Collection"
+   ],
+   "dcterms:identifier": "histai-gyn/uterus",
+   "fcg:count": 3916,
+   "fcg:kind": "category",
+   "fcg:root": "dace8551bbce02a8ce05e4c5d4efe0f9da4e1380ddf0ebcffa11b4db4a820dad"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C16",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 3,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C16"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C18.0",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C18.0"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C18.3",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 2,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C18.3"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C18.5",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C18.5"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C18.7",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 4,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C18.7"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C18.8",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C18.8"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C19",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 3,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C19"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C20",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 2,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C20"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C34",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 2,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C34"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C44",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 2,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C44"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C49",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 2,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C49"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C50",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 5,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C50"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C50.2",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C50.2"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C50.5",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 2,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C50.5"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C50.8",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C50.8"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C53",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 2,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C53"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C53.0",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C53.0"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C53.1",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 2,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C53.1"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C53.8",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 4,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C53.8"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C53.9",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C53.9"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C54",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 2,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C54"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C54.1",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 17,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C54.1"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C54.8",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 3,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C54.8"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C54.9",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C54.9"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C55",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C55"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C56",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 18,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C56"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C57.0",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C57.0"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C57.7",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 2,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C57.7"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C67.8",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 2,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C67.8"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C76.3",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C76.3"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C76.9",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C76.9"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C77",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C77"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C77.0",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 2,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C77.0"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C79.8",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C79.8"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C83.3",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C83.3"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/C85.9",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "C85.9"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D12.3",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D12.3"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D12.5",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 2,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D12.5"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D12.7",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D12.7"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D12.8",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D12.8"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D13.0",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D13.0"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D13.3",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D13.3"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D22",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 3,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D22"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D22.4",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 2,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D22.4"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D22.5",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 9,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D22.5"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D22.6",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D22.6"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D24",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 2,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D24"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D25",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D25"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D25.0",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D25.0"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D25.1",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 8,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D25.1"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D25.2",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D25.2"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D27",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 3,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D27"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D28.7",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D28.7"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/D38.1",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "D38.1"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/K29.4",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "K29.4"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/K62.1",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "K62.1"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/K62.6",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "K62.6"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/K63.5",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 2,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "K63.5"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/K81.1",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "K81.1"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/L82",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "L82"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/N63",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "N63"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/N80.0",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 3,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "N80.0"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/N84",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "N84"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/N84.0",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "N84.0"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/N84.2",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "N84.2"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/N87.1",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "N87.1"
+  },
+  {
+   "@id": "http://id.who.int/icd/release/10/N87.2",
+   "@type": "skos:Concept",
+   "fcg:caseCount": 1,
+   "skos:inScheme": {
+    "@id": "http://id.who.int/icd/release/10/"
+   },
+   "skos:notation": "N87.2"
+  }
+ ]
+}
