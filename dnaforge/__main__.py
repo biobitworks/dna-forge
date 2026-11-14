@@ -93,12 +93,36 @@ def cmd_submit(a):
     print(f"wrote {organ} and {sim} ({len(hq)}/{len(held)} held-out answered); record: {run.dir/'record.json'}")
 
 
+def make_folds(data: BiobaseData, n_splits: int = 5, seed: int = 0) -> dict:
+    """Shared CV folds over labelled slides: StratifiedKFold(n_splits, shuffle, seed) on ids sorted.
+    The file holds ids and fold numbers only, no labels."""
+    from sklearn.model_selection import StratifiedKFold
+    lab = sorted(data.labelled, key=lambda s: s.id)
+    ids, y = [s.id for s in lab], [s.organ_group for s in lab]
+    folds = {}
+    for f, (_, te) in enumerate(StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=seed).split(ids, y)):
+        for i in te:
+            folds[ids[i]] = f
+    return {"scheme": "sklearn.StratifiedKFold(shuffle=True) over labelled slides sorted by id, stratified by organGroup",
+            "seed": seed, "n_splits": n_splits, "count": len(folds), "folds": dict(sorted(folds.items()))}
+
+
+def cmd_folds(a):
+    data = BiobaseData.load(Path(a.root).expanduser())
+    out = Path(a.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(make_folds(data, a.n_splits, a.seed), indent=1))
+    print(f"wrote {out}")
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(prog="dnaforge", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--root", default="~/dna-forge/biobase", help="folder holding the unzipped packs")
     p.add_argument("--runs", default="runs")
     sub = p.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("ingest"); s.add_argument("zips", nargs="+"); s.add_argument("--out"); s.set_defaults(func=cmd_ingest)
+    s = sub.add_parser("folds"); s.add_argument("--out", default="custody/folds.json")
+    s.add_argument("--n-splits", type=int, default=5); s.add_argument("--seed", type=int, default=0); s.set_defaults(func=cmd_folds)
     s = sub.add_parser("verify"); s.add_argument("manifest"); s.set_defaults(func=cmd_verify)
     for name, fn in (("eval", cmd_eval), ("submit", cmd_submit)):
         s = sub.add_parser(name)

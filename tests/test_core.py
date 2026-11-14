@@ -81,6 +81,9 @@ def test_custody_ingest_verify_and_run_record(tmp_path):
     rec = custody.ingest([z], root, out)
     assert rec["sources"]["pack.zip"]["sha256"] == custody.sha256_file(z)
     assert custody.verify(out, root) == []
+    (root / "slides/pack_slides/extra.csv").write_text("x")
+    assert "added: slides/pack_slides/extra.csv" in custody.verify(out, root)
+    (root / "slides/pack_slides/extra.csv").unlink()
     (root / "slides/pack_slides/slides_manifest.json").write_text("{}")
     assert any(p.startswith("changed:") for p in custody.verify(out, root))
     # no data content in the manifest, only names/sizes/hashes
@@ -113,3 +116,24 @@ def test_transforms(tmp_path):
     a = pre(tmp_path / "t.jpg")
     assert a.shape == (3, 224, 224) and a.dtype == np.float32
     assert pre(tmp_path / "w.jpg") is None
+
+
+def test_run_ids_unique(tmp_path):
+    with custody.RunRecord("x", runs_dir=tmp_path) as a, custody.RunRecord("x", runs_dir=tmp_path) as b:
+        assert a.dir != b.dir
+
+
+def test_folds(tmp_path):
+    pytest.importorskip("sklearn")
+    from dnaforge.__main__ import make_folds
+    make_pack(tmp_path, n=33)
+    f = make_folds(BiobaseData.load(tmp_path), n_splits=3)
+    assert f["count"] == 30 and set(f["folds"].values()) == {0, 1, 2}
+    assert "organ" not in json.dumps(f["folds"])
+
+
+def test_tile_dataset_picklable():
+    import pickle
+    from dnaforge.transforms import TileDataset
+    ds = TileDataset([], labels={"a": "Lung"})
+    assert pickle.loads(pickle.dumps(ds)).classes == ["Lung"]

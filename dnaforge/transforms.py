@@ -104,27 +104,33 @@ def sample_tiles(tiles: list, per_slide: int, seed: int = 0) -> list:
     return out
 
 
-def TileDataset(tiles: list, labels: Optional[dict] = None, preprocess: Optional[Callable] = None):
-    """PyTorch Dataset of (tensor, label index or -1, slide id). Blank tiles become zeros with mask=False."""
-    import torch
-    from torch.utils.data import Dataset
+try:
+    from torch.utils.data import Dataset as _TorchDataset
+except Exception:  # torch is optional
+    _TorchDataset = object
 
-    classes = sorted(set(labels.values())) if labels else []
-    cidx = {c: i for i, c in enumerate(classes)}
-    pre = preprocess or Preprocess()
 
-    class _DS(Dataset):
-        def __len__(self):
-            return len(tiles)
+class TileDataset(_TorchDataset):
+    """PyTorch Dataset of (tensor, label index or -1, slide id, ok). Blank tiles become zeros with ok=False.
 
-        def __getitem__(self, i):
-            t = tiles[i]
-            a = pre(t.path)
-            ok = a is not None
-            x = torch.from_numpy(a) if ok else torch.zeros(3, pre.size, pre.size)
-            y = cidx.get(labels.get(t.slide_id), -1) if labels else -1
-            return x, y, t.slide_id, ok
+    Defined at module scope so DataLoader workers can pickle it under the spawn start method (macOS default).
+    """
 
-    ds = _DS()
-    ds.classes = classes
-    return ds
+    def __init__(self, tiles: list, labels: Optional[dict] = None, preprocess: Optional[Callable] = None):
+        self.tiles = list(tiles)
+        self.labels = labels or {}
+        self.classes = sorted(set(self.labels.values()))
+        self._cidx = {c: i for i, c in enumerate(self.classes)}
+        self.pre = preprocess or Preprocess()
+
+    def __len__(self):
+        return len(self.tiles)
+
+    def __getitem__(self, i):
+        import torch
+        t = self.tiles[i]
+        a = self.pre(t.path)
+        ok = a is not None
+        x = torch.from_numpy(a) if ok else torch.zeros(3, self.pre.size, self.pre.size)
+        y = self._cidx.get(self.labels.get(t.slide_id), -1)
+        return x, y, t.slide_id, ok

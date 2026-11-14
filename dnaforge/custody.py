@@ -94,14 +94,24 @@ def verify(manifest: str | Path, extracted_root: str | Path) -> list[str]:
     """Re-hash the extracted tree and return a list of mismatches (empty means intact)."""
     rec = json.loads(Path(manifest).read_text())
     problems = []
+    root = Path(extracted_root)
+    known = set(rec["extracted"])
+    for d in sorted(p for p in root.iterdir() if p.is_dir()):
+        if d.name not in known:
+            problems.append(f"added: {d.name}/")
     for sub, tree in rec["extracted"].items():
-        base = Path(extracted_root) / sub
+        base = root / sub
         for rel, meta in tree["files"].items():
             p = base / rel
             if not p.exists():
                 problems.append(f"missing: {sub}/{rel}")
             elif sha256_file(p) != meta["sha256"]:
                 problems.append(f"changed: {sub}/{rel}")
+        if base.exists():
+            for p in sorted(x for x in base.rglob("*") if x.is_file()):
+                rel = p.relative_to(base).as_posix()
+                if rel not in tree["files"]:
+                    problems.append(f"added: {sub}/{rel}")
     return problems
 
 
@@ -117,7 +127,7 @@ class RunRecord:
     def __init__(self, name: str, config: dict | None = None, inputs: Iterable[str | Path] = (),
                  runs_dir: str | Path = "runs"):
         stamp = _dt.datetime.now(_dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-        self.id = f"{stamp}-{name}"
+        self.id = f"{stamp}-{name}-{uuid.uuid4().hex[:6]}"
         self.dir = Path(runs_dir) / self.id
         self.config = config or {}
         self.inputs = [Path(p) for p in inputs]
@@ -131,7 +141,7 @@ class RunRecord:
         return path
 
     def __enter__(self):
-        self.dir.mkdir(parents=True, exist_ok=True)
+        self.dir.mkdir(parents=True, exist_ok=False)
         self.start = now()
         return self
 
