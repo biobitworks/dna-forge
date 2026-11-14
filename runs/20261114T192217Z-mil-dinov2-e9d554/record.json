@@ -1,0 +1,74 @@
+{
+ "code": {
+  "branch": "feat/fcg",
+  "commit": "84ae321c46c1474adbcb51407ab3947d550e391d",
+  "dirty": true
+ },
+ "command": [
+  "/Users/byron/dna-forge/wt-fcg/dnaforge/mil.py",
+  "--model",
+  "dinov2",
+  "--epochs",
+  "25",
+  "--seeds",
+  "2"
+ ],
+ "config": {
+  "device": "mps",
+  "epochs": 25,
+  "folds": "custody/local/folds.json",
+  "lr": 0.0003,
+  "model": "dinov2",
+  "root": "~/dna-forge/biobase",
+  "runs": "runs",
+  "seed": 0,
+  "seeds": 2
+ },
+ "end": "2026-11-14T19:25:01+00:00",
+ "error": null,
+ "host": {
+  "hostname": "magicPRObox.local",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.12.12",
+  "user": "byron"
+ },
+ "id": "20261114T192217Z-mil-dinov2-e9d554",
+ "inputs": {
+  "/Users/byron/dna-forge/biobase/slides/pack_slides/slides_manifest.json": {
+   "bytes": 159539,
+   "sha256": "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/dinov2/tile-meta.json": {
+   "bytes": 26421,
+   "sha256": "8106575539153b0fdd33fe66c906cfdcade5878ee4407ca17fc46389f575f92f"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/dinov2/tile-vectors.i8": {
+   "bytes": 4713984,
+   "sha256": "f1267f376ad0284ef96abeb2c1944077bb56591d99b7ffd0ebb923904f2fbbdf"
+  },
+  "custody/local/folds.json": {
+   "bytes": 7592,
+   "sha256": "2f3cd6de81c08b2f4d66739492519f570d564b8a4a9a86118823c7fa7e6608d0"
+  }
+ },
+ "kind": "run",
+ "metrics": {
+  "n_heldout": 67,
+  "n_labelled": 190,
+  "node": "magicPRObox.local",
+  "oof_acc": 0.37894736842105264
+ },
+ "notes": [],
+ "outputs": {
+  "heldout_organ.csv": {
+   "bytes": 11238,
+   "sha256": "08613ae27ff5ab0d46376a480acce1022c9d05bff645f9555dd19fd8c4256897"
+  },
+  "oof_organ.csv": {
+   "bytes": 32264,
+   "sha256": "3e2f60288bc098489c4cc03d18e27a7e1bd803a6f27eb5bdbdf02afa1ed9e9eb"
+  }
+ },
+ "start": "2026-11-14T19:22:17+00:00",
+ "status": "ok"
+}

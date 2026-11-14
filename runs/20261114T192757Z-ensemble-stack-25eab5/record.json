@@ -1,0 +1,56 @@
+{
+ "code": {
+  "branch": "feat/fcg",
+  "commit": "84ae321c46c1474adbcb51407ab3947d550e391d",
+  "dirty": true
+ },
+ "command": [
+  "/Users/byron/dna-forge/wt-fcg/dnaforge/stack.py",
+  "../wt-slides/runs/20261114T191440Z-submit-ens-svm-4dc083",
+  "runs/20261114T191550Z-mil-hoptimus-b7b8b6 runs/20261114T191906Z-mil-biomedclip-947e1d runs/20261114T192217Z-mil-dinov2-e9d554"
+ ],
+ "config": {
+  "alpha": 0.5,
+  "folds": "custody/local/folds.json",
+  "root": "~/dna-forge/biobase",
+  "runs": "runs",
+  "runs_in": [
+   "../wt-slides/runs/20261114T191440Z-submit-ens-svm-4dc083",
+   "runs/20261114T191550Z-mil-hoptimus-b7b8b6 runs/20261114T191906Z-mil-biomedclip-947e1d runs/20261114T192217Z-mil-dinov2-e9d554"
+  ],
+  "sim_model": "gigapath"
+ },
+ "end": "2026-11-14T19:29:04+00:00",
+ "error": "FileNotFoundError(2, 'No such file or directory')",
+ "host": {
+  "hostname": "magicPRObox.local",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.12.12",
+  "user": "byron"
+ },
+ "id": "20261114T192757Z-ensemble-stack-25eab5",
+ "inputs": {
+  "../wt-slides/runs/20261114T191440Z-submit-ens-svm-4dc083/heldout_organ.csv": {
+   "bytes": 11238,
+   "sha256": "92ecf5a678ce0b710726065e0bef1cc72e5e44efdacac26f9f0c2cc59111169c"
+  },
+  "../wt-slides/runs/20261114T191440Z-submit-ens-svm-4dc083/oof_organ.csv": {
+   "bytes": 32264,
+   "sha256": "c06259e83a316212d8ae390a959ca9b1e672b768d4eb3a9a5390c864758a1d4e"
+  },
+  "../wt-slides/runs/20261114T191440Z-submit-ens-svm-4dc083/record.json": {
+   "bytes": 2650,
+   "sha256": "1f7a0caf25fb1b535d982182dc32633ae9326cd0df29ff1e5fb68d03921204ea"
+  },
+  "custody/local/folds.json": {
+   "bytes": 7592,
+   "sha256": "2f3cd6de81c08b2f4d66739492519f570d564b8a4a9a86118823c7fa7e6608d0"
+  }
+ },
+ "kind": "run",
+ "metrics": {},
+ "notes": [],
+ "outputs": {},
+ "start": "2026-11-14T19:27:57+00:00",
+ "status": "error"
+}

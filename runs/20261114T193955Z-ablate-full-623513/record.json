@@ -1,0 +1,816 @@
+{
+ "code": {
+  "branch": "feat/slide-models",
+  "commit": "0a439eeb0e78d550fc402b2b58ab4e58dcbf4398",
+  "dirty": false
+ },
+ "command": [
+  "scripts/ablate.py",
+  "--base",
+  "full"
+ ],
+ "config": {
+  "alpha": 3.0,
+  "base": "full",
+  "seeds": [
+   0,
+   1,
+   2
+  ],
+  "variants": {
+   "+hoptimus@meanmax": {
+    "alpha": 3.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus",
+       "biomedclip",
+       "dinov2"
+      ],
+      [
+       2,
+       1,
+       1,
+       0.5
+      ],
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "hoptimus@meanmax"
+      ],
+      null,
+      "lr",
+      {
+       "Creg": 0.1
+      },
+      1.0
+     ]
+    ]
+   },
+   "+sc": {
+    "alpha": 3.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath~sc"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath~sc",
+       "hoptimus~sc"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath~sc",
+       "hoptimus~sc",
+       "biomedclip~sc",
+       "dinov2~sc"
+      ],
+      [
+       2,
+       1,
+       1,
+       0.5
+      ],
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   },
+   "-c2:class-agreement": {
+    "alpha": 0.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus",
+       "biomedclip",
+       "dinov2"
+      ],
+      [
+       2,
+       1,
+       1,
+       0.5
+      ],
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   },
+   "-c2:embedding": {
+    "alpha": 1000.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus",
+       "biomedclip",
+       "dinov2"
+      ],
+      [
+       2,
+       1,
+       1,
+       0.5
+      ],
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   },
+   "-clf:svm->lr": {
+    "alpha": 3.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath"
+      ],
+      null,
+      "lr",
+      {
+       "Creg": 0.1
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus"
+      ],
+      null,
+      "lr",
+      {
+       "Creg": 0.1
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus",
+       "biomedclip",
+       "dinov2"
+      ],
+      [
+       2,
+       1,
+       1,
+       0.5
+      ],
+      "lr",
+      {
+       "Creg": 0.1
+      },
+      1.0
+     ]
+    ]
+   },
+   "-emb:biomedclip": {
+    "alpha": 3.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus",
+       "dinov2"
+      ],
+      [
+       2,
+       1,
+       0.5
+      ],
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   },
+   "-emb:dinov2": {
+    "alpha": 3.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus",
+       "biomedclip"
+      ],
+      [
+       2,
+       1,
+       1
+      ],
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   },
+   "-emb:gigapath": {
+    "alpha": 3.0,
+    "c2_space": "hoptimus",
+    "members": [
+     [
+      [
+       "hoptimus"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "hoptimus",
+       "biomedclip",
+       "dinov2"
+      ],
+      [
+       1,
+       1,
+       0.5
+      ],
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   },
+   "-emb:hoptimus": {
+    "alpha": 3.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "biomedclip",
+       "dinov2"
+      ],
+      [
+       2,
+       1,
+       0.5
+      ],
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   },
+   "-member:gigapath": {
+    "alpha": 3.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath",
+       "hoptimus"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus",
+       "biomedclip",
+       "dinov2"
+      ],
+      [
+       2,
+       1,
+       1,
+       0.5
+      ],
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   },
+   "-member:gigapath+hoptimus": {
+    "alpha": 3.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus",
+       "biomedclip",
+       "dinov2"
+      ],
+      [
+       2,
+       1,
+       1,
+       0.5
+      ],
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   },
+   "-member:gigapath+hoptimus+biomedclip+dinov2": {
+    "alpha": 3.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   },
+   "FULL": {
+    "alpha": 3.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus",
+       "biomedclip",
+       "dinov2"
+      ],
+      [
+       2,
+       1,
+       1,
+       0.5
+      ],
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   }
+  }
+ },
+ "end": "2026-11-14T19:41:00+00:00",
+ "error": null,
+ "host": {
+  "hostname": "magicPRObox.local",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.12.12",
+  "user": "byron"
+ },
+ "id": "20261114T193955Z-ablate-full-623513",
+ "inputs": {
+  "/Users/byron/dna-forge/biobase/slides/pack_slides/slides_manifest.json": {
+   "bytes": 159539,
+   "sha256": "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/biomedclip/slide-vectors.json": {
+   "bytes": 1277550,
+   "sha256": "f7addeb24ffba2c6f5662cce2dc5471d1fe49541c680cc8844a11ac32e47d8b5"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/biomedclip/tile-vectors.i8": {
+   "bytes": 6285312,
+   "sha256": "1df0c0a27ef13fb8825ececc4cb90b9b60cceb489851bdd2b4bd223957ac1c6a"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/dinov2/slide-vectors.json": {
+   "bytes": 960326,
+   "sha256": "7f0a87c714ac00cbef10db0a8310b08696becbab63bdeb438d0b296ad09706a9"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/dinov2/tile-vectors.i8": {
+   "bytes": 4713984,
+   "sha256": "f1267f376ad0284ef96abeb2c1944077bb56591d99b7ffd0ebb923904f2fbbdf"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/gigapath/slide-vectors.json": {
+   "bytes": 3370822,
+   "sha256": "a12350969f733118f9447b05aaf397cfa88ac5728b335fdaff01006137a85a05"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/hoptimus/slide-vectors.json": {
+   "bytes": 3798267,
+   "sha256": "b505ab01f0e68ed3001fda1a035dbd86c909ff422e3a9a084b9957f4ea352bd5"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/hoptimus/tile-vectors.i8": {
+   "bytes": 18855936,
+   "sha256": "e099911869bb3c8600898c77fd9ef36a891c7feea37f2f35391406c465e7fd30"
+  }
+ },
+ "kind": "run",
+ "metrics": {
+  "+hoptimus@meanmax": {
+   "c1_acc": 0.8508771929824562,
+   "c1_sd": 0.013128622409733129,
+   "c1_seed0": 0.8473684210526315,
+   "delta": {
+    "c1_acc": -0.0035,
+    "p@1": 0.0018,
+    "p@10": -0.0025,
+    "p@5": -0.0011
+   },
+   "p@1": 0.8596491228070176,
+   "p@10": 0.7984210526315789,
+   "p@5": 0.8256140350877192
+  },
+  "+sc": {
+   "c1_acc": 0.8140350877192982,
+   "c1_sd": 0.006564311204866585,
+   "c1_seed0": 0.8157894736842105,
+   "delta": {
+    "c1_acc": -0.0404,
+    "p@1": -0.0333,
+    "p@10": -0.0268,
+    "p@5": -0.0284
+   },
+   "p@1": 0.8245614035087719,
+   "p@10": 0.7740350877192984,
+   "p@5": 0.7982456140350878
+  },
+  "-c2:class-agreement": {
+   "c1_acc": 0.8543859649122808,
+   "c1_sd": 0.009924305700863854,
+   "c1_seed0": 0.8473684210526315,
+   "delta": {
+    "c1_acc": 0.0,
+    "p@1": -0.0737,
+    "p@10": -0.3488,
+    "p@5": -0.2593
+   },
+   "p@1": 0.7842105263157895,
+   "p@10": 0.4521052631578948,
+   "p@5": 0.5673684210526316
+  },
+  "-c2:embedding": {
+   "c1_acc": 0.8543859649122808,
+   "c1_sd": 0.009924305700863854,
+   "c1_seed0": 0.8473684210526315,
+   "delta": {
+    "c1_acc": 0.0,
+    "p@1": -0.0035,
+    "p@10": -0.0002,
+    "p@5": -0.0018
+   },
+   "p@1": 0.8543859649122808,
+   "p@10": 0.8007017543859649,
+   "p@5": 0.8249122807017543
+  },
+  "-clf:svm->lr": {
+   "c1_acc": 0.8298245614035088,
+   "c1_sd": 0.013814048901775117,
+   "c1_seed0": 0.8421052631578947,
+   "delta": {
+    "c1_acc": -0.0246,
+    "p@1": -0.0158,
+    "p@10": -0.0161,
+    "p@5": -0.0204
+   },
+   "p@1": 0.8421052631578947,
+   "p@10": 0.7847368421052631,
+   "p@5": 0.8063157894736842
+  },
+  "-emb:biomedclip": {
+   "c1_acc": 0.8526315789473684,
+   "c1_sd": 0.007443229275647892,
+   "c1_seed0": 0.8473684210526315,
+   "delta": {
+    "c1_acc": -0.0018,
+    "p@1": -0.0053,
+    "p@10": -0.0037,
+    "p@5": -0.0032
+   },
+   "p@1": 0.8526315789473684,
+   "p@10": 0.7971929824561403,
+   "p@5": 0.8235087719298245
+  },
+  "-emb:dinov2": {
+   "c1_acc": 0.8578947368421052,
+   "c1_sd": 0.004297350425935413,
+   "c1_seed0": 0.8578947368421053,
+   "delta": {
+    "c1_acc": 0.0035,
+    "p@1": 0.0035,
+    "p@10": 0.0004,
+    "p@5": 0.0018
+   },
+   "p@1": 0.86140350877193,
+   "p@10": 0.8012280701754385,
+   "p@5": 0.8284210526315791
+  },
+  "-emb:gigapath": {
+   "c1_acc": 0.7140350877192984,
+   "c1_sd": 0.021198326269464173,
+   "c1_seed0": 0.7315789473684211,
+   "delta": {
+    "c1_acc": -0.1404,
+    "p@1": -0.1404,
+    "p@10": -0.1339,
+    "p@5": -0.1312
+   },
+   "p@1": 0.7175438596491229,
+   "p@10": 0.6670175438596493,
+   "p@5": 0.6954385964912281
+  },
+  "-emb:hoptimus": {
+   "c1_acc": 0.8578947368421052,
+   "c1_sd": 0.008594700851870826,
+   "c1_seed0": 0.8473684210526315,
+   "delta": {
+    "c1_acc": 0.0035,
+    "p@1": 0.007,
+    "p@10": 0.0067,
+    "p@5": 0.0046
+   },
+   "p@1": 0.8649122807017543,
+   "p@10": 0.8075438596491228,
+   "p@5": 0.8312280701754386
+  },
+  "-member:gigapath": {
+   "c1_acc": 0.8491228070175438,
+   "c1_sd": 0.013814048901775117,
+   "c1_seed0": 0.8421052631578947,
+   "delta": {
+    "c1_acc": -0.0053,
+    "p@1": -0.0053,
+    "p@10": -0.0061,
+    "p@5": -0.0046
+   },
+   "p@1": 0.8526315789473684,
+   "p@10": 0.7947368421052632,
+   "p@5": 0.8221052631578948
+  },
+  "-member:gigapath+hoptimus": {
+   "c1_acc": 0.8578947368421052,
+   "c1_sd": 0.012892051277806241,
+   "c1_seed0": 0.8578947368421053,
+   "delta": {
+    "c1_acc": 0.0035,
+    "p@1": 0.0018,
+    "p@10": 0.0016,
+    "p@5": 0.0011
+   },
+   "p@1": 0.8596491228070176,
+   "p@10": 0.8024561403508773,
+   "p@5": 0.8277192982456141
+  },
+  "-member:gigapath+hoptimus+biomedclip+dinov2": {
+   "c1_acc": 0.8543859649122808,
+   "c1_sd": 0.008945648269461053,
+   "c1_seed0": 0.8631578947368421,
+   "delta": {
+    "c1_acc": 0.0,
+    "p@1": 0.0,
+    "p@10": -0.0032,
+    "p@5": -0.0025
+   },
+   "p@1": 0.8578947368421052,
+   "p@10": 0.7977192982456142,
+   "p@5": 0.8242105263157894
+  },
+  "FULL": {
+   "c1_acc": 0.8543859649122808,
+   "c1_sd": 0.009924305700863854,
+   "c1_seed0": 0.8473684210526315,
+   "delta": {
+    "c1_acc": 0.0,
+    "p@1": 0.0,
+    "p@10": 0.0,
+    "p@5": 0.0
+   },
+   "p@1": 0.8578947368421052,
+   "p@10": 0.8008771929824562,
+   "p@5": 0.8266666666666667
+  }
+ },
+ "notes": [],
+ "outputs": {},
+ "start": "2026-11-14T19:39:55+00:00",
+ "status": "ok"
+}

@@ -1,0 +1,21 @@
+[project]
+name = "dnaforge"
+version = "0.1.0"
+description = "Data layer, chain-of-custody tracking and models for the Biobase slide challenge"
+requires-python = ">=3.9"
+dependencies = ["numpy>=1.22"]
+
+[project.optional-dependencies]
+vision = ["pillow>=9", "torch>=2.0"]
+ml = ["scikit-learn>=1.1"]
+dev = ["pytest>=7", "pillow>=9"]
+
+[project.scripts]
+dnaforge = "dnaforge.__main__:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["dnaforge"]

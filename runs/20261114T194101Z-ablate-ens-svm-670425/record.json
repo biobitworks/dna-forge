@@ -1,0 +1,467 @@
+{
+ "code": {
+  "branch": "feat/slide-models",
+  "commit": "0a439eeb0e78d550fc402b2b58ab4e58dcbf4398",
+  "dirty": true
+ },
+ "command": [
+  "scripts/ablate.py",
+  "--base",
+  "ens-svm"
+ ],
+ "config": {
+  "alpha": 3.0,
+  "base": "ens-svm",
+  "seeds": [
+   0,
+   1,
+   2
+  ],
+  "variants": {
+   "+hoptimus@meanmax": {
+    "alpha": 3.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "hoptimus@meanmax"
+      ],
+      null,
+      "lr",
+      {
+       "Creg": 0.1
+      },
+      1.0
+     ]
+    ]
+   },
+   "+sc": {
+    "alpha": 3.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath~sc"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath~sc",
+       "hoptimus~sc"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   },
+   "-c2:class-agreement": {
+    "alpha": 0.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   },
+   "-c2:embedding": {
+    "alpha": 1000.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   },
+   "-clf:svm->lr": {
+    "alpha": 3.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath"
+      ],
+      null,
+      "lr",
+      {
+       "Creg": 0.1
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus"
+      ],
+      null,
+      "lr",
+      {
+       "Creg": 0.1
+      },
+      1.0
+     ]
+    ]
+   },
+   "-emb:gigapath": {
+    "alpha": 3.0,
+    "c2_space": "hoptimus",
+    "members": [
+     [
+      [
+       "hoptimus"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   },
+   "-emb:hoptimus": {
+    "alpha": 3.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   },
+   "-member:gigapath": {
+    "alpha": 3.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath",
+       "hoptimus"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   },
+   "-member:gigapath+hoptimus": {
+    "alpha": 3.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   },
+   "FULL": {
+    "alpha": 3.0,
+    "c2_space": "gigapath",
+    "members": [
+     [
+      [
+       "gigapath"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ],
+     [
+      [
+       "gigapath",
+       "hoptimus"
+      ],
+      null,
+      "svm",
+      {
+       "Creg": 0.01
+      },
+      1.0
+     ]
+    ]
+   }
+  }
+ },
+ "end": "2026-11-14T19:41:27+00:00",
+ "error": null,
+ "host": {
+  "hostname": "magicPRObox.local",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.12.12",
+  "user": "byron"
+ },
+ "id": "20261114T194101Z-ablate-ens-svm-670425",
+ "inputs": {
+  "/Users/byron/dna-forge/biobase/slides/pack_slides/slides_manifest.json": {
+   "bytes": 159539,
+   "sha256": "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/biomedclip/slide-vectors.json": {
+   "bytes": 1277550,
+   "sha256": "f7addeb24ffba2c6f5662cce2dc5471d1fe49541c680cc8844a11ac32e47d8b5"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/biomedclip/tile-vectors.i8": {
+   "bytes": 6285312,
+   "sha256": "1df0c0a27ef13fb8825ececc4cb90b9b60cceb489851bdd2b4bd223957ac1c6a"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/dinov2/slide-vectors.json": {
+   "bytes": 960326,
+   "sha256": "7f0a87c714ac00cbef10db0a8310b08696becbab63bdeb438d0b296ad09706a9"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/dinov2/tile-vectors.i8": {
+   "bytes": 4713984,
+   "sha256": "f1267f376ad0284ef96abeb2c1944077bb56591d99b7ffd0ebb923904f2fbbdf"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/gigapath/slide-vectors.json": {
+   "bytes": 3370822,
+   "sha256": "a12350969f733118f9447b05aaf397cfa88ac5728b335fdaff01006137a85a05"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/hoptimus/slide-vectors.json": {
+   "bytes": 3798267,
+   "sha256": "b505ab01f0e68ed3001fda1a035dbd86c909ff422e3a9a084b9957f4ea352bd5"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/hoptimus/tile-vectors.i8": {
+   "bytes": 18855936,
+   "sha256": "e099911869bb3c8600898c77fd9ef36a891c7feea37f2f35391406c465e7fd30"
+  }
+ },
+ "kind": "run",
+ "metrics": {
+  "+hoptimus@meanmax": {
+   "c1_acc": 0.8491228070175438,
+   "c1_sd": 0.006564311204866585,
+   "c1_seed0": 0.8473684210526315,
+   "delta": {
+    "c1_acc": -0.0053,
+    "p@1": -0.0035,
+    "p@10": -0.0,
+    "p@5": -0.0032
+   },
+   "p@1": 0.8543859649122808,
+   "p@10": 0.7977192982456139,
+   "p@5": 0.8210526315789473
+  },
+  "+sc": {
+   "c1_acc": 0.8175438596491228,
+   "c1_sd": 0.006564311204866585,
+   "c1_seed0": 0.8157894736842105,
+   "delta": {
+    "c1_acc": -0.0368,
+    "p@1": -0.0298,
+    "p@10": -0.0212,
+    "p@5": -0.0228
+   },
+   "p@1": 0.8280701754385965,
+   "p@10": 0.7764912280701756,
+   "p@5": 0.8014035087719299
+  },
+  "-c2:class-agreement": {
+   "c1_acc": 0.8543859649122808,
+   "c1_sd": 0.008945648269461053,
+   "c1_seed0": 0.8631578947368421,
+   "delta": {
+    "c1_acc": 0.0,
+    "p@1": -0.0737,
+    "p@10": -0.3456,
+    "p@5": -0.2568
+   },
+   "p@1": 0.7842105263157895,
+   "p@10": 0.4521052631578948,
+   "p@5": 0.5673684210526316
+  },
+  "-c2:embedding": {
+   "c1_acc": 0.8543859649122808,
+   "c1_sd": 0.008945648269461053,
+   "c1_seed0": 0.8631578947368421,
+   "delta": {
+    "c1_acc": 0.0,
+    "p@1": -0.0035,
+    "p@10": 0.003,
+    "p@5": 0.0011
+   },
+   "p@1": 0.8543859649122808,
+   "p@10": 0.8007017543859648,
+   "p@5": 0.8252631578947368
+  },
+  "-clf:svm->lr": {
+   "c1_acc": 0.8298245614035088,
+   "c1_sd": 0.015091798714109875,
+   "c1_seed0": 0.8473684210526315,
+   "delta": {
+    "c1_acc": -0.0246,
+    "p@1": -0.0211,
+    "p@10": -0.016,
+    "p@5": -0.0193
+   },
+   "p@1": 0.8368421052631579,
+   "p@10": 0.7817543859649123,
+   "p@5": 0.8049122807017545
+  },
+  "-emb:gigapath": {
+   "c1_acc": 0.6929824561403509,
+   "c1_sd": 0.010814761408717495,
+   "c1_seed0": 0.7052631578947368,
+   "delta": {
+    "c1_acc": -0.1614,
+    "p@1": -0.1684,
+    "p@10": -0.1423,
+    "p@5": -0.1456
+   },
+   "p@1": 0.6894736842105263,
+   "p@10": 0.6554385964912282,
+   "p@5": 0.6785964912280701
+  },
+  "-emb:hoptimus": {
+   "c1_acc": 0.8473684210526317,
+   "c1_sd": 0.00744322927564784,
+   "c1_seed0": 0.8526315789473684,
+   "delta": {
+    "c1_acc": -0.007,
+    "p@1": -0.0088,
+    "p@10": -0.0039,
+    "p@5": -0.0056
+   },
+   "p@1": 0.8491228070175438,
+   "p@10": 0.7938596491228073,
+   "p@5": 0.8185964912280701
+  },
+  "-member:gigapath": {
+   "c1_acc": 0.850877192982456,
+   "c1_sd": 0.008945648269461053,
+   "c1_seed0": 0.8473684210526315,
+   "delta": {
+    "c1_acc": -0.0035,
+    "p@1": -0.0035,
+    "p@10": -0.0023,
+    "p@5": -0.0007
+   },
+   "p@1": 0.8543859649122808,
+   "p@10": 0.7954385964912282,
+   "p@5": 0.8235087719298247
+  },
+  "-member:gigapath+hoptimus": {
+   "c1_acc": 0.8473684210526317,
+   "c1_sd": 0.00744322927564784,
+   "c1_seed0": 0.8526315789473684,
+   "delta": {
+    "c1_acc": -0.007,
+    "p@1": -0.0088,
+    "p@10": -0.0039,
+    "p@5": -0.0056
+   },
+   "p@1": 0.8491228070175438,
+   "p@10": 0.7938596491228073,
+   "p@5": 0.8185964912280701
+  },
+  "FULL": {
+   "c1_acc": 0.8543859649122808,
+   "c1_sd": 0.008945648269461053,
+   "c1_seed0": 0.8631578947368421,
+   "delta": {
+    "c1_acc": 0.0,
+    "p@1": 0.0,
+    "p@10": 0.0,
+    "p@5": 0.0
+   },
+   "p@1": 0.8578947368421052,
+   "p@10": 0.7977192982456142,
+   "p@5": 0.8242105263157894
+  }
+ },
+ "notes": [],
+ "outputs": {},
+ "start": "2026-11-14T19:41:01+00:00",
+ "status": "ok"
+}
