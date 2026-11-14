@@ -31,7 +31,9 @@ Everyone uses the same folds, so out-of-fold predictions line up.
 
 - The fold file is `custody/folds.json`, written once by the core workstream
   from the labelled slides that have an organ group. Format:
-  `{"kind": "folds", "seed": 0, "n_folds": 5, "strategy": "...", "folds": {"<slide_id>": 0, ...}}`.
+  `{"scheme": "...", "seed": 0, "n_splits": 5, "folds": {"<slide_id>": 0, ...}}`.
+  It is a stratified 5-fold split (seed 0) over the labelled slides that have
+  an organ group, sorted by id. It holds ids and fold numbers only, no labels.
 - Do not make your own folds for anything you hand to the stack.
 - Held-out slides are never in a fold and never get a label.
 
@@ -42,9 +44,9 @@ All under `runs/<run-id>/` (see CONTRIBUTING.md for run ids and
 
 | File | Rows | Columns |
 |---|---|---|
-| `record.json` | one record | RunRecord fields, with `config.contract: "v1"` and `config.model_family` |
-| `oof_organ.csv` | every slide in `custody/folds.json` | `slide_id,fold,` then one probability column per organ group, in `organ_groups.json` order |
-| `heldout_organ.csv` | the 67 held-out slides | `slide_id,` then the same probability columns. Train on all folds for this file. |
+| `record.json` | one record | RunRecord fields, with `config.contract: "v1"`, `config.model_family`, `metrics.oof_acc` (out-of-fold organ-group accuracy) and `metrics.node` (hostname it ran on) |
+| `oof_organ.csv` | every slide in `custody/folds.json` | `slide_id,fold,` then one probability column per organ group, named exactly as in the manifest's `organGroupList` and in that order |
+| `heldout_organ.csv` | the 67 held-out slides | `slide_id,fold,` with `fold` set to `-1`, then the same probability columns. Train on all folds for this file. |
 | `heldout_similar.csv` (optional, for C2) | up to 50 per held-out slide | `query_slide_id,result_slide_id,score`, higher score means more similar, no self-matches |
 | `oof_similar.csv` (optional, for C2) | up to 50 per labelled slide | same columns; results drawn only from slides outside the query's fold |
 
@@ -55,8 +57,11 @@ Rules:
 - A slide your model cannot score (for example, no vector) is left out, not
   filled with a uniform row. The stacker handles gaps.
 - Hash every output file into `record.json` `outputs`.
-- These CSVs contain slide ids and are allowed under `runs/` by the data
-  guard. They contain no labels. Do not commit the labels or the manifest.
+- **Do not commit the prediction CSVs.** Held-out predictions imply labels
+  for held-out slides. Only `record.json` is committed; its `outputs` hashes
+  prove which files were used. Hand the CSVs to the core team on the
+  machines (ask Byron where), never through git, issues or chat.
+- Never commit the labels or the manifest.
 
 ## How the stack uses them
 
