@@ -14,5 +14,9 @@ dependencies:
   - rdflib          # knowledge-graph standards: PROV-O / JSON-LD for the custody graph
   - pyarrow
   - matplotlib
+  - pytorch         # only needed for MIL / vision models (dnaforge mil.py)
+  - pillow
   - jupyterlab
   - pip
+  - pip:
+      - -e .        # installs the dnaforge package once the core PR lands (pyproject.toml)
