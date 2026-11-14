@@ -8,7 +8,7 @@ M=importlib.util.module_from_spec(s);s.loader.exec_module(M)
 
 def fixture(node):
     h=lambda n:format(n,"064x")
-    return {"schema":M.SCHEMA,"node":node,"run":"synthetic-run","source_commit":h(1),
+    return {"schema":M.SCHEMA,"node":node,"run":"synthetic-run","source_commit":format(1,"040x"),
             "source_code_dirty":False,"method":"ens-svm","config_sha256":h(2),
             "input_sha256":{x:h(i+5) for i,x in enumerate(sorted(M.REQUIRED_INPUTS))},
             "output_sha256":{x:h(i+15) for i,x in enumerate(sorted(M.REQUIRED_OUTPUTS))},
@@ -45,3 +45,8 @@ def test_public_projection_rejects_private_paths(tmp_path):
 def test_public_projection_append_only(tmp_path):
     f=tmp_path/"a.json";M.safe_write(f,{"value":"safe"})
     with pytest.raises(FileExistsError,match="append-only"):M.safe_write(f,{"value":"changed"})
+
+def test_sha_types_are_distinct():
+    assert M.require_git_sha(format(1,"040x"))==format(1,"040x")
+    with pytest.raises(ValueError,match="Git commit"):
+        M.require_git_sha(format(1,"064x"))

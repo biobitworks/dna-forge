@@ -32,6 +32,11 @@ def require_sha(value):
         raise ValueError("malformed SHA-256")
     return value
 
+def require_git_sha(value):
+    if not isinstance(value, str) or len(value) != 40 or any(c not in "0123456789abcdef" for c in value):
+        raise ValueError("malformed Git commit SHA")
+    return value
+
 def role_of(path: str) -> str:
     p = Path(path)
     if p.name == "slides_manifest.json":
@@ -49,7 +54,7 @@ def summarise(record: Path, node: str) -> dict:
     code = r.get("code", {})
     if r.get("status") != "ok" or code.get("dirty") is not False:
         raise ValueError("run is not successful or code is dirty")
-    sha = require_sha(code.get("commit"))
+    sha = require_git_sha(code.get("commit"))
     if r.get("config", {}).get("method") != "ens-svm":
         raise ValueError("unexpected training method")
     inputs = {}
