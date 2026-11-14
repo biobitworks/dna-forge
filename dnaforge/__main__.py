@@ -185,8 +185,7 @@ def cmd_submit_method(a):
             run.output(d / n)
         run.metrics = {"oof_acc": cv["c1_acc"], "oof_p@1": cv["p@1"], "oof_p@5": cv["p@5"], "oof_p@10": cv["p@10"],
                        "node": socket.gethostname(), "folds": fold_src, "n_labelled": len(lab),
-                       "heldout": len(held), "answered": len(held),
-                       "heldout_pred_counts": {c: sum(v == c for v in pred.values()) for c in classes}}
+                       "heldout": len(held), "answered": len(held)}
     print(f"{a.method}: OOF C1={cv['c1_acc']:.3f} P@1/5/10={cv['p@1']:.3f}/{cv['p@5']:.3f}/{cv['p@10']:.3f}; "
           f"wrote {run.dir}; record: {run.dir/'record.json'}")
 

@@ -194,7 +194,7 @@ METHODS: "OrderedDict[str, list]" = OrderedDict([
     ("all4-lr", [(ALL4, None, "lr", {"Creg": 0.1}, 1.0)]),
     ("hopt-meanmax-lr", [(["hoptimus@meanmax"], None, "lr", {"Creg": 0.1}, 1.0)]),
 ])
-DEFAULT_METHOD = "gh-svm"
+DEFAULT_METHOD = "ens-svm"  # fold-0 OOF C1 0.863, P@1/5/10 0.868/0.829/0.800 (alpha 3)
 
 
 def fit_predict(method, feats: dict, tr_ids: list, ytr: np.ndarray, q_ids: list, C: int) -> np.ndarray:
