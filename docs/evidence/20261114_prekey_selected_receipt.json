@@ -1,0 +1,31 @@
+{
+  "clock_source": "local_system_clock_untrusted",
+  "code_commit": "e117677006494f644ba934599837fb8818df8113",
+  "deadline_local": "2026-11-14T16:00:00-08:00",
+  "event_date": "2026-11-14",
+  "mmr_commitment": "NOT_COMPUTED",
+  "observed_utc": "2026-11-14T23:16:56.417772+00:00",
+  "official_answer_key": "NOT_ACCESSED",
+  "organizer_scoring": "NOT_COMPUTED",
+  "organizer_submission": "NOT_VERIFIED",
+  "schema": "dnaforge.prekey-selected-snapshot.v1",
+  "signature": "NOT_SIGNED",
+  "snapshot_verification": "SHA256_MATCHED_READONLY_COPY_3_OF_3",
+  "source": "selected_candidate_on_authorized_magicPRObox",
+  "source_verification": "SHA256_MATCHED_ORIGINAL_SELECTED_3_OF_3",
+  "status": "LOCAL_PREKEY_SNAPSHOT_OBSERVED",
+  "submission": {
+    "submission_criteria.json": {
+      "bytes": 12552,
+      "sha256": "1604ae1557ffad8e39c671a193fec113653984f2e8bf090791f5a15b62d88345"
+    },
+    "submission_slides_organ.csv": {
+      "bytes": 2458,
+      "sha256": "8a69914d27c707c8a61694c8d8123f2139141cd5b79ac358193dda5da4cf7356"
+    },
+    "submission_slides_similar.csv": {
+      "bytes": 37524,
+      "sha256": "ed38172b0075b0415fcce2866a3c68d55a1214e578d0ddc97c19c070fb90d423"
+    }
+  }
+}
