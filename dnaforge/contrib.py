@@ -16,7 +16,7 @@ from pathlib import Path
 import numpy as np
 
 
-def load_folds(path: str | Path = "custody/folds.json") -> dict:
+def load_folds(path: str | Path = "custody/local/folds.json") -> dict:
     return json.loads(Path(path).read_text())["folds"]
 
 

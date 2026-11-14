@@ -68,7 +68,7 @@ def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--root", default="~/dna-forge/biobase")
     p.add_argument("--model", default="hoptimus", choices=["dinov2", "hoptimus", "biomedclip"])
-    p.add_argument("--folds", default="custody/folds.json")
+    p.add_argument("--folds", default="custody/local/folds.json")
     p.add_argument("--runs", default="runs")
     p.add_argument("--epochs", type=int, default=30)
     p.add_argument("--lr", type=float, default=3e-4)

@@ -36,3 +36,4 @@ def test_mil_trains():
     m = train_fold(bags, y, 2, 8, epochs=5, lr=1e-2, seed=0, device="cpu")
     P = predict(m, bags, "cpu")
     assert P.shape == (20, 2) and (P.argmax(1) == y).mean() > 0.8
+

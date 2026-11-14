@@ -1,4 +1,4 @@
-"""FCG stacker: combine contributed small models into the final prediction.
+"""Ensemble stacker: combine contributed small models into one prediction.
 
   python -m dnaforge.stack --root ~/dna-forge/biobase run_dir_1 run_dir_2 ...
 
@@ -63,7 +63,7 @@ def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("runs_in", nargs="+")
     p.add_argument("--root", default="~/dna-forge/biobase")
-    p.add_argument("--folds", default="custody/folds.json")
+    p.add_argument("--folds", default="custody/local/folds.json")
     p.add_argument("--runs", default="runs")
     p.add_argument("--sim-model", default="gigapath")
     p.add_argument("--alpha", type=float, default=0.5, help="weight of probability similarity vs embedding similarity in C2")
@@ -72,7 +72,7 @@ def main(argv=None):
     labels = {s.id: s.organ_group for s in data.labelled}
     folds = load_folds(a.folds)
     inputs = [Path(r) / n for r in a.runs_in for n in ("oof_organ.csv", "heldout_organ.csv", "record.json") if (Path(r) / n).exists()]
-    with custody.RunRecord("fcg-stack", config=vars(a), inputs=inputs + [Path(a.folds)], runs_dir=a.runs) as run:
+    with custody.RunRecord("ensemble-stack", config=vars(a), inputs=inputs + [Path(a.folds)], runs_dir=a.runs) as run:
         r = stack(a.runs_in, labels, folds)
         G = np.array(r["groups"])
         run.metrics = {"oof_acc": r["report"], "method": r["method"], "n_inputs": len(a.runs_in)}
