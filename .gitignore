@@ -18,3 +18,9 @@ __pycache__/
 *.pyc
 .venv/
 .DS_Store
+
+# Predictions and submissions stay on the machines (they imply held-out labels)
+runs/**/*.csv
+runs/**/*.json
+!runs/**/record.json
+*.log
