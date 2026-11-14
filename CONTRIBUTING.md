@@ -21,6 +21,8 @@ Both are in PR #1 until it merges. Read them on that branch if `main` does not h
    source .venv/bin/activate
    ```
 
+   Or, for the full local toolkit (numpy, pandas, scikit-learn, Biopython, rdflib for the PROV-O custody graph), use conda: `conda env create -f environment.yml && conda activate dna-forge`. All processing runs locally.
+
 2. Download the challenge packs yourself from the Biobase challenge page. Each teammate downloads their own copy under the hackathon data agreement. Never pass data through the repo, an issue or a PR. The exact agreement link is TBD, see issue #7 (rules review).
 
 3. Unzip the packs into this layout. `data/` is gitignored.

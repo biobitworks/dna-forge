@@ -1,0 +1,18 @@
+# Local, offline-capable environment for dna-forge teammates.
+#   conda env create -f environment.yml && conda activate dna-forge
+# Everything runs locally; no challenge data leaves your machine.
+name: dna-forge
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - biopython
+  - rdflib          # knowledge-graph standards: PROV-O / JSON-LD for the custody graph
+  - pyarrow
+  - matplotlib
+  - jupyterlab
+  - pip
