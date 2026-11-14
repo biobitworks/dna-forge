@@ -1,0 +1,128 @@
+{
+ "code": {
+  "branch": "HEAD",
+  "commit": "bd3958b1ad2bcb3c6c9e2b501eaf9029a8cf2834",
+  "dirty": true
+ },
+ "command": [
+  "/Users/byron/dna-forge/wt-final/dnaforge/__main__.py",
+  "submit",
+  "--method",
+  "ens-svm",
+  "--alpha",
+  "3",
+  "--c2-space",
+  "gigapath"
+ ],
+ "config": {
+  "alpha": 3.0,
+  "c2_space": "gigapath",
+  "classes": [
+   "Bladder",
+   "Bone",
+   "Bone marrow",
+   "Breast",
+   "Colon and rectum",
+   "Esophagus",
+   "Kidney",
+   "Liver",
+   "Lung",
+   "Other or mixed",
+   "Prostate",
+   "Skin",
+   "Stomach",
+   "Thyroid",
+   "Uterus"
+  ],
+  "members": [
+   [
+    [
+     "gigapath"
+    ],
+    null,
+    "svm",
+    {
+     "Creg": 0.01
+    },
+    1.0
+   ],
+   [
+    [
+     "gigapath",
+     "hoptimus"
+    ],
+    null,
+    "svm",
+    {
+     "Creg": 0.01
+    },
+    1.0
+   ]
+  ],
+  "method": "ens-svm"
+ },
+ "end": "2026-11-14T20:14:06+00:00",
+ "error": null,
+ "host": {
+  "hostname": "magicPRObox.local",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.12.12",
+  "user": "byron"
+ },
+ "id": "20261114T201402Z-submit-ens-svm-e8e6d7",
+ "inputs": {
+  "/Users/byron/dna-forge/biobase/slides/pack_slides/slides_manifest.json": {
+   "bytes": 159539,
+   "sha256": "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/gigapath/slide-vectors.json": {
+   "bytes": 3370822,
+   "sha256": "a12350969f733118f9447b05aaf397cfa88ac5728b335fdaff01006137a85a05"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/hoptimus/slide-vectors.json": {
+   "bytes": 3798267,
+   "sha256": "b505ab01f0e68ed3001fda1a035dbd86c909ff422e3a9a084b9957f4ea352bd5"
+  },
+  "custody/local/folds.json": {
+   "bytes": 7592,
+   "sha256": "2f3cd6de81c08b2f4d66739492519f570d564b8a4a9a86118823c7fa7e6608d0"
+  }
+ },
+ "kind": "run",
+ "metrics": {
+  "answered": 67,
+  "folds": "custody/local/folds.json",
+  "heldout": 67,
+  "n_labelled": 190,
+  "node": "magicPRObox.local",
+  "oof_acc": 0.8631578947368421,
+  "oof_p@1": 0.868421052631579,
+  "oof_p@10": 0.8,
+  "oof_p@5": 0.8294736842105263
+ },
+ "notes": [],
+ "outputs": {
+  "heldout_organ.csv": {
+   "bytes": 11238,
+   "sha256": "bba550f939c7f1d5d11ce6df6577844b799e448f3fc078e859f0aebcd0b91230"
+  },
+  "heldout_similar.csv": {
+   "bytes": 214638,
+   "sha256": "2016447dbfb012b32d4e68756fd1c7e23ce21aba8866e757e6925cb250802c30"
+  },
+  "oof_organ.csv": {
+   "bytes": 32264,
+   "sha256": "4c448cbb0392c9b6a6e9679347b48d68f88c683c023c2fb7223862f22af46914"
+  },
+  "submission_slides_organ.csv": {
+   "bytes": 2458,
+   "sha256": "8a69914d27c707c8a61694c8d8123f2139141cd5b79ac358193dda5da4cf7356"
+  },
+  "submission_slides_similar.csv": {
+   "bytes": 37524,
+   "sha256": "ed38172b0075b0415fcce2866a3c68d55a1214e578d0ddc97c19c070fb90d423"
+  }
+ },
+ "start": "2026-11-14T20:14:02+00:00",
+ "status": "ok"
+}
