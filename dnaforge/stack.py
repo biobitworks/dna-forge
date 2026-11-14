@@ -49,12 +49,17 @@ def stack(run_dirs: list, labels: dict, folds: dict, C: float = 1.0):
         tr, te = f != k, f == k
         m = LogisticRegression(C=C, max_iter=5000).fit(X[tr], y[tr])
         oof2[np.ix_(te, [groups.index(c) for c in m.classes_])] = m.predict_proba(X[te])
+    # Optimistic: the base models' OOF columns for rows outside fold k came from models that saw fold k's
+    # labels, so this second-level CV leaks. An unbiased number needs base models retrained in an outer
+    # split; until then the stack is only chosen when it beats every single input AND the average.
     report["stacked_lr"] = float(np.mean(np.array(groups)[oof2.argmax(1)] == y))
+    report["stacked_lr_estimate"] = "optimistic (shared folds, no outer split)"
     final = LogisticRegression(C=C, max_iter=5000).fit(X, y)
     Ph = np.zeros((len(held_ids), len(groups)))
     Ph[:, [groups.index(c) for c in final.classes_]] = final.predict_proba(H)
     Hav = H.reshape(len(held_ids), len(inputs), len(groups)).mean(1)
-    use_stack = report["stacked_lr"] >= report["average"]
+    best_single = max(report[n] for n, _, _ in inputs)
+    use_stack = report["stacked_lr"] > max(report["average"], best_single)
     return {"groups": groups, "ids": ids, "held_ids": held_ids, "oof": oof2 if use_stack else avg,
             "held": Ph if use_stack else Hav, "method": "stacked_lr" if use_stack else "average", "report": report}
 

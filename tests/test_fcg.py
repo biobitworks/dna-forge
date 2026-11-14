@@ -95,3 +95,29 @@ def test_endo_eval_on_synthetic(tmp_path):
     cols, X, y = load(p)
     assert cols == ["Age", "Pain"] and X.shape == (200, 2)
     assert evaluate(X, y)["logreg"]["auc"] > 0.9
+
+
+def test_nested_graph_tampering_rejected():
+    import pytest
+    from dnaforge import fcg as F
+    child = F.fcg("child", [F.fco("file", {"path": "a", "sha256": "1" * 64, "bytes": 1})])
+    gutted = dict(child, members=[])
+    with pytest.raises(ValueError):
+        F.fcg("parent", [gutted])
+    stripped = {k: v for k, v in child.items() if k != "members"}
+    with pytest.raises(ValueError):
+        F.fcg("parent", [stripped])
+    assert F.fcg("parent", [child])["identity"]["count"] == 1
+
+
+def test_prov_used_points_at_file_entity():
+    from dnaforge import fcg as F
+    f = F.fco("file", {"path": "tok", "sha256": "ab" * 32, "bytes": 3})
+    pack = F.fcg("pack", [f], kind="pack")
+    run = F.fco("run", {"name": "r", "commit": None, "config_sha256": "0", "inputs": ["ab" * 32],
+                        "outputs": [], "metrics_sha256": "0"})
+    g = F.fcg("s", [F.fcg("d", [pack], kind="dataset"), run], kind="session")
+    prov = F.to_prov(g, include_files=True)
+    act = [i for i in prov["@graph"] if i.get("fcg:kind") == "run"][0]
+    assert act["prov:used"] == [{"@id": "urn:sha256:" + f["hash"]}]
+    assert any(i["@id"] == "urn:sha256:" + f["hash"] for i in prov["@graph"])

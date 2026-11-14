@@ -43,7 +43,7 @@ def train_fold(bags, y, n_cls, dim, epochs, lr, seed, device, max_tiles=64):
     opt = torch.optim.AdamW(m.parameters(), lr=lr, weight_decay=1e-2)
     counts = np.bincount(y, minlength=n_cls).astype(float)
     wts = torch.tensor(np.where(counts > 0, counts.sum() / (n_cls * np.maximum(counts, 1)), 0), dtype=torch.float32, device=device)
-    lossf = torch.nn.CrossEntropyLoss(weight=wts)
+    lossf = torch.nn.CrossEntropyLoss(reduction="none")  # one slide per step: apply the class weight by hand
     for _ in range(epochs):
         m.train()
         for i in rng.permutation(len(bags)):
@@ -51,7 +51,7 @@ def train_fold(bags, y, n_cls, dim, epochs, lr, seed, device, max_tiles=64):
             if len(b) > max_tiles:
                 b = b[rng.choice(len(b), max_tiles, replace=False)]
             out = m(torch.from_numpy(b).to(device))
-            loss = lossf(out[None], torch.tensor([y[i]], device=device))
+            loss = (wts[y[i]] * lossf(out[None], torch.tensor([y[i]], device=device))).sum()
             opt.zero_grad(); loss.backward(); opt.step()
     return m
 

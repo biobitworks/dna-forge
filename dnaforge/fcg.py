@@ -60,12 +60,26 @@ def fco(kind: str, identity: dict, **props) -> dict:
     return {"kind": kind, "identity": identity, "hash": leaf(canonical({"kind": kind, **identity})), **props}
 
 
+def check(m: dict, where: str = "graph") -> None:
+    """Raise unless m's hash matches its identity and, for a graph, its members recompute its root and count."""
+    if "hash" not in m or m["hash"] != leaf(canonical({"kind": m["kind"], **m["identity"]})):
+        raise ValueError(f"rejected member of {where}: hash does not match identity ({m.get('kind')})")
+    ident = m["identity"]
+    if "root" in ident and "count" in ident:
+        ms = m.get("members")
+        if ms is None:
+            raise ValueError(f"rejected member of {where}: graph {ident.get('name')} has no members to verify")
+        for x in ms:
+            check(x, ident.get("name", where))
+        if len(ms) != ident["count"] or merkle([x["hash"] for x in ms]) != ident["root"]:
+            raise ValueError(f"rejected member of {where}: graph {ident.get('name')} members do not match its root")
+
+
 def fcg(name: str, members: list, kind: str = "fcg") -> dict:
-    """Admit members (reject-not-annotate) and return the graph as an FCO of its own."""
+    """Admit members (reject-not-annotate, nested graphs verified recursively) and return the graph as an FCO."""
     seen = set()
     for m in members:
-        if "hash" not in m or m["hash"] != leaf(canonical({"kind": m["kind"], **m["identity"]})):
-            raise ValueError(f"rejected member of {name}: hash does not match identity ({m.get('kind')})")
+        check(m, name)
         if m["hash"] in seen:
             raise ValueError(f"rejected member of {name}: duplicate {m['hash'][:12]}")
         seen.add(m["hash"])
@@ -153,13 +167,21 @@ def to_prov(g: dict, include_files: bool = False) -> dict:
     runs are prov:Activity linked by prov:used / prov:wasGeneratedBy. Ids are urn:sha256:<hash>."""
     items = []
     uid = lambda h: f"urn:sha256:{h}"
+    by_content = {}  # content sha256 -> file FCO hash, so prov:used points at the ingested file entity
+
+    def index(m):
+        if m["kind"] == "file" and "sha256" in m["identity"]:
+            by_content.setdefault(m["identity"]["sha256"], m["hash"])
+        for x in m.get("members", []):
+            index(x)
+    index(g)
 
     def add(m):
         e = {"@id": uid(m["hash"]), "fcg:kind": m["kind"]}
         if m["kind"] == "run":
             e["@type"] = "prov:Activity"
             e["dcterms:identifier"] = m["identity"]["name"]
-            e["prov:used"] = [{"@id": uid(x)} for x in m["identity"]["inputs"]]
+            e["prov:used"] = [{"@id": uid(by_content.get(x, x))} for x in m["identity"]["inputs"]]
             if m.get("node"):
                 e["prov:wasAssociatedWith"] = {"@id": f"fcg:node/{m['node']}"}
             for o in m["identity"]["outputs"]:
