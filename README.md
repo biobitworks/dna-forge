@@ -286,3 +286,16 @@ This pins numerical package versions but cannot substitute for
 source-data matching or an exact platform/wheel fingerprint. A newly
 run model is a successor receipt, never a silent replacement of the
 selected files.
+
+## Judge/team review package — November 14, 2026
+
+The [judge-facing evidence README](docs/judges/README_20261114.md)
+and [12-slide methodology outline](docs/judges/SLIDE_OUTLINE_20261114.md)
+cover all executed outputs, pretraining versus local fitting, LOMO,
+data transformation, MagicPro × MagicStudio exact replay, submission
+identity and open reviewer gates. The
+[drug-screening admission plan](docs/judges/DRUG_SCREENING_ADMISSION_20261114.md)
+is a separate PROPOSAL; DAISY currently has no verified drug-screening
+source and Tamarind Bio has no executed jobs in the connected workspace.
+Full source-start of the separate DNAForge desktop app FAILED; it
+must not be used as evidence of completed Biobase integration.
