@@ -74,12 +74,37 @@ def path_key(rel: str) -> str:
     return hashlib.sha256(rel.encode()).hexdigest()[:24]
 
 
-def redact(record: dict) -> dict:
-    """Public copy of an ingest record: file paths replaced by path_key(path)."""
+MAX_LISTED = 2000  # packs with more files publish a Merkle root instead of a per-file list (keeps files < 1 MB)
+
+
+def files_root(files: dict) -> str:
+    """Merkle root (RFC 6962 leaf/node prefixes) over sorted leaves sha256(0x00 || key \t sha256 \t bytes),
+    keys being path_key(relative path). Lets a public manifest prove a pack's exact content in 64 hex chars."""
+    leaves = sorted(hashlib.sha256(b"\x00" + f"{k}\t{m['sha256']}\t{m['bytes']}".encode()).hexdigest()
+                    for k, m in files.items())
+    if not leaves:
+        return hashlib.sha256(b"\x00").hexdigest()
+    while len(leaves) > 1:
+        nxt = [hashlib.sha256(b"\x01" + (leaves[i] + leaves[i + 1]).encode()).hexdigest()
+               for i in range(0, len(leaves) - 1, 2)]
+        if len(leaves) % 2:
+            nxt.append(leaves[-1])
+        leaves = nxt
+    return leaves[0]
+
+
+def redact(record: dict, max_listed: int | None = None) -> dict:
+    """Public copy of an ingest record: file paths replaced by path_key(path); packs with more than
+    max_listed files keep only their count, total bytes and files_root (the full list stays local)."""
     pub = json.loads(json.dumps(record))
     for sub, tree in pub.get("extracted", {}).items():
         tree["files"] = {path_key(rel): meta for rel, meta in sorted(tree["files"].items())}
         tree["paths_redacted"] = True
+        tree["files_root"] = files_root(tree["files"])
+        tree["bytes"] = sum(m["bytes"] for m in tree["files"].values())
+        if len(tree["files"]) > (MAX_LISTED if max_listed is None else max_listed):
+            del tree["files"]
+            tree["files_listed"] = False
     return pub
 
 
@@ -133,6 +158,12 @@ def verify(manifest: str | Path, extracted_root: str | Path) -> list[str]:
         for sub, tree in rec["extracted"].items():
             base = root / sub
             have = {path_key(p.relative_to(base).as_posix()): p for p in _tree_files(base, sub)} if base.exists() else {}
+            if "files" not in tree:  # root-only pack: recompute and compare; the local manifest localises a diff
+                mine = {k: {"sha256": sha256_file(p), "bytes": p.stat().st_size} for k, p in have.items()}
+                if len(mine) != tree["count"] or files_root(mine) != tree["files_root"]:
+                    problems.append(f"changed: {sub}/ (files_root or count differs; verify against "
+                                    f"the local manifest to see which files)")
+                continue
             for k, meta in tree["files"].items():
                 if k not in have:
                     problems.append(f"missing: {sub}/<{k}>")

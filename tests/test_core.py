@@ -153,3 +153,20 @@ def test_ingest_root_level_files(tmp_path):
     assert all(any(p.startswith("changed:") for p in custody.verify(m, root)) for m in (out, custody.local_path(out)))
     (root / "new.txt").write_text("x")
     assert any("new.txt" in p for p in custody.verify(custody.local_path(out), root))
+
+
+def test_root_only_public_manifest(tmp_path, monkeypatch):
+    root = tmp_path / "packs"
+    (root / "big").mkdir(parents=True)
+    for i in range(5):
+        (root / "big" / f"f{i}.txt").write_text(str(i))
+    out = tmp_path / "c/ingest.json"
+    monkeypatch.setattr(custody, "MAX_LISTED", 3)
+    rec = custody.ingest([], root, out)
+    pub = json.loads(out.read_text())
+    assert "files" not in pub["extracted"]["big"] and pub["extracted"]["big"]["count"] == 5
+    assert pub["extracted"]["big"]["files_root"] == custody.files_root(custody.redact(rec, 10)["extracted"]["big"]["files"])
+    assert custody.verify(out, root) == []
+    (root / "big/f0.txt").write_text("tampered")
+    assert any(p.startswith("changed: big/") for p in custody.verify(out, root))
+    assert any("f0.txt" in p for p in custody.verify(custody.local_path(out), root))
