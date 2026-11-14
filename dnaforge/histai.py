@@ -22,7 +22,8 @@ Dedupe runs in two passes:
 Outputs:
   <out>/histai-gyn.jsonl            full filtered records + tags + cluster id  (local / magicROCKETbox only)
   custody/histai-gyn.json           public: counts, per-category Merkle roots, cluster hashes, no free text
-  custody/histai-gyn.prov.jsonld    public: PROV-O + ICD-10 links (case ids, codes, tags; no report text)
+  custody/histai-gyn.prov.jsonld    public: PROV-O dataset, categories, ICD-10 concepts with case counts
+  <out>/histai-gyn.prov.jsonld      the same plus one entity per case cluster (local)
 
   python -m dnaforge.histai metadata.json --out /Volumes/magicROCKETbox/dna-forge/histai
 """
@@ -153,9 +154,11 @@ def public(g: dict, sel: dict) -> dict:
             "clusters": [c["content_sha256"] for c in sel["clusters"]]}
 
 
-def to_prov(g: dict, sel: dict) -> dict:
+def to_prov(g: dict, sel: dict, per_case: bool = True) -> dict:
+    """PROV-O JSON-LD. per_case=False (the public file) keeps the dataset, categories and ICD-10 concepts
+    with case counts; the per-case entities (about 3k, several MB) go to the local copy only."""
     uid = lambda h: f"urn:sha256:{h}"
-    items, codes_seen = [], set()
+    items = []
     src = {"@id": uid(g["identity_source"]["metadata_sha256"]), "@type": "prov:Entity",
            "fcg:kind": "source", "dcterms:license": "https://creativecommons.org/licenses/by-nc/4.0/",
            "dcterms:title": "HistAI WSI collection case metadata"}
@@ -167,16 +170,16 @@ def to_prov(g: dict, sel: dict) -> dict:
         items.append({"@id": uid(cat["hash"]), "@type": ["prov:Entity", "prov:Collection"], "fcg:kind": "category",
                       "dcterms:identifier": cat["identity"]["name"], "fcg:count": cat["identity"]["count"],
                       "prov:hadMember": [{"@id": uid(m["hash"])} for m in cat["members"]]})
-    for c in sel["clusters"]:
+    code_counts = Counter(code for c in sel["clusters"] for code in c["icd10"])
+    for c in (sel["clusters"] if per_case else []):
         m = case_fco(c)
         items.append({"@id": uid(m["hash"]), "@type": "prov:Entity", "fcg:kind": "histai-case",
                       "dcterms:identifier": c["cases"], "fcg:contentSha256": c["content_sha256"],
                       "fcg:tag": c["tags"], "prov:wasDerivedFrom": {"@id": src["@id"]},
                       "dcterms:subject": [{"@id": ICD_URI + code} for code in c["icd10"]]})
-        codes_seen.update(c["icd10"])
-    for code in sorted(codes_seen):
+    for code in sorted(code_counts):
         items.append({"@id": ICD_URI + code, "@type": "skos:Concept", "skos:notation": code,
-                      "skos:inScheme": {"@id": ICD_URI}})
+                      "skos:inScheme": {"@id": ICD_URI}, "fcg:caseCount": code_counts[code]})
     ctx = dict(F.PROV_CONTEXT)
     ctx.setdefault("skos", "http://www.w3.org/2004/02/skos/core#")
     ctx.setdefault("dcterms", "http://purl.org/dc/terms/")
@@ -200,7 +203,8 @@ def main(argv=None):
             f.write(json.dumps(c, ensure_ascii=False, sort_keys=True) + "\n")
     cd = Path(a.custody); cd.mkdir(parents=True, exist_ok=True)
     (cd / "histai-gyn.json").write_text(json.dumps(public(g, sel), indent=1, sort_keys=True))
-    (cd / "histai-gyn.prov.jsonld").write_text(json.dumps(to_prov(g, sel), indent=1, sort_keys=True))
+    (cd / "histai-gyn.prov.jsonld").write_text(json.dumps(to_prov(g, sel, per_case=False), indent=1, sort_keys=True))
+    (out / "histai-gyn.prov.jsonld").write_text(json.dumps(to_prov(g, sel), indent=1, sort_keys=True))
     print(json.dumps({"source_sha256": src_sha, "root": g["identity"]["root"], **sel["stats"],
                       "by_tag": sel["by_tag"]}, indent=1))
 

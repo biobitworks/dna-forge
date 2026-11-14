@@ -46,6 +46,9 @@ def test_dedupe_and_graph(tmp_path):
     prov = H.to_prov(g, sel)
     assert any(i.get("@id") == H.ICD_URI + "N80.1" for i in prov["@graph"])
     assert "Endometriosis" not in json.dumps(prov)
+    slim = H.to_prov(g, sel, per_case=False)
+    assert not any(i.get("fcg:kind") == "histai-case" for i in slim["@graph"])
+    assert [i["fcg:caseCount"] for i in slim["@graph"] if i.get("@id") == H.ICD_URI + "N80.1"] == [1]
 
 
 def test_cli(tmp_path):
