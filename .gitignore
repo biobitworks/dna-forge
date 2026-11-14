@@ -27,3 +27,9 @@ runs/**/*.json
 
 # Full custody files with slide ids stay local
 custody/local/
+
+# Generated challenge outputs, regardless of nested app directory
+**/out/
+**/submission_*.json
+**/submission_*.csv
+**/static_demo.html

@@ -21,12 +21,13 @@ import re
 import subprocess
 import sys
 
-BLOCKED_DIRS = ("data", "biobase")
+BLOCKED_DIRS = ("data", "biobase", "out")
 BLOCKED_GLOBS = (
     "*.zip", "*.jpg", "*.jpeg", "*.png", "*.dzi", "*.i8", "*.u16",
     "slide-vectors.json", "tile-meta.json", "points.json", "*.jsonl",
     "*.svs", "*.tif", "*.tiff", "*.ndpi", "*.npy", "*.npz",
     "*.pt", "*.pth", "*.safetensors", "*.parquet",
+    "submission_*.json", "submission_*.csv", "static_demo.html",
 )
 MAX_BYTES = 1024 * 1024
 SLIDE_ID = re.compile(r"SUPP-\d\d-biobase_[0-9a-f-]{36}")
