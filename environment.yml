@@ -1,5 +1,6 @@
 # Local, offline-capable environment for dna-forge teammates.
 #   conda env create -f environment.yml && conda activate dna-forge
+# After the core package lands, also run: pip install -e .
 # Everything runs locally; no challenge data leaves your machine.
 name: dna-forge
 channels:
@@ -18,5 +19,3 @@ dependencies:
   - pillow
   - jupyterlab
   - pip
-  - pip:
-      - -e .        # installs the dnaforge package once the core PR lands (pyproject.toml)
