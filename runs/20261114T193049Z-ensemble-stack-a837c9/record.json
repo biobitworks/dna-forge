@@ -1,0 +1,121 @@
+{
+ "code": {
+  "branch": "feat/fcg",
+  "commit": "7a041d2f6da4a77934b88ad61bd79f9d7aab92f9",
+  "dirty": true
+ },
+ "command": [
+  "/Users/byron/dna-forge/wt-fcg/dnaforge/stack.py",
+  "../wt-slides/runs/20261114T191440Z-submit-ens-svm-4dc083",
+  "runs/20261114T191550Z-mil-hoptimus-b7b8b6",
+  "runs/20261114T191906Z-mil-biomedclip-947e1d",
+  "runs/20261114T192217Z-mil-dinov2-e9d554"
+ ],
+ "config": {
+  "alpha": 0.5,
+  "folds": "custody/local/folds.json",
+  "root": "~/dna-forge/biobase",
+  "runs": "runs",
+  "runs_in": [
+   "../wt-slides/runs/20261114T191440Z-submit-ens-svm-4dc083",
+   "runs/20261114T191550Z-mil-hoptimus-b7b8b6",
+   "runs/20261114T191906Z-mil-biomedclip-947e1d",
+   "runs/20261114T192217Z-mil-dinov2-e9d554"
+  ],
+  "sim_model": "gigapath"
+ },
+ "end": "2026-11-14T19:30:51+00:00",
+ "error": null,
+ "host": {
+  "hostname": "magicPRObox.local",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.12.12",
+  "user": "byron"
+ },
+ "id": "20261114T193049Z-ensemble-stack-a837c9",
+ "inputs": {
+  "../wt-slides/runs/20261114T191440Z-submit-ens-svm-4dc083/heldout_organ.csv": {
+   "bytes": 11238,
+   "sha256": "92ecf5a678ce0b710726065e0bef1cc72e5e44efdacac26f9f0c2cc59111169c"
+  },
+  "../wt-slides/runs/20261114T191440Z-submit-ens-svm-4dc083/oof_organ.csv": {
+   "bytes": 32264,
+   "sha256": "c06259e83a316212d8ae390a959ca9b1e672b768d4eb3a9a5390c864758a1d4e"
+  },
+  "../wt-slides/runs/20261114T191440Z-submit-ens-svm-4dc083/record.json": {
+   "bytes": 2650,
+   "sha256": "1f7a0caf25fb1b535d982182dc32633ae9326cd0df29ff1e5fb68d03921204ea"
+  },
+  "custody/local/folds.json": {
+   "bytes": 7592,
+   "sha256": "2f3cd6de81c08b2f4d66739492519f570d564b8a4a9a86118823c7fa7e6608d0"
+  },
+  "runs/20261114T191550Z-mil-hoptimus-b7b8b6/heldout_organ.csv": {
+   "bytes": 11238,
+   "sha256": "a01ea723fdfc34a417c356db6d900b8d2246d229893e436156b1e301a90d9506"
+  },
+  "runs/20261114T191550Z-mil-hoptimus-b7b8b6/oof_organ.csv": {
+   "bytes": 32264,
+   "sha256": "780a5968c2d161631454524daa44817c49cd00c7f5d7d60ac9448a9020b7ba1a"
+  },
+  "runs/20261114T191550Z-mil-hoptimus-b7b8b6/record.json": {
+   "bytes": 1893,
+   "sha256": "51829164bea8b870b74083b04d63467062775827cc51ed5304e9fdac855db522"
+  },
+  "runs/20261114T191906Z-mil-biomedclip-947e1d/heldout_organ.csv": {
+   "bytes": 11238,
+   "sha256": "c3144281a4106b5ecd4509ac3ee6128d02b6da14670997d479892b7c3b1b47ec"
+  },
+  "runs/20261114T191906Z-mil-biomedclip-947e1d/oof_organ.csv": {
+   "bytes": 32264,
+   "sha256": "1c6736713fb92ae871d21fa577b275981e8084da41f8f46025515c59930bf4fe"
+  },
+  "runs/20261114T191906Z-mil-biomedclip-947e1d/record.json": {
+   "bytes": 1901,
+   "sha256": "33595e473927959c049a4749c6269570a94d3a98272e76baf59846e62fdb7744"
+  },
+  "runs/20261114T192217Z-mil-dinov2-e9d554/heldout_organ.csv": {
+   "bytes": 11238,
+   "sha256": "08613ae27ff5ab0d46376a480acce1022c9d05bff645f9555dd19fd8c4256897"
+  },
+  "runs/20261114T192217Z-mil-dinov2-e9d554/oof_organ.csv": {
+   "bytes": 32264,
+   "sha256": "3e2f60288bc098489c4cc03d18e27a7e1bd803a6f27eb5bdbdf02afa1ed9e9eb"
+  },
+  "runs/20261114T192217Z-mil-dinov2-e9d554/record.json": {
+   "bytes": 1882,
+   "sha256": "8c1aa983d32fb6a711ed9835563a0a3445f675b967b2d5b273c18b2137d8a9f9"
+  }
+ },
+ "kind": "run",
+ "metrics": {
+  "c2_labelled_estimate": {
+   "p@1": 0.6436170212765957,
+   "p@10": 0.5159574468085106,
+   "p@5": 0.55
+  },
+  "method": "stacked_lr",
+  "n_inputs": 4,
+  "oof_acc": {
+   "20261114T191440Z-submit-ens-svm-4dc083": 0.8631578947368421,
+   "20261114T191550Z-mil-hoptimus-b7b8b6": 0.5947368421052631,
+   "20261114T191906Z-mil-biomedclip-947e1d": 0.5105263157894737,
+   "20261114T192217Z-mil-dinov2-e9d554": 0.37894736842105264,
+   "average": 0.8263157894736842,
+   "stacked_lr": 0.8368421052631579
+  }
+ },
+ "notes": [],
+ "outputs": {
+  "submission_slides_organ.csv": {
+   "bytes": 2470,
+   "sha256": "d6dab2cd21f3995547d219075af50c54b0422f98c8747c2a24e12d88a5849641"
+  },
+  "submission_slides_similar.csv": {
+   "bytes": 37644,
+   "sha256": "7d639296047e878ac793d43f0544685482885dbd872ca147ee6964ba658dd310"
+  }
+ },
+ "start": "2026-11-14T19:30:49+00:00",
+ "status": "ok"
+}

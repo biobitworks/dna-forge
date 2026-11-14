@@ -1,0 +1,106 @@
+{
+ "code": {
+  "branch": "feat/fcg",
+  "commit": "7a041d2f6da4a77934b88ad61bd79f9d7aab92f9",
+  "dirty": true
+ },
+ "command": [
+  "/Users/byron/dna-forge/wt-fcg/dnaforge/stack.py",
+  "../wt-slides/runs/20261114T191445Z-submit-gh-svm-83fd42",
+  "../wt-slides/runs/20261114T191448Z-submit-giga-svm-94bd9a",
+  "runs/20261114T191550Z-mil-hoptimus-b7b8b6"
+ ],
+ "config": {
+  "alpha": 0.5,
+  "folds": "custody/local/folds.json",
+  "root": "~/dna-forge/biobase",
+  "runs": "runs",
+  "runs_in": [
+   "../wt-slides/runs/20261114T191445Z-submit-gh-svm-83fd42",
+   "../wt-slides/runs/20261114T191448Z-submit-giga-svm-94bd9a",
+   "runs/20261114T191550Z-mil-hoptimus-b7b8b6"
+  ],
+  "sim_model": "gigapath"
+ },
+ "end": "2026-11-14T19:30:54+00:00",
+ "error": null,
+ "host": {
+  "hostname": "magicPRObox.local",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.12.12",
+  "user": "byron"
+ },
+ "id": "20261114T193053Z-ensemble-stack-e04982",
+ "inputs": {
+  "../wt-slides/runs/20261114T191445Z-submit-gh-svm-83fd42/heldout_organ.csv": {
+   "bytes": 11238,
+   "sha256": "e8e03379726bec49af257148dac296a4eb065d8343ac626b4ad4f77509643baa"
+  },
+  "../wt-slides/runs/20261114T191445Z-submit-gh-svm-83fd42/oof_organ.csv": {
+   "bytes": 32264,
+   "sha256": "e4df496f091a8a5e4899e84064734832ea17956c731116225524c9d19c7da29d"
+  },
+  "../wt-slides/runs/20261114T191445Z-submit-gh-svm-83fd42/record.json": {
+   "bytes": 2563,
+   "sha256": "a85f4a958fb8a5a6c7f3d31880bf5955a1041f546ef49be1dece7c42fafc5299"
+  },
+  "../wt-slides/runs/20261114T191448Z-submit-giga-svm-94bd9a/heldout_organ.csv": {
+   "bytes": 11238,
+   "sha256": "fd703fd3e09d8ac15eae902b48c1204def7549ae8d66818a6fbc4a9269875ef2"
+  },
+  "../wt-slides/runs/20261114T191448Z-submit-giga-svm-94bd9a/oof_organ.csv": {
+   "bytes": 32264,
+   "sha256": "c319bbd3d3803eceb298809afd551fd62daac4230143fd1d78afb61473d37552"
+  },
+  "../wt-slides/runs/20261114T191448Z-submit-giga-svm-94bd9a/record.json": {
+   "bytes": 2552,
+   "sha256": "87947f329c277efc44595331d83f3695f7eb0e9fff5a26b03a6515dd460f703e"
+  },
+  "custody/local/folds.json": {
+   "bytes": 7592,
+   "sha256": "2f3cd6de81c08b2f4d66739492519f570d564b8a4a9a86118823c7fa7e6608d0"
+  },
+  "runs/20261114T191550Z-mil-hoptimus-b7b8b6/heldout_organ.csv": {
+   "bytes": 11238,
+   "sha256": "a01ea723fdfc34a417c356db6d900b8d2246d229893e436156b1e301a90d9506"
+  },
+  "runs/20261114T191550Z-mil-hoptimus-b7b8b6/oof_organ.csv": {
+   "bytes": 32264,
+   "sha256": "780a5968c2d161631454524daa44817c49cd00c7f5d7d60ac9448a9020b7ba1a"
+  },
+  "runs/20261114T191550Z-mil-hoptimus-b7b8b6/record.json": {
+   "bytes": 1893,
+   "sha256": "51829164bea8b870b74083b04d63467062775827cc51ed5304e9fdac855db522"
+  }
+ },
+ "kind": "run",
+ "metrics": {
+  "c2_labelled_estimate": {
+   "p@1": 0.6436170212765957,
+   "p@10": 0.526595744680851,
+   "p@5": 0.5585106382978723
+  },
+  "method": "average",
+  "n_inputs": 3,
+  "oof_acc": {
+   "20261114T191445Z-submit-gh-svm-83fd42": 0.8473684210526315,
+   "20261114T191448Z-submit-giga-svm-94bd9a": 0.8526315789473684,
+   "20261114T191550Z-mil-hoptimus-b7b8b6": 0.5947368421052631,
+   "average": 0.8473684210526315,
+   "stacked_lr": 0.8315789473684211
+  }
+ },
+ "notes": [],
+ "outputs": {
+  "submission_slides_organ.csv": {
+   "bytes": 2475,
+   "sha256": "b972898f26461f451cb8a6e49318fe0a6fd7ea5405c60f98f77e8d2cb54492e4"
+  },
+  "submission_slides_similar.csv": {
+   "bytes": 37734,
+   "sha256": "4f4df3f11a1344183aebc79e025be86b58d2b79328456b4b349e7da2b9fb646e"
+  }
+ },
+ "start": "2026-11-14T19:30:53+00:00",
+ "status": "ok"
+}

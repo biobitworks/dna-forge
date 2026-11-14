@@ -1,0 +1,475 @@
+{
+ "kind": "session",
+ "hash": "0b706723bd6ef7d0c8ba7e186b066d74f148fbd9ab868736852f5691d39bee5c",
+ "name": "dna-forge-session",
+ "root": "abc4d069f800cfd693e3554312dc1a09201492239d4b935b81192a0fe40c793c",
+ "count": 18,
+ "members": [
+  {
+   "kind": "dataset",
+   "hash": "0a98d8b26331dcad6130bd3ab4b32714e51d7aed68cd9be33f052cef91ad8006",
+   "name": "ingest-2026-11-14-enrichment",
+   "root": "f06dc905dee1cd30015f2de8094da8db5f8550aa93e7e3d0f7423575578b6d0e",
+   "count": 2,
+   "members": [
+    {
+     "kind": "archive",
+     "hash": "d8dfa23cbf068765e5474d876cb10710a543f7f1b2b52bfd0e45e5d43a72c5c6",
+     "identity": {
+      "name": "archive (1).zip",
+      "sha256": "d71108f925ce37d691f684ed6f3c80c0dc409514d31fa73816f5ee75766e97cd",
+      "bytes": 211568
+     }
+    },
+    {
+     "kind": "pack",
+     "hash": "fd14aa8aa2eabdc9509e0626ae1cceb7a2f02b45c31b8f20d7033bef668dc143",
+     "name": "kaggle-endometriosis",
+     "root": "c127d612241de9a06d9b1ae756fdc85e3304c35c3614b140c500f327be1f153a",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "kind": "dataset",
+   "hash": "4696cfbb53145f8690d9324dc1a47aa7d415886a4c11e3e5ddec79c2baac0395",
+   "name": "ingest-2026-11-14-histai-meta",
+   "root": "a387bd7017f9ac8d072397043acbe4db2b470c2bb49010022934db1b0b99d3e5",
+   "count": 1,
+   "members": [
+    {
+     "kind": "archive",
+     "hash": "a387bd7017f9ac8d072397043acbe4db2b470c2bb49010022934db1b0b99d3e5",
+     "identity": {
+      "name": "metadata.json",
+      "sha256": "216b7930a9ff58e3dffbb13adfa0b1d91e6a93b91070410e5ea56dab43bf9918",
+      "bytes": 60908892
+     }
+    }
+   ]
+  },
+  {
+   "kind": "dataset",
+   "hash": "96ec9cfbae8c15f8a5cc2d96667800a15d8958fe0fff4d9decf649dec9401a37",
+   "name": "ingest-2026-11-14",
+   "root": "49420218e554367f44d3ddec96c435de1ba5d8c0d08958b31144c489dcd7ea9d",
+   "count": 11,
+   "members": [
+    {
+     "kind": "archive",
+     "hash": "d699c8bda8b46f3475074e97e4d646f5993ad440fb662021181e415b9d3855a1",
+     "identity": {
+      "name": "biobase-challenge-reports.zip",
+      "sha256": "0572ee476380360e964d19c871c98ffb08e7210b4f63b2ddb9151c819fe6aec2",
+      "bytes": 3035604
+     }
+    },
+    {
+     "kind": "archive",
+     "hash": "93522d0e0dc1667068fdd11dc97fb9c55dbd0899f1c471a871aa8de4ebce8234",
+     "identity": {
+      "name": "biobase-challenge-slides.zip",
+      "sha256": "5dbb16cdf97642b99e814f85d7d92d188c02bd11e94402584effee31c1892bf3",
+      "bytes": 19963
+     }
+    },
+    {
+     "kind": "archive",
+     "hash": "7019d5aff961cf9c94c89614bdf18007f13e693e47399f2a267f28317a7042e2",
+     "identity": {
+      "name": "biobase-challenge-thumbnails.zip",
+      "sha256": "74f6ffb422de0ad6711b40c34fc2f3f77984f58a0b16cb5ee9eb11b660e0ddb7",
+      "bytes": 7714650
+     }
+    },
+    {
+     "kind": "archive",
+     "hash": "6af8379bdee13c9fff8c4398eed05eaec7c977f8af0ac89fdc5078d7a68fd29d",
+     "identity": {
+      "name": "biobase-challenge-tiles-20x.zip",
+      "sha256": "c93402849bdf797da9dba1c2c7c3824ba81b7dce5864d7a9c60eb7d7e7645460",
+      "bytes": 128911900
+     }
+    },
+    {
+     "kind": "archive",
+     "hash": "fbf2ac930cf12988e8ea3d2cc8fd746ec81a360fd89031784d9f49d37777135d",
+     "identity": {
+      "name": "biobase-challenge-tiles.zip",
+      "sha256": "90ef1b7b09e8828617bc57f08a1d5180afde79dec876024d1643a8f696565327",
+      "bytes": 280561359
+     }
+    },
+    {
+     "kind": "pack",
+     "hash": "8dd6a1b44597226ef8e32f3851e02da27597bd19ddc3f02883dcbacb9285cf59",
+     "name": "reports",
+     "root": "b30932918ad79cd5145bb4d263b2ba05390bb763fa8bf599527b45ec0c6c279f",
+     "count": 7
+    },
+    {
+     "kind": "pack",
+     "hash": "e24f43add18f3066317f1f60b3e34e8e11e70997ed63d50e5c405ec6e7bc9270",
+     "name": "runs",
+     "root": "ee3d44a97162a52530073b9258ba320422637fa9de1e41590cf5e748202d7e23",
+     "count": 10
+    },
+    {
+     "kind": "pack",
+     "hash": "7e785e6d896ce6c1f100062e95ee8f4c09c3d874167af9761f6c84f5f13977eb",
+     "name": "slides",
+     "root": "86db4b313ea40f6948f3a0e5f8ed22ae064d85ec1e2815cb7fa5522cf2c2786c",
+     "count": 6
+    },
+    {
+     "kind": "pack",
+     "hash": "39e74a9103bee799ae79c5060f2aeec991e1b78f48aa36321ca2a56fafa51cf1",
+     "name": "thumbnails",
+     "root": "7fb0a8d60a17b90323e4bb22d6fe1c5c1735da5bc8464824bf57e89b0e6bf427",
+     "count": 264
+    },
+    {
+     "kind": "pack",
+     "hash": "18659c63705a99aca35d80c0f6294cd25435a0df60223419ac5547f5b6461c57",
+     "name": "tiles",
+     "root": "323bd1d83c078a21e28b653af2f6a6367788cf41e9f6a73808d4c08653298dac",
+     "count": 12296
+    },
+    {
+     "kind": "pack",
+     "hash": "162641174d69db91cf34cf5a0335d16b40c476c2503f55c19be6ebbbd2f86a71",
+     "name": "tiles-20x",
+     "root": "fb5311c428ca9fb909deb86d803a594c70ac3a18456042080652bac7e9902c6a",
+     "count": 7357
+    }
+   ]
+  },
+  {
+   "kind": "run",
+   "hash": "0832fe45d36a14bdc1b5fd67f93effae0edb386287fa7e8359572ddda4b883ec",
+   "identity": {
+    "name": "20261114T185825Z-eval",
+    "commit": "5d7892e7adc91df3b6633e9f06019d6232222523",
+    "config_sha256": "d797f6c7f5b81bd5f81521e736bff7e15c1dcdb2e2441844a3023e3775e1b1f7",
+    "inputs": [
+     "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22",
+     "7f0a87c714ac00cbef10db0a8310b08696becbab63bdeb438d0b296ad09706a9",
+     "a12350969f733118f9447b05aaf397cfa88ac5728b335fdaff01006137a85a05",
+     "b505ab01f0e68ed3001fda1a035dbd86c909ff422e3a9a084b9957f4ea352bd5",
+     "f7addeb24ffba2c6f5662cce2dc5471d1fe49541c680cc8844a11ac32e47d8b5"
+    ],
+    "outputs": [],
+    "metrics_sha256": "4533745518d11fa6a81450cbaf50b4e29e048841e00201d5288d88c13b7903b0"
+   }
+  },
+  {
+   "kind": "run",
+   "hash": "d94b0a3cd19855b9ee48ff514724f515aacdd059a073f761954c58bb8167d171",
+   "identity": {
+    "name": "20261114T185826Z-submit-gigapath",
+    "commit": "5d7892e7adc91df3b6633e9f06019d6232222523",
+    "config_sha256": "28b65af4bf256025fbff514dcd0b41ecc487961327b94b8a424e6acc74c8e1e9",
+    "inputs": [
+     "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22",
+     "a12350969f733118f9447b05aaf397cfa88ac5728b335fdaff01006137a85a05"
+    ],
+    "outputs": [
+     "189c52e8b53ef377ab02445ee79212b13b8d8362ebe79318ca9e405a7ab057aa",
+     "eed165624703b768d560f5c7aa91143501865521454a133e7c2daec6424439b7"
+    ],
+    "metrics_sha256": "65bee878058d675ac155ade3877f445dbfea2e8820975afc44f5ab5d9edaed0c"
+   }
+  },
+  {
+   "kind": "run",
+   "hash": "05e25698726edf9320fcc7d4bf381a21c039be5eea7adf0f454d2674bc0f773f",
+   "identity": {
+    "name": "20261114T190839Z-reports-task-a-071c4c",
+    "commit": "ba5e63b50705f47200768fa90d235ace48b2e30c",
+    "config_sha256": "23430a84140339bd5949b203013476d9d9c15f0fdddddbae27553cafd9620ed2",
+    "inputs": [
+     "2ae1c082c903c8c5928890402a570a8846c0128479f5a9226e48cf713f515e75",
+     "3e33b2e8023282f85253236d22e2ea41da252de65fab4148e071b082674a4866",
+     "7d30c4dcf8e89a4574a9185ebc6f9cad38d95fb1d607a75461c6b238f19cd103",
+     "81796ff45407cd85845c9f08d0f10f540e5456592e58955dcd325fb7a9fdd4c5",
+     "91f4a67ed8bbcd417ab99867af5561e80e06b84027cd7c90fce519d5c23426b1"
+    ],
+    "outputs": [
+     "1604ae1557ffad8e39c671a193fec113653984f2e8bf090791f5a15b62d88345"
+    ],
+    "metrics_sha256": "94f73a12511dbc438b6633d302ca526041d4cb9fe14065a9fbf83237f3ec774d"
+   }
+  },
+  {
+   "kind": "run",
+   "hash": "3f6a8346425394311bc8628893df25ebb550988becc14f43f674f8bcbe7d2fb6",
+   "identity": {
+    "name": "20261114T191440Z-submit-ens-svm-4dc083",
+    "commit": "f81aafb210035b1f8d84ab6fa3d31c0c0e49752a",
+    "config_sha256": "40d4f0de357f3b06df59a3004b98124730828565d464d0c12dd60ca1b6d48f41",
+    "inputs": [
+     "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22",
+     "a12350969f733118f9447b05aaf397cfa88ac5728b335fdaff01006137a85a05",
+     "b505ab01f0e68ed3001fda1a035dbd86c909ff422e3a9a084b9957f4ea352bd5"
+    ],
+    "outputs": [
+     "8a69914d27c707c8a61694c8d8123f2139141cd5b79ac358193dda5da4cf7356",
+     "92ecf5a678ce0b710726065e0bef1cc72e5e44efdacac26f9f0c2cc59111169c",
+     "acb62125b7f627a6d47d825fd80e65bb30f10399bb8ecc2b451bd855a6230930",
+     "c06259e83a316212d8ae390a959ca9b1e672b768d4eb3a9a5390c864758a1d4e",
+     "ed38172b0075b0415fcce2866a3c68d55a1214e578d0ddc97c19c070fb90d423"
+    ],
+    "metrics_sha256": "42b3e338c675fcfeece1858b98475adf59e36af572ce56160889f9ae165daf4e"
+   }
+  },
+  {
+   "kind": "run",
+   "hash": "068fe12f841dc92d0c58e401910393eac14d99fb6d8f964d84cd21b73a24ea91",
+   "identity": {
+    "name": "20261114T191445Z-submit-gh-svm-83fd42",
+    "commit": "f81aafb210035b1f8d84ab6fa3d31c0c0e49752a",
+    "config_sha256": "30bdd95a512e72dcc88d5ade9812a6e09e826338dc527f7fb978aa9a0ae8c2e4",
+    "inputs": [
+     "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22",
+     "a12350969f733118f9447b05aaf397cfa88ac5728b335fdaff01006137a85a05",
+     "b505ab01f0e68ed3001fda1a035dbd86c909ff422e3a9a084b9957f4ea352bd5"
+    ],
+    "outputs": [
+     "0bf792260904f03aa34c9b978997470676767743687eb8cbd0aacaa8b0719ec1",
+     "1b82029918dc5d54e954fb5d1055d34c06057c6bbc5e9ee04ab38799bdda7e4f",
+     "3f90053dd522f1371af7eec1cd4772c303e1cd775abfda4d65c0393ef88bf965",
+     "e4df496f091a8a5e4899e84064734832ea17956c731116225524c9d19c7da29d",
+     "e8e03379726bec49af257148dac296a4eb065d8343ac626b4ad4f77509643baa"
+    ],
+    "metrics_sha256": "6c3761802b57031ac3207c21742ac0407cbe89009f2c97d8413ca56f9adc0747"
+   }
+  },
+  {
+   "kind": "run",
+   "hash": "d45021ee025ece6daa059754b6a45208b28680c129cb6db65d72dd08016a71de",
+   "identity": {
+    "name": "20261114T191448Z-submit-giga-svm-94bd9a",
+    "commit": "f81aafb210035b1f8d84ab6fa3d31c0c0e49752a",
+    "config_sha256": "b49d686eb3e632d83968371a4c7c7c163060fd6be30dd5eadb219f544b7b2f7a",
+    "inputs": [
+     "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22",
+     "a12350969f733118f9447b05aaf397cfa88ac5728b335fdaff01006137a85a05",
+     "b505ab01f0e68ed3001fda1a035dbd86c909ff422e3a9a084b9957f4ea352bd5"
+    ],
+    "outputs": [
+     "02f68521d0fad5118f329ef3c30773388d3555d69346dadbd9d91ec5853ee428",
+     "21c211b62d52199e16e01a5ccf36e9891a93b3d74e89a65effdceb752ffa3b4a",
+     "c319bbd3d3803eceb298809afd551fd62daac4230143fd1d78afb61473d37552",
+     "f5afd07b75815ccc6eacb65b35e57eb803ef629684a63e8d66d56054c30e4997",
+     "fd703fd3e09d8ac15eae902b48c1204def7549ae8d66818a6fbc4a9269875ef2"
+    ],
+    "metrics_sha256": "906e613d47c383cdcfca90669f927698837ed9b53b45c83325db9c0bebc310ea"
+   }
+  },
+  {
+   "kind": "run",
+   "hash": "549626e00c4954366318f9399f567c9f8534b7a45fc5ad3821fdfad7c9bb6be0",
+   "identity": {
+    "name": "20261114T191450Z-submit-giga-lr-943a76",
+    "commit": "f81aafb210035b1f8d84ab6fa3d31c0c0e49752a",
+    "config_sha256": "139afcdbca9b50dff0dfe60dcb8ec1f01974effaa6b18cc47dc80e036e0a5541",
+    "inputs": [
+     "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22",
+     "a12350969f733118f9447b05aaf397cfa88ac5728b335fdaff01006137a85a05",
+     "b505ab01f0e68ed3001fda1a035dbd86c909ff422e3a9a084b9957f4ea352bd5"
+    ],
+    "outputs": [
+     "265a015d3ff3c10b66f91e29e8dad648c4527cb7a00f3dfb6aa6c402cfda2be1",
+     "287c7071f755fa770d5671cce6fbec049f3673e16325d872aab97c49d41c0d1a",
+     "871170d7645b8c4212b1e39e99cbfbc83b6a5c025fb2616dea3299843f543476",
+     "ccbb57c0bd17123c119bc38f2b327ea857817ed0cfc0198a3a66f8547f10a4cc",
+     "e83aab029160d69dddcd6a9504a427a9b5933efa7250f0e8c49309881f0734ec"
+    ],
+    "metrics_sha256": "27069475ddbc26826fcb2d22b057611e131439453fe1618942a36db78c1fd248"
+   }
+  },
+  {
+   "kind": "run",
+   "hash": "a2eb1fd64d5d30be884dbb332b0e21be7e6e8266c9da8e3840fbcc4c047f33c4",
+   "identity": {
+    "name": "20261114T191550Z-mil-hoptimus-b7b8b6",
+    "commit": "5cf641d34784c30abd739ed63f377a72a295208a",
+    "config_sha256": "97917905eab885d3ba25202be8305d7289d16074ed2e3dcf2bdb3cdf030535de",
+    "inputs": [
+     "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22",
+     "2f3cd6de81c08b2f4d66739492519f570d564b8a4a9a86118823c7fa7e6608d0",
+     "a653fe79cada583e5eb62d6f4a8f74688c894f65da5868b3e0fe85e160895e1a",
+     "e099911869bb3c8600898c77fd9ef36a891c7feea37f2f35391406c465e7fd30"
+    ],
+    "outputs": [
+     "780a5968c2d161631454524daa44817c49cd00c7f5d7d60ac9448a9020b7ba1a",
+     "a01ea723fdfc34a417c356db6d900b8d2246d229893e436156b1e301a90d9506"
+    ],
+    "metrics_sha256": "b66587dd85a2f64c5219df65c73ceea37ec9cd9c1c222e79d2b3f12fc1c1e4fe"
+   }
+  },
+  {
+   "kind": "run",
+   "hash": "0a85eb2f5935bafb2392bbdccffdbdbbec8bb90e5c88713943234cd3178ca468",
+   "identity": {
+    "name": "20261114T191906Z-mil-biomedclip-947e1d",
+    "commit": "5cf641d34784c30abd739ed63f377a72a295208a",
+    "config_sha256": "8c766ba37318deab06ecb78643f90e7b6c107151fa39b81a51b11ebfaae9c934",
+    "inputs": [
+     "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22",
+     "1df0c0a27ef13fb8825ececc4cb90b9b60cceb489851bdd2b4bd223957ac1c6a",
+     "2f3cd6de81c08b2f4d66739492519f570d564b8a4a9a86118823c7fa7e6608d0",
+     "a3cd38f4ea7bf5532ef9febfa7cd859fbdd56985775a206d4b834ed356a5a3a7"
+    ],
+    "outputs": [
+     "1c6736713fb92ae871d21fa577b275981e8084da41f8f46025515c59930bf4fe",
+     "c3144281a4106b5ecd4509ac3ee6128d02b6da14670997d479892b7c3b1b47ec"
+    ],
+    "metrics_sha256": "0d07c1c4566e9689904dc8cf4a82580c9913a1131a285b872d78ec624630d732"
+   }
+  },
+  {
+   "kind": "run",
+   "hash": "38a5565797ad61f8111280ea6fd5fb930fe3c087876bdc52af668ca90731399e",
+   "identity": {
+    "name": "20261114T192217Z-mil-dinov2-e9d554",
+    "commit": "84ae321c46c1474adbcb51407ab3947d550e391d",
+    "config_sha256": "8562efb043fbf5166a659936c51cc68c2667e9dd7e2daf772a59eff8be493fb1",
+    "inputs": [
+     "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22",
+     "2f3cd6de81c08b2f4d66739492519f570d564b8a4a9a86118823c7fa7e6608d0",
+     "8106575539153b0fdd33fe66c906cfdcade5878ee4407ca17fc46389f575f92f",
+     "f1267f376ad0284ef96abeb2c1944077bb56591d99b7ffd0ebb923904f2fbbdf"
+    ],
+    "outputs": [
+     "08613ae27ff5ab0d46376a480acce1022c9d05bff645f9555dd19fd8c4256897",
+     "3e2f60288bc098489c4cc03d18e27a7e1bd803a6f27eb5bdbdf02afa1ed9e9eb"
+    ],
+    "metrics_sha256": "5ebeb912185117c51b784ac40f1837e234e444f02ce6861b38c55b15a288afb5"
+   }
+  },
+  {
+   "kind": "run",
+   "hash": "13ff36fe25b5dae15443f0ad7ec5cdc49966b3000d620f4dc0303dc523efe2dc",
+   "identity": {
+    "name": "20261114T192312Z-endo-symptoms-105b5e",
+    "commit": "84ae321c46c1474adbcb51407ab3947d550e391d",
+    "config_sha256": "9281549c2c8960c830ab8db466fa8eacfcdf721d33a08ab8eb242d1faa0c5b6d",
+    "inputs": [
+     "1631085760d8a0013e049d136243dd6cc509e49fc8860a579c60394c5d91d0eb"
+    ],
+    "outputs": [],
+    "metrics_sha256": "12bfa17d64ce57f152a916496f13c70fddb8692d408b21e6828e06ba2b2277a8"
+   }
+  },
+  {
+   "kind": "run",
+   "hash": "cdd91c324744de27c34823a98b4cf7604bdc2910a9f782ca377c21b1e31f46a4",
+   "identity": {
+    "name": "20261114T192757Z-ensemble-stack-25eab5",
+    "commit": "84ae321c46c1474adbcb51407ab3947d550e391d",
+    "config_sha256": "7c86f68f010ab4f269af8b8a00fda8469cf904f8a3b68808951fdbd00c7c7a04",
+    "inputs": [
+     "1f7a0caf25fb1b535d982182dc32633ae9326cd0df29ff1e5fb68d03921204ea",
+     "2f3cd6de81c08b2f4d66739492519f570d564b8a4a9a86118823c7fa7e6608d0",
+     "92ecf5a678ce0b710726065e0bef1cc72e5e44efdacac26f9f0c2cc59111169c",
+     "c06259e83a316212d8ae390a959ca9b1e672b768d4eb3a9a5390c864758a1d4e"
+    ],
+    "outputs": [],
+    "metrics_sha256": "28a3a18f6cd6406b086e9ffda1f9b8a13dbcf44b0f3f32cb9031a11fd053acf9"
+   }
+  },
+  {
+   "kind": "run",
+   "hash": "aba51517f4115bab0c038f7e8ff1bcb5aa12c0f95a0fd3505056f77bff28b46d",
+   "identity": {
+    "name": "20261114T193049Z-ensemble-stack-a837c9",
+    "commit": "7a041d2f6da4a77934b88ad61bd79f9d7aab92f9",
+    "config_sha256": "7625eaae017ec80307af4ec022a27f21e2f5a99e020efb7419f27090b4e31546",
+    "inputs": [
+     "08613ae27ff5ab0d46376a480acce1022c9d05bff645f9555dd19fd8c4256897",
+     "1c6736713fb92ae871d21fa577b275981e8084da41f8f46025515c59930bf4fe",
+     "1f7a0caf25fb1b535d982182dc32633ae9326cd0df29ff1e5fb68d03921204ea",
+     "2f3cd6de81c08b2f4d66739492519f570d564b8a4a9a86118823c7fa7e6608d0",
+     "33595e473927959c049a4749c6269570a94d3a98272e76baf59846e62fdb7744",
+     "3e2f60288bc098489c4cc03d18e27a7e1bd803a6f27eb5bdbdf02afa1ed9e9eb",
+     "51829164bea8b870b74083b04d63467062775827cc51ed5304e9fdac855db522",
+     "780a5968c2d161631454524daa44817c49cd00c7f5d7d60ac9448a9020b7ba1a",
+     "8c1aa983d32fb6a711ed9835563a0a3445f675b967b2d5b273c18b2137d8a9f9",
+     "92ecf5a678ce0b710726065e0bef1cc72e5e44efdacac26f9f0c2cc59111169c",
+     "a01ea723fdfc34a417c356db6d900b8d2246d229893e436156b1e301a90d9506",
+     "c06259e83a316212d8ae390a959ca9b1e672b768d4eb3a9a5390c864758a1d4e",
+     "c3144281a4106b5ecd4509ac3ee6128d02b6da14670997d479892b7c3b1b47ec"
+    ],
+    "outputs": [
+     "7d639296047e878ac793d43f0544685482885dbd872ca147ee6964ba658dd310",
+     "d6dab2cd21f3995547d219075af50c54b0422f98c8747c2a24e12d88a5849641"
+    ],
+    "metrics_sha256": "21046ed5c0a8eeb5e9217f335eaa3b6e50b4fbfeb0549f3f40706e73980559ac"
+   }
+  },
+  {
+   "kind": "run",
+   "hash": "c450cafadb45a8e32f71c3a625849153719f4d2e8b0ee3c9f8a5ff7ecdc7b28d",
+   "identity": {
+    "name": "20261114T193051Z-ensemble-stack-400f91",
+    "commit": "7a041d2f6da4a77934b88ad61bd79f9d7aab92f9",
+    "config_sha256": "8cddf8d8ca2bfec1b5138f89d66b68ec0f339a6caa4fdaaf5691628d6e9901f5",
+    "inputs": [
+     "08613ae27ff5ab0d46376a480acce1022c9d05bff645f9555dd19fd8c4256897",
+     "1c6736713fb92ae871d21fa577b275981e8084da41f8f46025515c59930bf4fe",
+     "287c7071f755fa770d5671cce6fbec049f3673e16325d872aab97c49d41c0d1a",
+     "2f3cd6de81c08b2f4d66739492519f570d564b8a4a9a86118823c7fa7e6608d0",
+     "327718f850b9778c035407f4465129198d4f2fa6ade2b81adf68445ade51c2d2",
+     "33595e473927959c049a4749c6269570a94d3a98272e76baf59846e62fdb7744",
+     "3e2f60288bc098489c4cc03d18e27a7e1bd803a6f27eb5bdbdf02afa1ed9e9eb",
+     "51829164bea8b870b74083b04d63467062775827cc51ed5304e9fdac855db522",
+     "780a5968c2d161631454524daa44817c49cd00c7f5d7d60ac9448a9020b7ba1a",
+     "87947f329c277efc44595331d83f3695f7eb0e9fff5a26b03a6515dd460f703e",
+     "8c1aa983d32fb6a711ed9835563a0a3445f675b967b2d5b273c18b2137d8a9f9",
+     "a01ea723fdfc34a417c356db6d900b8d2246d229893e436156b1e301a90d9506",
+     "a85f4a958fb8a5a6c7f3d31880bf5955a1041f546ef49be1dece7c42fafc5299",
+     "c3144281a4106b5ecd4509ac3ee6128d02b6da14670997d479892b7c3b1b47ec",
+     "c319bbd3d3803eceb298809afd551fd62daac4230143fd1d78afb61473d37552",
+     "ccbb57c0bd17123c119bc38f2b327ea857817ed0cfc0198a3a66f8547f10a4cc",
+     "e4df496f091a8a5e4899e84064734832ea17956c731116225524c9d19c7da29d",
+     "e8e03379726bec49af257148dac296a4eb065d8343ac626b4ad4f77509643baa",
+     "fd703fd3e09d8ac15eae902b48c1204def7549ae8d66818a6fbc4a9269875ef2"
+    ],
+    "outputs": [
+     "95ad6f0d28983d4415fcd7155fc4f090c4e07a87314f22af0ea303c985145299",
+     "d2c321a88ce551ab711d0704ff86b377fc85ca72ce3ffafc7b6aae09bb89bb2c"
+    ],
+    "metrics_sha256": "0315342ad062db016dd129d8f28cd5c01258e213e2b4a5e1536aba6c547ed865"
+   }
+  },
+  {
+   "kind": "run",
+   "hash": "70aca7c298ee0a06bb9defa6de8cecae1c665da243665476339861fab6db661e",
+   "identity": {
+    "name": "20261114T193053Z-ensemble-stack-e04982",
+    "commit": "7a041d2f6da4a77934b88ad61bd79f9d7aab92f9",
+    "config_sha256": "96e2a202ad1fa6fe87dce4d5c75bf86f9229850856c128a21b3b2a45cc1913a7",
+    "inputs": [
+     "2f3cd6de81c08b2f4d66739492519f570d564b8a4a9a86118823c7fa7e6608d0",
+     "51829164bea8b870b74083b04d63467062775827cc51ed5304e9fdac855db522",
+     "780a5968c2d161631454524daa44817c49cd00c7f5d7d60ac9448a9020b7ba1a",
+     "87947f329c277efc44595331d83f3695f7eb0e9fff5a26b03a6515dd460f703e",
+     "a01ea723fdfc34a417c356db6d900b8d2246d229893e436156b1e301a90d9506",
+     "a85f4a958fb8a5a6c7f3d31880bf5955a1041f546ef49be1dece7c42fafc5299",
+     "c319bbd3d3803eceb298809afd551fd62daac4230143fd1d78afb61473d37552",
+     "e4df496f091a8a5e4899e84064734832ea17956c731116225524c9d19c7da29d",
+     "e8e03379726bec49af257148dac296a4eb065d8343ac626b4ad4f77509643baa",
+     "fd703fd3e09d8ac15eae902b48c1204def7549ae8d66818a6fbc4a9269875ef2"
+    ],
+    "outputs": [
+     "4f4df3f11a1344183aebc79e025be86b58d2b79328456b4b349e7da2b9fb646e",
+     "b972898f26461f451cb8a6e49318fe0a6fd7ea5405c60f98f77e8d2cb54492e4"
+    ],
+    "metrics_sha256": "b6a8a2445a2ef9ea0fa327656ec59d3c43d4b7c6416d4ef9342a6ad40439cb48"
+   }
+  }
+ ],
+ "key_commitment": "a1ac784e2ead81fb8f8b20113e57f9da5bd4b8b832bb0252ac11be103daaf218",
+ "edges": 118
+}
