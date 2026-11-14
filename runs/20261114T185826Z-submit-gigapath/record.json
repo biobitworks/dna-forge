@@ -1,0 +1,63 @@
+{
+ "code": {
+  "branch": "feat/core-data",
+  "commit": "5d7892e7adc91df3b6633e9f06019d6232222523",
+  "dirty": true
+ },
+ "command": [
+  "/Users/byron/dna-forge/repo/dnaforge/__main__.py",
+  "--root",
+  "/Users/byron/dna-forge/biobase",
+  "submit",
+  "--models",
+  "gigapath"
+ ],
+ "config": {
+  "cmd": "submit",
+  "func": null,
+  "k": 1,
+  "models": [
+   "gigapath"
+  ],
+  "root": "/Users/byron/dna-forge/biobase",
+  "runs": "runs"
+ },
+ "end": "2026-11-14T18:58:26+00:00",
+ "error": null,
+ "host": {
+  "hostname": "magicPRObox.local",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.9.6",
+  "user": "byron"
+ },
+ "id": "20261114T185826Z-submit-gigapath",
+ "inputs": {
+  "/Users/byron/dna-forge/biobase/slides/pack_slides/slides_manifest.json": {
+   "bytes": 159539,
+   "sha256": "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/gigapath/slide-vectors.json": {
+   "bytes": 3370822,
+   "sha256": "a12350969f733118f9447b05aaf397cfa88ac5728b335fdaff01006137a85a05"
+  }
+ },
+ "kind": "run",
+ "metrics": {
+  "answered": 67,
+  "heldout": 67,
+  "missing_vectors": []
+ },
+ "notes": [],
+ "outputs": {
+  "submission_slides_organ.csv": {
+   "bytes": 2449,
+   "sha256": "189c52e8b53ef377ab02445ee79212b13b8d8362ebe79318ca9e405a7ab057aa"
+  },
+  "submission_slides_similar.csv": {
+   "bytes": 37854,
+   "sha256": "eed165624703b768d560f5c7aa91143501865521454a133e7c2daec6424439b7"
+  }
+ },
+ "start": "2026-11-14T18:58:26+00:00",
+ "status": "ok"
+}
