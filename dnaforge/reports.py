@@ -129,8 +129,8 @@ class Case:
         mn = re.search(r"\b(pN[0-9A-Za-z]+(?:\([a-z+]+\))*)", stage)
         self.pT = mt.group(1) if mt else None
         self.pN = mn.group(1) if mn else None
-        if self.pT and not self.pN and self.organ == "skin":
-            self.pN = "pNX"  # skin stages written without a pN (e.g. "pTis") are pNX in the labels
+        if self.pT == "pTis" and not self.pN:
+            self.pN = "pNX"  # in-situ skin stages are written as "pTis" alone; the labels call them pNX
 
     def f(self, key: str) -> str:
         return self.d.get(key, "").lower()
