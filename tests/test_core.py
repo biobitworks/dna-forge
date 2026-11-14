@@ -139,3 +139,17 @@ def test_tile_dataset_picklable():
     from dnaforge.transforms import TileDataset
     ds = TileDataset([], labels={"a": "Lung"})
     assert pickle.loads(pickle.dumps(ds)).classes == ["Lung"]
+
+
+def test_ingest_root_level_files(tmp_path):
+    root = tmp_path / "pack"; root.mkdir()
+    (root / "train.jsonl").write_text("a")
+    out = tmp_path / "c/ingest.json"
+    rec = custody.ingest([], root, out)
+    assert rec["extracted"]["."]["count"] == 1
+    for m in (out, custody.local_path(out)):
+        assert custody.verify(m, root) == []
+    (root / "train.jsonl").write_text("b")
+    assert all(any(p.startswith("changed:") for p in custody.verify(m, root)) for m in (out, custody.local_path(out)))
+    (root / "new.txt").write_text("x")
+    assert any("new.txt" in p for p in custody.verify(custody.local_path(out), root))

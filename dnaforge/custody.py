@@ -104,6 +104,9 @@ def ingest(sources: list[str | Path], extracted_root: str | Path, out: str | Pat
                     for s in sources},
         "extracted": {},
     }
+    top = sorted(p for p in extracted_root.iterdir() if p.is_file())
+    if top:  # files directly under the root (e.g. when the root is a pack folder itself)
+        record["extracted"]["."] = hash_tree(extracted_root, files=top)
     for sub in sorted(p for p in extracted_root.iterdir() if p.is_dir()):
         t = hash_tree(sub)
         record["extracted"][sub.name] = t
@@ -112,6 +115,12 @@ def ingest(sources: list[str | Path], extracted_root: str | Path, out: str | Pat
     full.write_text(json.dumps(record, indent=1, sort_keys=True))
     Path(out).write_text(json.dumps(redact(record), indent=1, sort_keys=True))
     return record
+
+
+def _tree_files(base: Path, sub: str) -> list:
+    if sub == ".":
+        return sorted(p for p in base.iterdir() if p.is_file())
+    return sorted(p for p in base.rglob("*") if p.is_file())
 
 
 def verify(manifest: str | Path, extracted_root: str | Path) -> list[str]:
@@ -123,7 +132,7 @@ def verify(manifest: str | Path, extracted_root: str | Path) -> list[str]:
         root = Path(extracted_root)
         for sub, tree in rec["extracted"].items():
             base = root / sub
-            have = {path_key(p.relative_to(base).as_posix()): p for p in base.rglob("*") if p.is_file()} if base.exists() else {}
+            have = {path_key(p.relative_to(base).as_posix()): p for p in _tree_files(base, sub)} if base.exists() else {}
             for k, meta in tree["files"].items():
                 if k not in have:
                     problems.append(f"missing: {sub}/<{k}>")
@@ -136,6 +145,8 @@ def verify(manifest: str | Path, extracted_root: str | Path) -> list[str]:
     for d in sorted(p for p in root.iterdir() if p.is_dir()):
         if d.name not in known:
             problems.append(f"added: {d.name}/")
+    if "." not in known:
+        problems += [f"added: {p.name}" for p in sorted(root.iterdir()) if p.is_file()]
     for sub, tree in rec["extracted"].items():
         base = root / sub
         for rel, meta in tree["files"].items():
@@ -145,7 +156,7 @@ def verify(manifest: str | Path, extracted_root: str | Path) -> list[str]:
             elif sha256_file(p) != meta["sha256"]:
                 problems.append(f"changed: {sub}/{rel}")
         if base.exists():
-            for p in sorted(x for x in base.rglob("*") if x.is_file()):
+            for p in _tree_files(base, sub):
                 rel = p.relative_to(base).as_posix()
                 if rel not in tree["files"]:
                     problems.append(f"added: {sub}/{rel}")
