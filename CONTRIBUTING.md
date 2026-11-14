@@ -6,7 +6,7 @@ Two other files define the team rules. Read them once:
 
 - [WORKSTREAM.md](WORKSTREAM.md): who is doing what, and what is open for you to take.
 - [DATA_POLICY.md](DATA_POLICY.md): data handling and chain of custody.
-- [docs/MODEL_CONTRACT.md](docs/MODEL_CONTRACT.md): the files your model must write so it can be stacked into the final combined model (FCG). Read this before you train anything.
+- [docs/MODEL_CONTRACT.md](docs/MODEL_CONTRACT.md): the files your model must write so it can be stacked into the final model and recorded in the fractal custody graph (FCG). Read this before you train anything.
 
 Both are in PR #1 until it merges. Read them on that branch if `main` does not have them yet.
 
