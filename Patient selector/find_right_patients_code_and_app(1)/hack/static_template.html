@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Find the Right Patients: static demo</title>
+<style>
+:root{--surface:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--line:#e4e3df;--ours:#2a78d6;--base:#eb6834;--mark:#fff1a8}
+@media (prefers-color-scheme:dark){:root{--surface:#1a1a19;--ink:#f0efec;--ink2:#c3c2b7;--line:#33322f;--ours:#3987e5;--base:#d95926;--mark:#5a4b00}}
+*{box-sizing:border-box}body{margin:0;font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;background:var(--surface);color:var(--ink)}
+main{max-width:1200px;margin:0 auto;padding:28px 20px 60px}h1{margin:0 0 4px;font-size:30px}.sub{color:var(--ink2);font-size:13px;margin-bottom:18px}
+nav button{background:none;border:0;border-bottom:2px solid transparent;padding:8px 2px;margin-right:18px;font:inherit;color:var(--ink2);cursor:pointer}
+nav button.on{color:var(--ink);border-color:var(--ours)}nav{border-bottom:1px solid var(--line);margin-bottom:20px}
+select,input{font:inherit;padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);max-width:100%}
+.kpis{display:flex;gap:36px;margin:16px 0}.kpi b{display:block;font-size:30px;font-weight:600}.kpi span{color:var(--ink2);font-size:13px}
+.cols{display:grid;grid-template-columns:260px 1fr;gap:18px}.list{max-height:520px;overflow:auto;border:1px solid var(--line);border-radius:6px}
+.list div{padding:6px 10px;cursor:pointer;font:13px ui-monospace,monospace;border-bottom:1px solid var(--line)}.list div.on{background:var(--line)}
+pre{white-space:pre-wrap;font:12.5px/1.5 ui-monospace,monospace;margin:0;border:1px solid var(--line);border-radius:6px;padding:12px;max-height:520px;overflow:auto}
+mark{background:var(--mark);color:inherit}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px}
+.grid figure{margin:0;cursor:pointer;font-size:11px;color:var(--ink2)}.grid img{width:100%;aspect-ratio:1;border:1px solid var(--line);border-radius:4px}
+.grid figure.on img{outline:3px solid var(--ours)}.nn{grid-template-columns:repeat(5,1fr)}
+.bar{display:flex;align-items:center;gap:8px;font-size:13px;margin:3px 0}.bar i{display:block;height:12px;border-radius:0 4px 4px 0;background:var(--ours)}
+.chart{display:flex;align-items:flex-end;gap:6px;height:180px;border-bottom:1px solid var(--line);padding-top:8px}
+.chart .c{flex:1;display:flex;gap:2px;align-items:flex-end;height:100%;position:relative}.chart .c i{flex:1;border-radius:4px 4px 0 0}
+.xl{display:flex;gap:6px}.xl span{flex:1;text-align:center;font-size:10px;color:var(--ink2)}
+.legend{font-size:13px;color:var(--ink2);margin:6px 0}.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin:0 4px 0 12px}
+table{border-collapse:collapse;width:100%;font-size:14px}td,th{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left}
+#tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--surface);font-size:12px;padding:5px 8px;border-radius:4px;display:none;max-width:320px}
+.small{font-size:13px;color:var(--ink2)}
+</style></head><body><main>
+<h1>Find the Right Patients</h1>
+<div class="sub">Biobase challenge · DNA Forge AI x Bio Hackathon · static fallback of the live demo · synthetic reports and de-identified slides; research demo, no medical claims.</div>
+<nav><button class="on" data-t="p">Find patients</button><button data-t="s">Find samples</button><button data-t="e">Evaluation</button></nav>
+<section id="p">
+ <select id="crit" style="width:100%"></select>
+ <div class="kpis"><div class="kpi"><b id="k1"></b><span>matching test reports (of 979)</span></div><div class="kpi"><b id="k2"></b><span>matching train reports (of 9,010)</span></div><div class="kpi"><b id="k3"></b><span>filter F1 on train key</span></div></div>
+ <div class="cols"><div class="list" id="ids"></div><pre id="rep"></pre></div>
+ <h3>Bridge (proof of concept): slide candidates for this criterion</h3><div id="br" class="small"></div><div class="grid nn" id="brg" style="margin-top:8px"></div>
+</section>
+<section id="s" hidden>
+ <label class="small"><input type="radio" name="w" value="h" checked> Held-out (67)</label> <label class="small"><input type="radio" name="w" value="l"> Labelled</label>
+ <div class="grid" id="sg" style="margin:12px 0;max-height:330px;overflow:auto"></div>
+ <div class="cols" style="grid-template-columns:220px 1fr"><img id="simg" style="width:100%;border:1px solid var(--line);border-radius:4px"><div><div class="small">Predicted organ group</div><div id="sp" style="font-size:28px;font-weight:600"></div><div id="sc" class="small"></div><div id="bars" style="margin-top:8px"></div><div id="srep" class="small" style="margin-top:8px"></div></div></div>
+ <h3>10 most similar slides</h3><div class="grid nn" id="nn"></div>
+</section>
+<section id="e" hidden>
+ <table><tr><th>Task</th><th>Ours</th><th>Baseline</th></tr>
+ <tr><td>A: mean F1 (30 criteria)</td><td>1.000 (train)</td><td>0.285 (train) · 0.27 published</td></tr>
+ <tr><td>C1: organ accuracy</td><td>0.823 (5×5 CV) · 0.852 on SUPP-02</td><td>0.762 (1-NN, same CV) · ~0.70 published</td></tr>
+ <tr><td>C2: P@1 / P@5 / P@10</td><td>0.85 / 0.79 / 0.74 (CV)</td><td>0.79 / 0.56 / 0.45 (CV) · 0.8 / 0.7 / 0.6 published</td></tr>
+ <tr><td>Official (answer key, 4 PM)</td><td colspan="2">pending</td></tr></table>
+ <h3>Task A: F1 per criterion (train)</h3><div class="legend"><i style="background:var(--ours)"></i>Ours (explicit filters)<i style="background:var(--base)"></i>Keyword baseline · bar height = F1 from 0 to 1, hover for values</div>
+ <div class="chart" id="ch"></div><div class="xl" id="xl"></div>
+ <h3>Limitations</h3><ul class="small"><li>Synthetic, code-templated reports: explicit filters reach F1 1.0 on train; real reports vary far more.</li><li>Ambiguities resolved against the train key: c08 "stage III" includes pN1c; c29 "node-positive" literal; "ER low positive" is neither ER+ nor ER−.</li><li>Slides: 190 labelled, 15 groups; leave-one-supplier-out accuracy 5–23% for every model (supplier confounding).</li><li>Bridge is a proof of concept; candidates need pathologist review. Not for clinical decisions.</li></ul>
+</section></main><div id="tip"></div>
+<script>
+const D=/*DATA*/null;const $=s=>document.querySelector(s);const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const sid=s=>s.replace('-biobase_','·').slice(0,22);const SL=Object.fromEntries(D.slides.map(s=>[s.id,s]));
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));['p','s','e'].forEach(t=>$('#'+t).hidden=t!==b.dataset.t)});
+const tip=$('#tip');function hov(el,txt){el.onmousemove=e=>{tip.style.display='block';tip.textContent=txt;tip.style.left=e.clientX+12+'px';tip.style.top=e.clientY+12+'px'};el.onmouseleave=()=>tip.style.display='none'}
+D.crit.forEach(c=>$('#crit').add(new Option(c.id+': '+c.text,c.id)));
+function hl(t,ev){let h=esc(t);for(const[k,v]of Object.entries(ev)){if(k==='header'){h=h.replace(/(Patient:[^\n]*)/,'<mark>$1</mark>');continue}
+ const val=esc(v),key=k==='Diagnosis'?'':esc(k)+':\\s*';const re=new RegExp('('+key+val.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')');h=h.replace(re,'<mark>$1</mark>')}return h}
+function showRep(c,id){document.querySelectorAll('#ids div').forEach(d=>d.classList.toggle('on',d.dataset.id===id));$('#rep').innerHTML=hl(D.test[id].t,D.ev[c][id])}
+function crit(){const c=$('#crit').value,ids=Object.keys(D.ev[c]);$('#k1').textContent=ids.length;$('#k2').textContent=D.trc[c];$('#k3').textContent=D.f1[c][0].toFixed(3);
+ $('#ids').innerHTML=ids.map(i=>`<div data-id="${i}">${i}</div>`).join('');$('#ids').querySelectorAll('div').forEach(d=>d.onclick=()=>showRep(c,d.dataset.id));ids.length&&showRep(c,ids[0]);
+ const b=D.bridge[c];if(!b||!Object.keys(b.seeds).length){$('#br').textContent='No slide report covers this organ.';$('#brg').innerHTML='';return}
+ const st=Object.values(b.seeds);$('#br').textContent=`Slide reports: ${st.filter(s=>s==='match').length} match, ${st.filter(s=>s!=='match').length} organ-level candidates (needed fields not reported). C2 nearest neighbours in the same organ group:`;
+ $('#brg').innerHTML=b.sug.map(([i,src,s,h])=>`<figure><img src="${D.thumbs[i]}"><figcaption>${sid(i)}<br>${h?'held-out':'labelled'} · ${esc(src)} · sim ${s}</figcaption></figure>`).join('')}
+$('#crit').onchange=crit;crit();
+function grid(){const w=document.querySelector('input[name=w]:checked').value;const ss=D.slides.filter(s=>s.h===(w==='h'));
+ $('#sg').innerHTML=ss.map(s=>`<figure data-id="${s.id}"><img src="${D.thumbs[s.id]}"><figcaption>${sid(s.id)}</figcaption></figure>`).join('');
+ $('#sg').querySelectorAll('figure').forEach(f=>f.onclick=()=>pick(f.dataset.id));pick(ss[0].id)}
+function pick(id){const s=SL[id];document.querySelectorAll('#sg figure').forEach(f=>f.classList.toggle('on',f.dataset.id===id));$('#simg').src=D.thumbs[id];$('#sp').textContent=s.p;
+ $('#sc').textContent=`confidence ${(s.c*100).toFixed(0)}% · ${s.sup}`+(s.g?` · known label: ${s.g} (out-of-fold probabilities)`:'');
+ $('#bars').innerHTML=s.top.map(([g,p])=>`<div class="bar"><span style="width:130px;text-align:right">${esc(g)}</span><i style="width:${p*300}px"></i><span>${(p*100).toFixed(0)}%</span></div>`).join('');
+ $('#srep').textContent=s.r?'Slide report: '+s.r.slice(0,300):'';
+ $('#nn').innerHTML=s.nn.length?s.nn.map(([n,c],k)=>`<figure><img src="${D.thumbs[n]}"><figcaption>#${k+1} ${sid(n)}<br>${esc(SL[n].g||'pred. '+SL[n].p)} · cos ${c}</figcaption></figure>`).join(''):'<span class="small">No GigaPath vector.</span>'}
+document.querySelectorAll('input[name=w]').forEach(r=>r.onchange=grid);grid();
+const ch=$('#ch'),xl=$('#xl');for(const c of D.crit){const[o,b]=D.f1[c.id];const d=document.createElement('div');d.className='c';
+ d.innerHTML=`<i style="height:${o*100}%;background:var(--ours)"></i><i style="height:${Math.max(b*100,0.5)}%;background:var(--base)"></i>`;hov(d,`${c.id}: ours F1 ${o.toFixed(3)} · baseline ${b.toFixed(3)} · ${c.text}`);ch.appendChild(d);
+ xl.insertAdjacentHTML('beforeend',`<span>${c.id}</span>`)}
+</script></body></html>
