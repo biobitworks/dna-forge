@@ -37,3 +37,49 @@ def test_mil_trains():
     P = predict(m, bags, "cpu")
     assert P.shape == (20, 2) and (P.argmax(1) == y).mean() > 0.8
 
+
+
+def test_fco_fcg_primitives_and_rejection():
+    from dnaforge import fcg
+    assert fcg.leaf(b"x") != fcg.leaf(b"\x01x")
+    a, b = fcg.fco("file", {"sha256": "aa"}), fcg.fco("file", {"sha256": "bb"})
+    g1, g2 = fcg.fcg("g", [a, b]), fcg.fcg("g", [b, a])
+    assert g1["identity"]["root"] == g2["identity"]["root"]           # order independent
+    parent = fcg.fcg("p", [g1, fcg.fco("run", {"name": "r"})])          # fractal: an FCG is a member
+    assert parent["identity"]["count"] == 2
+    bad = dict(a, identity={"sha256": "tampered"})
+    with pytest.raises(ValueError):
+        fcg.fcg("g", [bad])
+    with pytest.raises(ValueError):
+        fcg.fcg("g", [a, a])
+
+
+def test_fcg_build_and_blind(tmp_path):
+    import json, zipfile
+    from dnaforge import custody, fcg
+    from tests.test_core import make_pack
+    root = tmp_path / "data"; root.mkdir()
+    make_pack(root)
+    z = tmp_path / "biobase-challenge-slides.zip"
+    with zipfile.ZipFile(z, "w") as zf:
+        zf.writestr("x", "y")
+    cdir = tmp_path / "custody"
+    custody.ingest([z], root, cdir / "ingest-x.json")
+    runs = tmp_path / "runs"
+    with custody.RunRecord("r", inputs=[root / "slides/pack_slides/slides_manifest.json"], runs_dir=runs) as run:
+        o = run.dir / "o.csv"; o.write_text("a"); run.output(o)
+    key = b"k" * 32
+    g = fcg.build(cdir, runs, key=key)
+    assert {m["kind"] for m in g["members"]} == {"dataset", "run"}
+    assert {e["type"] for e in g["edges"]} == {"USED_BY", "PRODUCED"}
+    pub = json.dumps(fcg.public(g))
+    assert "slides_manifest" not in pub and "S00" not in pub and fcg.commitment(key) in pub
+    prov = fcg.to_prov(g)
+    types = {json.dumps(x.get("@type")) for x in prov["@graph"]}
+    assert '"prov:Activity"' in types and any("prov:used" in x for x in prov["@graph"])
+    assert "slides_manifest" not in json.dumps(prov)
+    (cdir / "local").mkdir(exist_ok=True); (cdir / "local/fco.key").write_bytes(key)
+    r = fcg.blind(root, out_dir=cdir / "local/blind", key_path=cdir / "local/fco.key")
+    mod = (cdir / "local/blind/modeller.csv").read_text()
+    assert r["tokens"] == 12 and "S0" not in mod and "Breast" not in mod
+    assert "Breast" in (cdir / "local/blind/custodian.csv").read_text()
