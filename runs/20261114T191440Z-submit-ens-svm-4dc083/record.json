@@ -1,0 +1,120 @@
+{
+ "code": {
+  "branch": "feat/slide-models",
+  "commit": "f81aafb210035b1f8d84ab6fa3d31c0c0e49752a",
+  "dirty": true
+ },
+ "command": [
+  "/Users/byron/dna-forge/wt-slides/dnaforge/__main__.py",
+  "submit",
+  "--method",
+  "ens-svm"
+ ],
+ "config": {
+  "alpha": 3.0,
+  "c2_space": "gigapath",
+  "classes": [
+   "Bladder",
+   "Bone",
+   "Bone marrow",
+   "Breast",
+   "Colon and rectum",
+   "Esophagus",
+   "Kidney",
+   "Liver",
+   "Lung",
+   "Other or mixed",
+   "Prostate",
+   "Skin",
+   "Stomach",
+   "Thyroid",
+   "Uterus"
+  ],
+  "members": [
+   [
+    [
+     "gigapath"
+    ],
+    null,
+    "svm",
+    {
+     "Creg": 0.01
+    },
+    1.0
+   ],
+   [
+    [
+     "gigapath",
+     "hoptimus"
+    ],
+    null,
+    "svm",
+    {
+     "Creg": 0.01
+    },
+    1.0
+   ]
+  ],
+  "method": "ens-svm"
+ },
+ "end": "2026-11-14T19:14:44+00:00",
+ "error": null,
+ "host": {
+  "hostname": "magicPRObox.local",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.9.6",
+  "user": "byron"
+ },
+ "id": "20261114T191440Z-submit-ens-svm-4dc083",
+ "inputs": {
+  "/Users/byron/dna-forge/biobase/slides/pack_slides/slides_manifest.json": {
+   "bytes": 159539,
+   "sha256": "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/gigapath/slide-vectors.json": {
+   "bytes": 3370822,
+   "sha256": "a12350969f733118f9447b05aaf397cfa88ac5728b335fdaff01006137a85a05"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/hoptimus/slide-vectors.json": {
+   "bytes": 3798267,
+   "sha256": "b505ab01f0e68ed3001fda1a035dbd86c909ff422e3a9a084b9957f4ea352bd5"
+  }
+ },
+ "kind": "run",
+ "metrics": {
+  "answered": 67,
+  "folds": "custody/local/folds.json",
+  "heldout": 67,
+  "n_labelled": 190,
+  "node": "magicPRObox.local",
+  "oof_acc": 0.8631578947368421,
+  "oof_p@1": 0.868421052631579,
+  "oof_p@10": 0.8,
+  "oof_p@5": 0.8294736842105263
+ },
+ "notes": [],
+ "outputs": {
+  "heldout_organ.csv": {
+   "bytes": 11238,
+   "sha256": "92ecf5a678ce0b710726065e0bef1cc72e5e44efdacac26f9f0c2cc59111169c"
+  },
+  "heldout_similar.csv": {
+   "bytes": 214638,
+   "sha256": "acb62125b7f627a6d47d825fd80e65bb30f10399bb8ecc2b451bd855a6230930"
+  },
+  "oof_organ.csv": {
+   "bytes": 32264,
+   "sha256": "c06259e83a316212d8ae390a959ca9b1e672b768d4eb3a9a5390c864758a1d4e"
+  },
+  "submission_slides_organ.csv": {
+   "bytes": 2458,
+   "sha256": "8a69914d27c707c8a61694c8d8123f2139141cd5b79ac358193dda5da4cf7356"
+  },
+  "submission_slides_similar.csv": {
+   "bytes": 37524,
+   "sha256": "ed38172b0075b0415fcce2866a3c68d55a1214e578d0ddc97c19c070fb90d423"
+  }
+ },
+ "start": "2026-11-14T19:14:40+00:00",
+ "status": "ok"
+}

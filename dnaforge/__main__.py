@@ -3,7 +3,9 @@
   ingest   hash the source zips and the extracted packs into custody/ingest-<date>.json
   verify   re-hash the extracted packs against a custody manifest
   eval     leave-one-out and supplier-holdout numbers for each embedding model
-  submit   write C1 and C2 CSVs from one model (or a concatenation), with a run record
+  submit   write C1 and C2 CSVs from one model (or a concatenation), with a run record;
+           --method <name> uses a dnaforge.models method (see `models.METHODS`) and also writes
+           oof_organ.csv / heldout_organ.csv / heldout_similar.csv for stacking
 """
 from __future__ import annotations
 
@@ -33,6 +35,20 @@ def _features(data: BiobaseData, models: list, ids: list | None = None):
 def _emb_files(data, models):
     base = data.root / "tiles/tilepack/embeddings"
     return [data.root / "slides/pack_slides/slides_manifest.json"] + [base / m / "slide-vectors.json" for m in models]
+
+
+def _feature_inputs(data, raw_specs, extra=()):
+    """Every file a set of feature specs reads: slide vectors for each model, plus tile vectors and
+    tile metadata for pooled specs (model@pool), plus the manifest and any extra files."""
+    base = data.root / "tiles/tilepack/embeddings"
+    files = {data.root / "slides/pack_slides/slides_manifest.json"}
+    for spec in raw_specs:
+        model, _, pool = spec.replace("~sc", "").partition("@")
+        files.add(base / model / "slide-vectors.json")
+        if pool and pool != "slide":
+            files |= {base / model / "tile-vectors.i8", base / model / "tile-meta.json"}
+    files |= {Path(x) for x in extra}
+    return sorted(files)
 
 
 def cmd_ingest(a):
@@ -69,6 +85,8 @@ def cmd_eval(a):
 
 
 def cmd_submit(a):
+    if a.method:
+        return cmd_submit_method(a)
     data = BiobaseData.load(Path(a.root).expanduser())
     with custody.RunRecord("submit-" + "+".join(a.models), config=vars(a) | {"func": None},
                            inputs=_emb_files(data, a.models), runs_dir=a.runs) as run:
@@ -122,6 +140,72 @@ def cmd_folds(a):
     print(f"wrote {out} (sha256 {digest}) and {a.hash_out}")
 
 
+def _load_folds(path: Path, lab_ids: list, y: list) -> tuple:
+    from . import models as M
+    if path.exists():
+        f = json.loads(path.read_text())["folds"]
+        if all(i in f for i in lab_ids):
+            return {i: int(f[i]) for i in lab_ids}, str(path)
+    return M.stratified_folds(lab_ids, y, 5, 0), "StratifiedKFold(5, shuffle=True, random_state=0) over sorted labelled ids"
+
+
+def cmd_submit_method(a):
+    import socket
+    from . import models as M
+    data = BiobaseData.load(Path(a.root).expanduser())
+    classes = data.organ_groups
+    C = len(classes)
+    method = M.METHODS[a.method]
+    specs = sorted({s.split("@")[0].replace("~sc", "") for m in method for s in m[0]} | {"hoptimus"})
+    all_ids = [s.id for s in data.slides]
+    lab = sorted(s.id for s in data.labelled)
+    y = np.array([classes.index(data.by_id[i].organ_group) for i in lab])
+    rest = [i for i in all_ids if i not in set(lab)]          # held-out + unlabelled non-held-out
+    held = [s.id for s in data.heldout]
+    cfg = {"method": a.method, "members": method, "alpha": a.alpha, "c2_space": a.c2_space, "classes": classes}
+    raw_specs = [sp for m in method for sp in m[0]] + [a.c2_space, "hoptimus"]
+    inputs = _feature_inputs(data, raw_specs, extra=[a.folds] if Path(a.folds).exists() else [])
+    with custody.RunRecord("submit-" + a.method, config=cfg, inputs=inputs, runs_dir=a.runs) as run:
+        folds, fold_src = _load_folds(Path(a.folds), lab, list(y))
+        feats = M.ensure_features(data, method, {})
+        M.ensure_features(data, [([a.c2_space], None, None, None, None)], feats)
+        cv = M.cv_eval(method, feats, lab, y, C, folds, alpha=a.alpha, c2_space=a.c2_space)
+        P_rest = M.fit_predict(method, feats, lab, y, rest, C)
+        prob = dict(zip(rest, P_rest))
+        pred = {i: classes[int(prob[i].argmax())] for i in held}
+        # C2: every other slide is a candidate; labelled ones carry their one-hot label
+        cand_P = np.vstack([M._onehot(y, C), P_rest])
+        cx_ids, CX = feats[M.feature_key([a.c2_space])]
+        ranked = M.rank_c2(CX, cx_ids, held, lab + rest, cand_P, np.vstack([prob[i] for i in held]),
+                           alpha=a.alpha, top=50, return_scores=True)
+        d = run.dir
+        hdr = ["slide_id", "fold"] + classes
+        with open(d / "oof_organ.csv", "w", newline="") as f:
+            w = csv.writer(f); w.writerow(hdr)
+            w.writerows([i, folds[i]] + [f"{v:.6f}" for v in row] for i, row in zip(lab, cv["P"]))
+        with open(d / "heldout_organ.csv", "w", newline="") as f:
+            w = csv.writer(f); w.writerow(hdr)
+            w.writerows([i, -1] + [f"{v:.6f}" for v in prob[i]] for i in held)
+        with open(d / "heldout_similar.csv", "w", newline="") as f:
+            w = csv.writer(f); w.writerow(["query_slide_id", "result_slide_id", "score"])
+            for q in held:
+                w.writerows((q, t, f"{sc:.6f}") for t, sc in ranked[q])
+        with open(d / "submission_slides_organ.csv", "w", newline="") as f:
+            w = csv.writer(f); w.writerow(["slide_id", "organ"]); w.writerows((i, pred[i]) for i in held)
+        with open(d / "submission_slides_similar.csv", "w", newline="") as f:
+            w = csv.writer(f); w.writerow(["query_slide_id", "rank", "result_slide_id"])
+            for q in held:
+                w.writerows((q, r + 1, t) for r, (t, _) in enumerate(ranked[q][:10]))
+        for n in ("oof_organ.csv", "heldout_organ.csv", "heldout_similar.csv",
+                  "submission_slides_organ.csv", "submission_slides_similar.csv"):
+            run.output(d / n)
+        run.metrics = {"oof_acc": cv["c1_acc"], "oof_p@1": cv["p@1"], "oof_p@5": cv["p@5"], "oof_p@10": cv["p@10"],
+                       "node": socket.gethostname(), "folds": fold_src, "n_labelled": len(lab),
+                       "heldout": len(held), "answered": len(held)}
+    print(f"{a.method}: OOF C1={cv['c1_acc']:.3f} P@1/5/10={cv['p@1']:.3f}/{cv['p@5']:.3f}/{cv['p@10']:.3f}; "
+          f"wrote {run.dir}; record: {run.dir/'record.json'}")
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(prog="dnaforge", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--root", default="~/dna-forge/biobase", help="folder holding the unzipped packs")
@@ -135,6 +219,11 @@ def main(argv=None):
         s = sub.add_parser(name)
         s.add_argument("--models", nargs="+", default=list(MODELS) if name == "eval" else ["gigapath"])
         s.add_argument("--k", type=int, default=1)
+        if name == "submit":
+            s.add_argument("--method", help="a dnaforge.models.METHODS name (overrides --models/--k)")
+            s.add_argument("--alpha", type=float, default=3.0, help="C2 weight on organ-group agreement")
+            s.add_argument("--c2-space", dest="c2_space", default="gigapath", help="embedding for C2 cosine")
+            s.add_argument("--folds", default="custody/local/folds.json")
         s.set_defaults(func=fn)
     a = p.parse_args(argv)
     return a.func(a) or 0
