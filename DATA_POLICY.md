@@ -20,8 +20,22 @@ This repository is public and will be submitted. The challenge data is not.
   (see the tile pack's `embeddings/models.json`). Any new model we add is
   listed here with its licence.
 
-## Open item
+## Sources and their terms
 
-The packs themselves contain no licence or terms file. The hackathon's
-rules and data agreement need to be checked and linked here before
-submission.
+| Source | What we use it for | Terms found (checked 2026-11-14) | In this repo |
+|---|---|---|---|
+| Biobase challenge packs (slides, tiles, tiles-20x, thumbnails, reports) | Training and evaluation for C1, C2, A | No licence or terms file in any pack | Hashes and run records only |
+| [Synthea](https://synthetichealth.github.io/synthea/) (MITRE) | Synthetic patient records | Page: "Approved for Public Release; Distribution Unlimited"; the code repository is Apache-2.0 | Generator config only, if used |
+| [Kaggle endometriosis dataset](https://www.kaggle.com/datasets/michaelanietie/endometriosis-dataset) | Symptom-based prediction | Licence not readable without a Kaggle login; check the dataset's License tab | Not committed until checked |
+| [Ptarmigan-1](https://www.talus.bio/blog/try-ptarmigan-1-structure-free-drug/) (Talus Bio) | Structure-free compound screening via ptarmigan.app | Governed by talus.bio/terms; limit 10,000 compounds per screen, 10 screens per day | Results only, if terms allow |
+| [bioRxiv 2026.07.28.741295](https://www.biorxiv.org/content/10.64898/2026.07.28.741295v1) | Ptarmigan-1 method reference | No licence stated in the text; cite, don't copy | Citation only |
+| [MassIVE](https://massive.ucsd.edu) | Public proteomics datasets | Terms are set per dataset; record each dataset's MSV id and licence before use | Dataset ids only |
+| [PMC10073113](https://pmc.ncbi.nlm.nih.gov/articles/PMC10073113/) | Symptom-based endometriosis ML method reference | Not readable automatically; check the article's licence line | Citation only |
+
+## Open items
+
+- **Hackathon rules and data agreement.** None of the packs or knowledge-base
+  links contain the DNA Forge or Biobase rules. Link them here before
+  submission.
+- **Kaggle and PMC licences.** These pages were not readable automatically.
+  Someone with a browser should confirm both.
