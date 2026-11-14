@@ -29,13 +29,13 @@ def test_valid_passes(tmp_path):
 
 def test_broken_fails(tmp_path):
     man, organ, sim = _fixture(tmp_path)
-    organ.write_text("slide_id,organ\nH0,lung\nH0,Lung\nH1,Pancreas\n")
+    organ.write_text("slide_id,organ\nH0,lung\nH0,Lung,extra\nH1,Pancreas\n")
     lines = sim.read_text().splitlines()
     lines.append("H0,11,H0")
     sim.write_text("\n".join(lines) + "\n")
     assert cs.main(["--manifest", str(man), "--organ", str(organ), "--similar", str(sim)]) == 1
     text = " ".join(cs.problems)
-    for want in ("duplicate", "no row", "organ values", "self-match", "ranks"):
+    for want in ("exactly 2 columns", "duplicate", "no row", "organ values", "self-match", "ranks"):
         assert want in text
 
 

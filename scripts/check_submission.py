@@ -47,6 +47,9 @@ def read_csv(path, header):
 def check_organ(path, held, names):
     print(f"C1 {path}")
     rows = read_csv(path, ["slide_id", "organ"])
+    wrong = sum(1 for r in rows if len(r) != 2)
+    if wrong:
+        bad(f"C1: {wrong} rows do not have exactly 2 columns")
     ids = [r[0] for r in rows]
     if len(ids) != len(set(ids)):
         bad(f"C1: {len(ids) - len(set(ids))} duplicate slide ids")
