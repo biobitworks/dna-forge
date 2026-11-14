@@ -15,11 +15,14 @@ score.
 | A criteria | `submission_criteria.json` | `20261114T201401Z-reports-task-a-a8f4f3` | `1604ae1557ffad8e39c671a193fec113653984f2e8bf090791f5a15b62d88345` | [x] |
 | Custody | `custody/fcg.json`, `custody/fcg.prov.jsonld` | session FCG (23 members, 153 edges) | root `0ce023dc527748224c98a1fa4af7e3f62612d500f1f0520e68f6fe94f3a303e5` | [x] |
 
-All three files were re-run from a clean checkout of `main`. They are
-bit-identical to the earlier runs `20261114T191440Z-submit-ens-svm-4dc083` and
-`20261114T190839Z-reports-task-a-071c4c`, so the hashes did not change. The
-upload copies are on magicPRO in `~/dna-forge/SUBMISSION-FINAL/`. The run
-records and the FCG are committed in PR #20.
+Candidate output bytes match the earlier team runs, but note that the
+slide record 20261114T201402Z-submit-ens-svm-e8e6d7 has code.dirty:
+true. This predecessor must not be called a clean rerun. PR #23
+independently re-executed the slide ens-SVM from clean pinned commit
+dda6c509815e0437171b15b0a76c6c64ee8856ae on MagicPro and
+MagicStudio, and confirmed bit-identical C1/C2 outputs. The Task A
+run and the selected Task A hash are separately recorded. Official
+hidden-test scores and organizer submission remain NOT_VERIFIED.
 
 Check each file with:
 
@@ -41,7 +44,7 @@ python3 scripts/check_submission.py --criteria runs/<id>/submission_criteria.jso
 | R3 | Task A: for each of 30 criteria, the matching test report ids; scored by mean F1 (reports pack) | `dnaforge.reports`: parser for the final diagnosis block plus a predicate per criterion | run record. Train F1 1.000. 5-fold CV F1 1.000 ± 0 (`20261114T201305Z-reports-cv-0cc031`), 979/979 test reports parse, 0/30 criteria with test counts outside 3 sigma. The predicates were hand-written while looking at all the training data, so the CV checks stability, not generalisation. Read the answer key score as the real estimate. |
 | R4 | Beat the baselines: about 70% C1 and P@1 about 0.8 for GigaPath 1-NN; keyword F1 0.27 for task A (packs) | shared 5-fold OOF evaluation (`custody/folds.sha256`) | ens-svm OOF C1 0.863, P@1/5/10 0.868 / 0.829 / 0.800 (local, not answer key) |
 | R5 | No labelling or outside lookup of held-out items (DATA_POLICY.md) | models train only on labelled slides; `dnaforge.fcg` can blind ids to tokens for contributors (tokenize, shuffle, double-blind) | FCG key commitment `a1ac784e…f218`; run configs |
-| R6 | Public repo holds no challenge data, labels or report text (DATA_POLICY.md) | `.gitignore`, `scripts/check_no_data.py`, data-guard CI | CI green on every PR; submission files stay on the machine |
+| R6 | Public repo holds no challenge data, labels or report text (DATA_POLICY.md) | `.gitignore`, `scripts/check_no_data.py`, data-guard CI | current main data-guard green following PR #24; earlier direct demo commit contained generated challenge outputs and failed CI; Git history remediation remains UNRESOLVED |
 | R7 | Chain of custody from downloaded zips to submitted files (Byron, DATA_POLICY.md) | ingest manifests, run records, fractal custody graph exported as W3C PROV-O JSON-LD | `custody/ingest-*.json`, `runs/*/record.json`, FCG root |
 | R8 | Model and data licences respected (DATA_POLICY.md) | licence table in DATA_POLICY.md | open: hackathon rules and data agreement, Kaggle endometriosis and HistAI terms (#7) |
 | R9 | Hackathon rules and data agreement (organisers) | TBD | open: link the rules in DATA_POLICY.md (#7) |
