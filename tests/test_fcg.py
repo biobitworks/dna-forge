@@ -83,3 +83,15 @@ def test_fcg_build_and_blind(tmp_path):
     mod = (cdir / "local/blind/modeller.csv").read_text()
     assert r["tokens"] == 12 and "S0" not in mod and "Breast" not in mod
     assert "Breast" in (cdir / "local/blind/custodian.csv").read_text()
+
+
+def test_endo_eval_on_synthetic(tmp_path):
+    pytest.importorskip("sklearn")
+    from dnaforge.endo import evaluate, load
+    rng = np.random.default_rng(0)
+    p = tmp_path / "e.csv"
+    rows = ["Age,Pain,Diagnosis"] + [f"{rng.integers(20,50)},{(d:=int(rng.random()<.4))*3+rng.random()},{d}" for _ in range(200)]
+    p.write_text("\n".join(rows))
+    cols, X, y = load(p)
+    assert cols == ["Age", "Pain"] and X.shape == (200, 2)
+    assert evaluate(X, y)["logreg"]["auc"] > 0.9
