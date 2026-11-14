@@ -20,7 +20,7 @@ Both are in PR #1 until it merges. Read them on that branch if `main` does not h
    source .venv/bin/activate
    ```
 
-2. Download the challenge packs yourself from the Biobase challenge page. Each teammate downloads their own copy under the hackathon data agreement. Never pass data through the repo, an issue or a PR. The exact agreement link is TBD, see issue on rules review.
+2. Download the challenge packs yourself from the Biobase challenge page. Each teammate downloads their own copy under the hackathon data agreement. Never pass data through the repo, an issue or a PR. The exact agreement link is TBD, see issue #7 (rules review).
 
 3. Unzip the packs into this layout. `data/` is gitignored.
 
@@ -53,7 +53,7 @@ The full rules are in [DATA_POLICY.md](DATA_POLICY.md). The short version:
 - Held-out slides stay unlabelled. No manual labelling, and no looking up held-out slides in outside sources.
 - Models are used under their own licences (see the tile pack's `embeddings/models.json`). Before adding a new model, check its licence and list it in DATA_POLICY.md.
 - Keep slide ids and labels out of issue and PR text beyond what the discussion needs. Never paste lists of slide ids with organs or diagnoses.
-- The hackathon rules and data agreement have not been checked yet. TBD, see issue on rules review.
+- The hackathon rules and data agreement have not been checked yet. TBD, see issue #7 (rules review).
 
 ## 3. Provenance logging
 
