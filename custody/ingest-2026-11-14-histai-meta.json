@@ -1,0 +1,24 @@
+{
+ "code": {
+  "branch": "feat/fcg",
+  "commit": "7a041d2f6da4a77934b88ad61bd79f9d7aab92f9",
+  "dirty": true
+ },
+ "extracted": {},
+ "host": {
+  "hostname": "magicPRObox.local",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.12.12",
+  "user": "byron"
+ },
+ "id": "0e02820e-3b6c-48ef-9edb-ddd104ea88cf",
+ "kind": "ingest",
+ "sources": {
+  "metadata.json": {
+   "bytes": 60908892,
+   "mtime": "2026-11-14T19:32:16+00:00",
+   "sha256": "216b7930a9ff58e3dffbb13adfa0b1d91e6a93b91070410e5ea56dab43bf9918"
+  }
+ },
+ "time": "2026-11-14T19:32:17+00:00"
+}

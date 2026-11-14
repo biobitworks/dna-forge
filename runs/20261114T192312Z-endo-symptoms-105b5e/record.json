@@ -1,0 +1,68 @@
+{
+ "code": {
+  "branch": "feat/fcg",
+  "commit": "84ae321c46c1474adbcb51407ab3947d550e391d",
+  "dirty": true
+ },
+ "command": [
+  "/Users/byron/dna-forge/wt-fcg/dnaforge/endo.py",
+  "--csv",
+  "/Users/byron/dna-forge/enrichment/kaggle-endometriosis/structured_endometriosis_data.csv"
+ ],
+ "config": {
+  "csv": "structured_endometriosis_data.csv"
+ },
+ "end": "2026-11-14T19:23:23+00:00",
+ "error": null,
+ "host": {
+  "hostname": "magicPRObox.local",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.9.6",
+  "user": "byron"
+ },
+ "id": "20261114T192312Z-endo-symptoms-105b5e",
+ "inputs": {
+  "/Users/byron/dna-forge/enrichment/kaggle-endometriosis/structured_endometriosis_data.csv": {
+   "bytes": 473029,
+   "sha256": "1631085760d8a0013e049d136243dd6cc509e49fc8860a579c60394c5d91d0eb"
+  }
+ },
+ "kind": "run",
+ "metrics": {
+  "cv5": {
+   "grad_boost": {
+    "acc": 0.6245,
+    "auc": 0.6489354460683381,
+    "sensitivity": 0.34935033096347146,
+    "specificity": 0.8140516804593818
+   },
+   "logreg": {
+    "acc": 0.6246,
+    "auc": 0.6546732269065785,
+    "sensitivity": 0.3594018141701397,
+    "specificity": 0.8072960648539098
+   },
+   "random_forest": {
+    "acc": 0.6125,
+    "auc": 0.6292906036367785,
+    "sensitivity": 0.3956852169649424,
+    "specificity": 0.7618645499071103
+   }
+  },
+  "features": [
+   "Age",
+   "Menstrual_Irregularity",
+   "Chronic_Pain_Level",
+   "Hormone_Level_Abnormality",
+   "Infertility",
+   "BMI"
+  ],
+  "n": 10000,
+  "node": "magicPRObox.local",
+  "prevalence": 0.4079
+ },
+ "notes": [],
+ "outputs": {},
+ "start": "2026-11-14T19:23:12+00:00",
+ "status": "ok"
+}

@@ -1,0 +1,74 @@
+{
+ "code": {
+  "branch": "feat/fcg",
+  "commit": "5cf641d34784c30abd739ed63f377a72a295208a",
+  "dirty": false
+ },
+ "command": [
+  "/Users/byron/dna-forge/wt-fcg/dnaforge/mil.py",
+  "--model",
+  "hoptimus",
+  "--epochs",
+  "25",
+  "--seeds",
+  "2"
+ ],
+ "config": {
+  "device": "mps",
+  "epochs": 25,
+  "folds": "custody/local/folds.json",
+  "lr": 0.0003,
+  "model": "hoptimus",
+  "root": "~/dna-forge/biobase",
+  "runs": "runs",
+  "seed": 0,
+  "seeds": 2
+ },
+ "end": "2026-11-14T19:19:03+00:00",
+ "error": null,
+ "host": {
+  "hostname": "magicPRObox.local",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python": "3.12.12",
+  "user": "byron"
+ },
+ "id": "20261114T191550Z-mil-hoptimus-b7b8b6",
+ "inputs": {
+  "/Users/byron/dna-forge/biobase/slides/pack_slides/slides_manifest.json": {
+   "bytes": 159539,
+   "sha256": "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/hoptimus/tile-meta.json": {
+   "bytes": 26433,
+   "sha256": "a653fe79cada583e5eb62d6f4a8f74688c894f65da5868b3e0fe85e160895e1a"
+  },
+  "/Users/byron/dna-forge/biobase/tiles/tilepack/embeddings/hoptimus/tile-vectors.i8": {
+   "bytes": 18855936,
+   "sha256": "e099911869bb3c8600898c77fd9ef36a891c7feea37f2f35391406c465e7fd30"
+  },
+  "custody/local/folds.json": {
+   "bytes": 7592,
+   "sha256": "2f3cd6de81c08b2f4d66739492519f570d564b8a4a9a86118823c7fa7e6608d0"
+  }
+ },
+ "kind": "run",
+ "metrics": {
+  "n_heldout": 67,
+  "n_labelled": 190,
+  "node": "magicPRObox.local",
+  "oof_acc": 0.5947368421052631
+ },
+ "notes": [],
+ "outputs": {
+  "heldout_organ.csv": {
+   "bytes": 11238,
+   "sha256": "a01ea723fdfc34a417c356db6d900b8d2246d229893e436156b1e301a90d9506"
+  },
+  "oof_organ.csv": {
+   "bytes": 32264,
+   "sha256": "780a5968c2d161631454524daa44817c49cd00c7f5d7d60ac9448a9020b7ba1a"
+  }
+ },
+ "start": "2026-11-14T19:15:50+00:00",
+ "status": "ok"
+}
