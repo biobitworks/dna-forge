@@ -37,6 +37,20 @@ def _emb_files(data, models):
     return [data.root / "slides/pack_slides/slides_manifest.json"] + [base / m / "slide-vectors.json" for m in models]
 
 
+def _feature_inputs(data, raw_specs, extra=()):
+    """Every file a set of feature specs reads: slide vectors for each model, plus tile vectors and
+    tile metadata for pooled specs (model@pool), plus the manifest and any extra files."""
+    base = data.root / "tiles/tilepack/embeddings"
+    files = {data.root / "slides/pack_slides/slides_manifest.json"}
+    for spec in raw_specs:
+        model, _, pool = spec.replace("~sc", "").partition("@")
+        files.add(base / model / "slide-vectors.json")
+        if pool and pool != "slide":
+            files |= {base / model / "tile-vectors.i8", base / model / "tile-meta.json"}
+    files |= {Path(x) for x in extra}
+    return sorted(files)
+
+
 def cmd_ingest(a):
     root = Path(a.root).expanduser()
     out = Path(a.out or f"custody/ingest-{dt.date.today().isoformat()}.json")
@@ -149,7 +163,9 @@ def cmd_submit_method(a):
     rest = [i for i in all_ids if i not in set(lab)]          # held-out + unlabelled non-held-out
     held = [s.id for s in data.heldout]
     cfg = {"method": a.method, "members": method, "alpha": a.alpha, "c2_space": a.c2_space, "classes": classes}
-    with custody.RunRecord("submit-" + a.method, config=cfg, inputs=_emb_files(data, specs), runs_dir=a.runs) as run:
+    raw_specs = [sp for m in method for sp in m[0]] + [a.c2_space, "hoptimus"]
+    inputs = _feature_inputs(data, raw_specs, extra=[a.folds] if Path(a.folds).exists() else [])
+    with custody.RunRecord("submit-" + a.method, config=cfg, inputs=inputs, runs_dir=a.runs) as run:
         folds, fold_src = _load_folds(Path(a.folds), lab, list(y))
         feats = M.ensure_features(data, method, {})
         M.ensure_features(data, [([a.c2_space], None, None, None, None)], feats)

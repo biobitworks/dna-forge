@@ -82,3 +82,16 @@ def test_tile_vote():
     tr = [f"s{i}" for i in range(6)]
     P = M.tile_vote_proba(tiles, tr, np.array([i % 2 for i in range(6)]), ["s6", "s7"], 2)
     assert list(P.argmax(1)) == [0, 1]
+
+
+def test_feature_inputs_cover_tiles_and_c2_space(tmp_path):
+    from dnaforge.__main__ import _feature_inputs
+    from dnaforge.data import BiobaseData
+    from tests.test_core import make_pack
+    make_pack(tmp_path)
+    d = BiobaseData.load(tmp_path)
+    files = {p.relative_to(tmp_path).as_posix() for p in _feature_inputs(d, ["hoptimus@meanmax~sc", "gigapath"])}
+    assert "tiles/tilepack/embeddings/hoptimus/tile-vectors.i8" in files
+    assert "tiles/tilepack/embeddings/hoptimus/tile-meta.json" in files
+    assert "tiles/tilepack/embeddings/gigapath/slide-vectors.json" in files
+    assert "tiles/tilepack/embeddings/gigapath/tile-vectors.i8" not in files
