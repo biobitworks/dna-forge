@@ -24,3 +24,6 @@ runs/**/*.csv
 runs/**/*.json
 !runs/**/record.json
 *.log
+
+# Full custody files with slide ids stay local
+custody/local/

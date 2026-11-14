@@ -38,6 +38,7 @@ def _emb_files(data, models):
 def cmd_ingest(a):
     root = Path(a.root).expanduser()
     out = Path(a.out or f"custody/ingest-{dt.date.today().isoformat()}.json")
+    out.parent.mkdir(parents=True, exist_ok=True)
     rec = custody.ingest([Path(z).expanduser() for z in a.zips], root, out)
     print(f"ingest {rec['id']}: {len(rec['sources'])} archives, "
           f"{sum(t['count'] for t in rec['extracted'].values())} files hashed -> {out}")
@@ -108,11 +109,17 @@ def make_folds(data: BiobaseData, n_splits: int = 5, seed: int = 0) -> dict:
 
 
 def cmd_folds(a):
+    """Folds go to custody/local/folds.json (gitignored, has slide ids); custody/folds.sha256 (committed)
+    lets every node prove it uses the same folds. Regenerate anywhere with the same seed."""
+    import hashlib
     data = BiobaseData.load(Path(a.root).expanduser())
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(make_folds(data, a.n_splits, a.seed), indent=1))
-    print(f"wrote {out}")
+    text = json.dumps(make_folds(data, a.n_splits, a.seed), indent=1, sort_keys=True)
+    out.write_text(text)
+    digest = hashlib.sha256(text.encode()).hexdigest()
+    Path(a.hash_out).write_text(f"{digest}  folds.json (n_splits={a.n_splits}, seed={a.seed})\n")
+    print(f"wrote {out} (sha256 {digest}) and {a.hash_out}")
 
 
 def main(argv=None):
@@ -121,7 +128,7 @@ def main(argv=None):
     p.add_argument("--runs", default="runs")
     sub = p.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("ingest"); s.add_argument("zips", nargs="+"); s.add_argument("--out"); s.set_defaults(func=cmd_ingest)
-    s = sub.add_parser("folds"); s.add_argument("--out", default="custody/folds.json")
+    s = sub.add_parser("folds"); s.add_argument("--out", default="custody/local/folds.json"); s.add_argument("--hash-out", default="custody/folds.sha256")
     s.add_argument("--n-splits", type=int, default=5); s.add_argument("--seed", type=int, default=0); s.set_defaults(func=cmd_folds)
     s = sub.add_parser("verify"); s.add_argument("manifest"); s.set_defaults(func=cmd_verify)
     for name, fn in (("eval", cmd_eval), ("submit", cmd_submit)):

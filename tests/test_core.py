@@ -81,6 +81,8 @@ def test_custody_ingest_verify_and_run_record(tmp_path):
     rec = custody.ingest([z], root, out)
     assert rec["sources"]["pack.zip"]["sha256"] == custody.sha256_file(z)
     assert custody.verify(out, root) == []
+    assert custody.verify(custody.local_path(out), root) == []
+    assert "slides_manifest.json" not in out.read_text() and "slides_manifest.json" in custody.local_path(out).read_text()
     (root / "slides/pack_slides/extra.csv").write_text("x")
     assert "added: slides/pack_slides/extra.csv" in custody.verify(out, root)
     (root / "slides/pack_slides/extra.csv").unlink()
