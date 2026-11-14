@@ -299,3 +299,13 @@ is a separate PROPOSAL; DAISY currently has no verified drug-screening
 source and Tamarind Bio has no executed jobs in the connected workspace.
 Full source-start of the separate DNAForge desktop app FAILED; it
 must not be used as evidence of completed Biobase integration.
+
+### Exploratory drug-screening and Tamarind successor evidence
+
+The [15:52 PT successor receipt](docs/judges/UPDATE_20261114T1552_PT.md)
+records a real completed Tamarind molecular-descriptor smoke test
+on ethanol and a separately normalized 25-record ChEMBL IC50 sample
+(24 retained, 1 excluded). These are SOURCE/TRANSFORMATION and
+single-job execution observations only: **DAISY VCC screening model
+training remains NOT_TESTED and NOT_ADMITTED**. Earlier zero-job
+and zero-data observations are preserved as predecessor states.
