@@ -1,0 +1,28 @@
+name: crossnode-evidence
+on:
+  pull_request:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pytest
+      - name: Test fail-closed receipt comparison
+        run: python -m pytest -q tests/test_crossnode_receipts.py
+      - name: Verify public receipts are mutually consistent
+        run: |
+          python scripts/crossnode_receipts.py compare \
+            --magicpro docs/evidence/20261114_enssvm_magicpro.json \
+            --magicstudio docs/evidence/20261114_enssvm_magicstudio.json \
+            --out "$RUNNER_TEMP/comparison.json"
+          cmp docs/evidence/20261114_enssvm_crossnode_verified.json "$RUNNER_TEMP/comparison.json"
+      - name: Block challenge-data uploads
+        run: python scripts/check_no_data.py

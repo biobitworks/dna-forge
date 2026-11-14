@@ -1,0 +1,49 @@
+{
+  "claim_ceiling": "Cross-machine reproducibility only; hidden-test accuracy NOT_COMPUTED",
+  "config_sha256": "7c2faf3fb63cdf5edcbd2b38d89bbb00c15c1357e502100cb2296a4941f2cd2d",
+  "development_metrics": {
+    "oof_acc": 0.8631578947368421,
+    "oof_p@1": 0.868421052631579,
+    "oof_p@10": 0.8,
+    "oof_p@5": 0.8294736842105263
+  },
+  "input_sha256": {
+    "folds": "2f3cd6de81c08b2f4d66739492519f570d564b8a4a9a86118823c7fa7e6608d0",
+    "gigapath_vectors": "a12350969f733118f9447b05aaf397cfa88ac5728b335fdaff01006137a85a05",
+    "hoptimus_vectors": "b505ab01f0e68ed3001fda1a035dbd86c909ff422e3a9a084b9957f4ea352bd5",
+    "slide_manifest": "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22"
+  },
+  "labels": {
+    "known_train_slides": 190,
+    "unlabeled_heldout_slides": 67
+  },
+  "method": "ens-svm",
+  "mmr": "NOT_COMPUTED",
+  "node": "magicSTUDIObox",
+  "output_bytes": {
+    "heldout_organ.csv": 11238,
+    "heldout_similar.csv": 214638,
+    "oof_organ.csv": 32264,
+    "submission_slides_organ.csv": 2458,
+    "submission_slides_similar.csv": 37524
+  },
+  "output_sha256": {
+    "heldout_organ.csv": "92ecf5a678ce0b710726065e0bef1cc72e5e44efdacac26f9f0c2cc59111169c",
+    "heldout_similar.csv": "acb62125b7f627a6d47d825fd80e65bb30f10399bb8ecc2b451bd855a6230930",
+    "oof_organ.csv": "c06259e83a316212d8ae390a959ca9b1e672b768d4eb3a9a5390c864758a1d4e",
+    "submission_slides_organ.csv": "8a69914d27c707c8a61694c8d8123f2139141cd5b79ac358193dda5da4cf7356",
+    "submission_slides_similar.csv": "ed38172b0075b0415fcce2866a3c68d55a1214e578d0ddc97c19c070fb90d423"
+  },
+  "run": "20261114T203813Z-submit-ens-svm-d301b7",
+  "runtime": {
+    "numpy": "2.0.2",
+    "python": "3.9.6",
+    "scikit-learn": "1.6.1",
+    "scipy": "1.13.1"
+  },
+  "schema": "dnaforge.crossnode-enssvm.v1",
+  "signing": "NOT_SIGNED",
+  "source_code_dirty": false,
+  "source_commit": "dda6c509815e0437171b15b0a76c6c64ee8856ae",
+  "verified": "LOCAL_REHASH_PASS"
+}
