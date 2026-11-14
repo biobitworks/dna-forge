@@ -1,0 +1,20 @@
+# Challenge data is never committed. See DATA_POLICY.md.
+data/
+biobase/
+*.zip
+*.jpg
+*.jpeg
+*.png
+*.dzi
+*.i8
+*.u16
+slide-vectors.json
+tile-meta.json
+points.json
+*.jsonl
+# Run outputs (submissions are kept under runs/<id>/ only by explicit add)
+runs/*/cache/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
