@@ -3,10 +3,10 @@
 Each challenge requirement maps to the code that meets it and to the committed
 evidence (run records, output hashes, the fractal custody graph root), so a
 reviewer can trace every submitted file back to the Biobase packs. The final table
-below was filled in at the freeze. Nothing in this file is an answer-key
+below lists the chosen final files. Nothing in this file is an answer-key
 score.
 
-## Final files (frozen at 3:30 PM PT)
+## Final files (chosen 12:18 PM PT, freeze at 3:30 PM PT)
 
 | Task | File (kept on magicPRO, never committed) | Run id | sha256 | Check passed |
 |---|---|---|---|---|
