@@ -167,9 +167,12 @@ def to_prov(g: dict, sel: dict, per_case: bool = True) -> dict:
                   "fcg:root": g["identity"]["root"], "prov:wasDerivedFrom": {"@id": src["@id"]},
                   "prov:hadMember": [{"@id": uid(m["hash"])} for m in g["members"]]})
     for cat in g["members"]:
-        items.append({"@id": uid(cat["hash"]), "@type": ["prov:Entity", "prov:Collection"], "fcg:kind": "category",
-                      "dcterms:identifier": cat["identity"]["name"], "fcg:count": cat["identity"]["count"],
-                      "prov:hadMember": [{"@id": uid(m["hash"])} for m in cat["members"]]})
+        e = {"@id": uid(cat["hash"]), "@type": ["prov:Entity", "prov:Collection"], "fcg:kind": "category",
+             "dcterms:identifier": cat["identity"]["name"], "fcg:count": cat["identity"]["count"],
+             "fcg:root": cat["identity"]["root"]}
+        if per_case:  # members are only described in the local copy
+            e["prov:hadMember"] = [{"@id": uid(m["hash"])} for m in cat["members"]]
+        items.append(e)
     code_counts = Counter(code for c in sel["clusters"] for code in c["icd10"])
     for c in (sel["clusters"] if per_case else []):
         m = case_fco(c)
