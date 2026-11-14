@@ -273,3 +273,16 @@ Biobase-specific data agreement or final upload terms.
 **Claim ceiling:** exact-byte output reproducibility and auditable
 provenance. Hidden-test accuracy, clinical usefulness, source
 authorization, signing and MMR commitment require separate evidence.
+
+### Exact observed cross-node numerical environment
+
+For a reproducible comparison, on CPython 3.9.6 install the pinned
+dependency versions used in both successful Mac executions:
+
+    python -m pip install -r envs/biobase-enssvm-crossnode-20261114.txt
+    python -m pip install -e '.[dev]'
+
+This pins numerical package versions but cannot substitute for
+source-data matching or an exact platform/wheel fingerprint. A newly
+run model is a successor receipt, never a silent replacement of the
+selected files.

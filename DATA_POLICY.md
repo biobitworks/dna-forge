@@ -4,6 +4,14 @@ This repository is public and will be submitted. The challenge data is not.
 
 ## Rules we follow
 
+Status correction (Nov 14, 2026): one direct Patient selector demo commit
+tracked generated challenge-derived outputs and failed the data guard.
+PR #24 removed those files from the current main tree and extended
+exclusion checks, but the files are STILL in earlier Git history and
+possibly caches. History remediation and any applicable notification
+requirements are UNRESOLVED; do not claim this repo was always clean.
+
+
 - **No challenge data in git.** Slides, tiles, thumbnails, embeddings,
   manifests and reports stay on our machines. `.gitignore` blocks the
   common file types; reviewers should reject any PR that adds data.

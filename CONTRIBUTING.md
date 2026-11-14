@@ -8,7 +8,7 @@ Two other files define the team rules. Read them once:
 - [DATA_POLICY.md](DATA_POLICY.md): data handling and chain of custody.
 - [docs/MODEL_CONTRACT.md](docs/MODEL_CONTRACT.md): the files your model must write so it can be stacked into the final model and recorded in the fractal custody graph (FCG). Read this before you train anything.
 
-Both are in PR #1 until it merges. Read them on that branch if `main` does not have them yet.
+Both are merged. For current, end-to-end training and submission directions, start with README.md and docs/MODEL_TRAINING_HANDOFF_20261114.md.
 
 ## 1. Five-minute quickstart
 
@@ -98,7 +98,7 @@ Every number we report must trace back to a run record.
 }
 ```
 
-If a run fails, set `status` to the failure and put the message in `error`. If `code.dirty` is true, say what the uncommitted changes were in `notes`. Commit the record. Caches under `runs/*/cache/` are ignored. Submission CSVs in a run directory are committed only by explicit `git add`.
+If a run fails, set `status` to the failure and put the message in `error`. If `code.dirty` is true, say what the uncommitted changes were in `notes`. Commit the record. Caches under `runs/*/cache/` are ignored. Submission CSVs, prediction rows and generated static HTML must NOT be committed; keep only approved, public-safe metadata and hashes in Git.
 
 **Hashing files.** A fallback for hand-written records until `RunRecord` lands, standard library only:
 
@@ -121,7 +121,7 @@ if __name__ == "__main__":
 
 **Say which split.** Every reported number names its split in `metrics.split`:
 
-- `loo-labelled`: leave-one-out on the 196 labelled slides. This is the only validation we have before 4:00 PM.
+- `loo-labelled`: leave-one-out on the 196 labelled slides. Also report shared five-fold and supplier-grouped development checks. Only 190 non-held-out slides have usable organ-group training labels.
 - `answer-key`: scored against the answer key, available only after 4:00 PM.
 
 Leave-one-out and answer-key numbers are not comparable; do not put them in one table without labelling each.
