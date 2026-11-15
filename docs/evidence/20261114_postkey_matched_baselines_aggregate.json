@@ -1,0 +1,78 @@
+{
+  "answer_key_sha256": "134100eccc525410486def7cbba3b59bc0f229c7a012d8b1c3cd436926f92983",
+  "baseline_sources": {
+    "gigapath_input_vectors_sha256": "a12350969f733118f9447b05aaf397cfa88ac5728b335fdaff01006137a85a05",
+    "gigapath_nearest_neighbor_script_sha256": "7590799081ddfc8dcc121dc11c862c6caa1f0c3885e7f26e2ab5554bae748084",
+    "reports_baseline_output_sha256": "4b3fa2daa3752a79f5850caceaa7c71e3bf97c79bcd60b1187d1596f8a3480b2",
+    "reports_keyword_script_sha256": "392ef64607acdba10cca18cd0bff6aebc4c1f05e1c95e8ac22fd0b57bb5001ce",
+    "slide_manifest_sha256": "1d07d56b5b39e3b1e72d68f843f2896d5c1a2f0fdae7b70db6e52594053c8f22"
+  },
+  "claim_status": {
+    "candidate": "EXACT_PREKEY_FROZEN_HASHES_MATCHED",
+    "clinical_outcome": "NOT_TESTED",
+    "key_same_for_arms": "OBSERVED_LOCAL",
+    "mmr": "NOT_COMPUTED",
+    "organizer_upload": "NOT_VERIFIED",
+    "pretrained_foundation_weights": "REUSED_NOT_TRAINED",
+    "rights": "UNKNOWN",
+    "score": "POSTKEY_LOCAL_CALCULATION_NOT_ORGANIZER_CERTIFIED",
+    "signature": "NOT_SIGNED",
+    "source_level_causality": "NOT_TESTED"
+  },
+  "dataset_grain": "30 report criteria and 67 heldout slides; unlinked datasets",
+  "kind": "POSTKEY_LOCAL_BASELINE_REEXECUTION_AND_FROZEN_TEAM_SELF_EVALUATION",
+  "limits": "Same answer key and original organizer baseline scripts. This is a system-level post-key contrast, not a prospectively controlled or independent clinical experiment; improvement cannot be attributed to FCG graph or any one module. No challenge answer-key rows or prediction IDs stored in this aggregate.",
+  "private_receipt_sha256": {
+    "reports_keyword_baseline": "77d2e2dd0182db00d1c0120d2b054cf54e3a2a3a28fb053d72e02d91547fb12c",
+    "slide_baseline_comparison": "72c15123f609c38a738b1741092c633222c8afef79041827d065055a4d44bbb0",
+    "team": "e529749cd9ef368afeca001d3d92fa4c6c240a9bd6be002c42bb3f5f4d71fb32"
+  },
+  "reports": {
+    "baseline_confusion": {
+      "fn": 194,
+      "fp": 1459,
+      "tp": 414
+    },
+    "baseline_macro_f1": 0.2728699458256888,
+    "baseline_nonempty_criteria": 23,
+    "delta_f1": 0.7271300541743112,
+    "n_criteria": 30,
+    "team_confusion": {
+      "fn": 0,
+      "fp": 0,
+      "tp": 608
+    },
+    "team_macro_f1": 1.0
+  },
+  "schema": "dnaforge.judges.postkey-matched-baselines-aggregate.v1",
+  "slides": {
+    "baseline_c1_accuracy": 0.7014925373134329,
+    "baseline_c1_correct": 47,
+    "baseline_c2_precision": {
+      "1": 0.7761194029850746,
+      "10": 0.5716417910447761,
+      "5": 0.6686567164179105
+    },
+    "delta_pp": {
+      "c1_accuracy_pp": 19.402985074626866,
+      "c2_p10_pp": 30.895522388059703,
+      "c2_p1_pp": 10.447761194029848,
+      "c2_p5_pp": 22.388059701492537
+    },
+    "n_test": 67,
+    "paired_c1_confusion": {
+      "baseline_only_correct": 1,
+      "both_correct": 46,
+      "both_incorrect": 6,
+      "team_only_correct": 14
+    },
+    "paired_c1_exact_mcnemar_two_sided_p": 0.0009765625,
+    "team_c1_accuracy": 0.8955223880597015,
+    "team_c1_correct": 60,
+    "team_c2_precision": {
+      "1": 0.8805970149253731,
+      "10": 0.8805970149253731,
+      "5": 0.8925373134328358
+    }
+  }
+}
