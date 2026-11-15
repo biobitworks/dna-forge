@@ -130,7 +130,25 @@ def build_payload():
     crossnode = source("docs/evidence/20261114_enssvm_crossnode_verified.json")
     prekey = source("docs/evidence/20261114_prekey_selected_receipt.json")
     answer_score = source("docs/evidence/20261114_local_selfscore_aggregates.json")
+    matched = source("docs/evidence/20261114_postkey_matched_baselines_aggregate.json")
+    team_uploads = source("docs/evidence/20261114_team_upload_merge_aggregate.json")
     fcg = source("custody/fcg.json")
+    if matched["answer_key_sha256"] != answer_score["key_sha256"]:
+        raise ValueError("source-key digest mismatch in matched baseline comparison")
+    if matched["slides"]["team_c1_correct"] != answer_score["metrics"]["c1_correct"]:
+        raise ValueError("team C1 aggregate drifted from original self-score")
+    if matched["reports"]["team_macro_f1"] != answer_score["metrics"]["criteria_mean_f1"]:
+        raise ValueError("team A aggregate drifted from original self-score")
+    if (team_uploads["merged_pr_count"] != 21 or team_uploads["open_pr_count"] != 0 or
+        sorted(team_uploads["merged_pr_numbers"]) != sorted({num for arm in team_uploads["pr_arms"].values() for num in arm})):
+        raise ValueError("teammate PR snapshot count or inventory mismatch")
+    if team_uploads["snapshot_main_commit"] != "2f23887a3a0dcf94f2f679744f25210dc5b84286":
+        raise ValueError("unexpected predecessor team commit")
+    if any(team_uploads["selected_submission_sha256"][name] !=
+           answer_score["frozen_submissions_sha256"][name]
+           for name in answer_score["frozen_submissions_sha256"]):
+        raise ValueError("new team upload changed frozen submission identity")
+
     for rel in [
         "runs/20261114T191550Z-mil-hoptimus-b7b8b6/record.json",
         "runs/20261114T191906Z-mil-biomedclip-947e1d/record.json",
@@ -226,10 +244,19 @@ def build_payload():
             {"name": "10 / Organizer upload", "state": "NOT_VERIFIED", "info": "No verified upload receipt or Team ID evidence"},
         ],
         "local_selfscore": answer_score,
+        "matched_baselines": matched,
+        "team_uploads": team_uploads,
+        "rights": {
+            "software": "Apache-2.0 where rightsholder has authority",
+            "research_content": "CC BY-NC-ND 4.0 for owned original content",
+            "contributor_relicense": "RIGHTS_UNVERIFIED",
+            "third_party": "UPSTREAM_LICENSES_RETained_NOT_RELICENSED",
+            "source": "LICENSING.md",
+        },
         "source_sha256": dict(sorted(SHA_RECORDS.items())),
         "interpretation": {
             "delta": "delta = variant metric - within-arm FULL metric. Negative removal delta means the removed component helped under this controlled development comparison.",
-            "baselines": "Organizer-reported approximate baselines are not re-evaluated with a matched split; never present approximate baseline comparison as an official measured gain.",
+            "baselines": "Original organizer baseline scripts re-executed on the same downloaded key after release. This is a local same-key system contrast, not an organizer-certified score or a prospective external evaluation.",
             "caveats": "Extended four-embedding LOMO run is code-clean. Selected two-member LOMO predecessor is code-dirty. Neither is an independent official hidden-test score.",
             "identity": "SHA-256 identifies bytes; declared FCG edges do not prove scientific truth, signing, or causality.",
         }

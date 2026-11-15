@@ -42,6 +42,20 @@ Efrazar's EndoForge V2 and the Patient selector are additional,
 separate research/demo contributions, not the selected Task A/C1/C2
 files. The upstream DNAForge desktop app is also a separate lane.
 
+**Latest dashboard and rights:** The
+[interactive LOMO/teammate dashboard](docs/judges/LOMO_JUDGE_DASHBOARD_20261114.html)
+now distinguishes direct teammate uploads and PR mergers from the
+unchanged frozen challenge submissions. It plots exact same-key
+organizer baseline gains, not only the older rounded estimates.
+Software uses [Apache-2.0](LICENSE) where authorized; designated owned
+research narrative uses [CC BY-NC-ND 4.0](LICENSING.md); upstream
+and teammate rights remain separate. The
+[dashboard handoff](docs/judges/TEAM_DASHBOARD_HANDOFF_20261114.md)
+has a computed binary Merkle snapshot, a **locally generated,
+public-key-verifiable attestation**, and explicit trust limits.
+This is not an OpenAI organizational or PI signature, and it is not
+an MMR commitment.
+
 **Evidence and judge handoff:**
 [Complete thesis, exact scoring criteria and all-lane audit](docs/judges/TEAM_THESIS_TASK_COMMIT_AUDIT_20261114.md) |
 [Public-safe baseline contrast](docs/evidence/20261114_postkey_matched_baselines_aggregate.json) |

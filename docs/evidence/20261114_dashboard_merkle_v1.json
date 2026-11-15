@@ -1,0 +1,120 @@
+{
+  "construction": "ordered UTF-8 path ascending; content sha256 over raw file bytes; leaf sha256(0x00 || ASCII DNAFORGE_DASHBOARD_LEAF_V1 || 0x00 || UTF8 path || 0x00 || lowercase content SHA256 hex); parent sha256(0x01 || 32-byte raw left hash || 32-byte raw right hash); odd level duplicates its final child; no JSON canonicalization of file contents",
+  "leaf_count": 15,
+  "leaf_order": "utf8_lexicographic_path",
+  "leaves": [
+    {
+      "bytes": 916,
+      "content_sha256": "56536df4c67bcecbaf6440c30687f5621574ba4d0091c09a12245ca109fac9a8",
+      "index": 0,
+      "leaf_sha256": "80b00039d7a6bc957c15df958837954642689a77244b152c9a5bad6947fcc318",
+      "path": ".github/workflows/dashboard-attestation.yml"
+    },
+    {
+      "bytes": 11358,
+      "content_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "index": 1,
+      "leaf_sha256": "49453e8228c21d7d281efe01f4b43ecb59832d80d154f38daa5b3f45663acf03",
+      "path": "LICENSE"
+    },
+    {
+      "bytes": 4550,
+      "content_sha256": "ebdb925f2ac20a19be9dd37a493377fb27ef1f45b109a8068b31f8ea357d23b9",
+      "index": 2,
+      "leaf_sha256": "eeb1723f95e5e3960bce91d0e85fe5569926e019883f407f0cf18e4beede1973",
+      "path": "LICENSING.md"
+    },
+    {
+      "bytes": 1335,
+      "content_sha256": "0b9f5104bae1edcae6d8e87ca82407d0a214ce7285e634b15aa5e69868b220aa",
+      "index": 3,
+      "leaf_sha256": "ddba3ddc7edaf671e2d99e3863e94e84ad42747c0394ca2dd1e258cb5d86b6df",
+      "path": "NOTICE.md"
+    },
+    {
+      "bytes": 19929,
+      "content_sha256": "ceb52482e40f425f85d1f0fce9f838104fac59865c2a6de151b65d25dcd8e9aa",
+      "index": 4,
+      "leaf_sha256": "f9695df9bb7d3fcfd72f886495fc540671cb9f48c0a6937e257b4834015799aa",
+      "path": "README.md"
+    },
+    {
+      "bytes": 3154,
+      "content_sha256": "8b6719784930a110327eb818b72c6f77f371a0d0471c361935488795ce30dbf1",
+      "index": 5,
+      "leaf_sha256": "5e5f14f782e45ecc674213525e5a76d87ccdc9c308b208cb9733f4b62723953c",
+      "path": "docs/evidence/20261114_postkey_matched_baselines_aggregate.json"
+    },
+    {
+      "bytes": 5745,
+      "content_sha256": "97e4e43ddb8189557fc92b0433b64cd1e01306242adbc5b28c172f9ed8f541da",
+      "index": 6,
+      "leaf_sha256": "eaed1f4a7e8e28d1d62f0da5558e0ececd2bdbaa587f8a2d64fefb43e26207c9",
+      "path": "docs/evidence/20261114_team_upload_merge_aggregate.json"
+    },
+    {
+      "bytes": 50233,
+      "content_sha256": "aa6482630196b9b45cd5f957c2e7abb129002f2cb8fa6aaeee25cec810d76afb",
+      "index": 7,
+      "leaf_sha256": "faa7cd7ee1396369c932ec6393d3c1d469a4393d9d30642938260b0b8bd342ec",
+      "path": "docs/judges/LOMO_JUDGE_DASHBOARD_20261114.html"
+    },
+    {
+      "bytes": 15255,
+      "content_sha256": "088fd3d8cd06995030e48d34cc495211af9551822f1b1bd93cd9f6d812a90a2c",
+      "index": 8,
+      "leaf_sha256": "3c2af365697681335b135fe8b192b14100ba8dba2b1fb3b3ec05e3687cb45452",
+      "path": "docs/judges/TEAM_THESIS_TASK_COMMIT_AUDIT_20261114.md"
+    },
+    {
+      "bytes": 23757,
+      "content_sha256": "d8aa6aa296a4e1504d3cd0fe71a140d9f268a49c52dad7e12c9a47965a3f9f1b",
+      "index": 9,
+      "leaf_sha256": "c1a9f6fa35912c7695b4ecb6b02496622891281b3f19c1a4d9547200a471beb2",
+      "path": "scripts/assets/lomo_judge_dashboard_template.html"
+    },
+    {
+      "bytes": 15063,
+      "content_sha256": "75716493677b9db6c12ab825e3ac41247aa2266b5ea878f1e5affddfa0628dcd",
+      "index": 10,
+      "leaf_sha256": "4c2e492f50b284b27ea604898a3903d38116cd8b59fe77685f1c9b891063f0c5",
+      "path": "scripts/build_judge_lomo_heatmap.py"
+    },
+    {
+      "bytes": 4420,
+      "content_sha256": "3d10973831891fe3ffc817dc107cccd878e7a638ec8b0d17549f524af0e28486",
+      "index": 11,
+      "leaf_sha256": "e5494802b80c91275d6a6191fd937a72c14aba0028d523e5b9cf5aa2d1b292d8",
+      "path": "scripts/dashboard_merkle.py"
+    },
+    {
+      "bytes": 2862,
+      "content_sha256": "8a09da72bbd0960ee25cff00996525b2062354edbc086f8ef03c9c8089718cc4",
+      "index": 12,
+      "leaf_sha256": "53cc5fe9e646d8a51cb59d232902119fa1613ea1fa1215f32cc02eed78ec2001",
+      "path": "scripts/verify_dashboard_attestation.py"
+    },
+    {
+      "bytes": 2059,
+      "content_sha256": "be7244de0f0c981596971c775428d4b2a9eb2bf0cd72d24401944922d4750aaf",
+      "index": 13,
+      "leaf_sha256": "b29723d29734a6d83d096575508f8ba58cced30cccda5bae2390f9e3930dbadc",
+      "path": "tests/test_judge_heatmap.py"
+    },
+    {
+      "bytes": 4387,
+      "content_sha256": "287307a3c2b699e0ee19318cda762a24370e35ad941d6666b28c5bf64f06404a",
+      "index": 14,
+      "leaf_sha256": "1e22823d6b9b9d367815990e132f4b5904ccc3e1081d4c4e44ac76b5dd649df8",
+      "path": "tests/test_team_license_dashboard.py"
+    }
+  ],
+  "mmr": "NOT_COMPUTED",
+  "parent_git_sha1": "2f23887a3a0dcf94f2f679744f25210dc5b84286",
+  "project": "biobitworks/dna-forge",
+  "root_sha256": "33bc74cfad628671e5760d6c2f1706af0e49f59d53ee6d1be4b6301ed7f37ca9",
+  "schema": "dnaforge.dashboard.merkle.v1",
+  "scope_limit": "Only explicitly listed public files; not whole Git repo, original data, identity, ownership, scientific truth or upload evidence",
+  "signature": "SEPARATE_SSH_ED25519_SIGNATURE_VERIFIED_BY_VERIFY_SCRIPT",
+  "type": "BINARY_MERKLE_SNAPSHOT_NOT_MMR"
+}
