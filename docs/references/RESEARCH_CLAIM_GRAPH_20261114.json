@@ -1,0 +1,40 @@
+{
+  "schema": "dnaforge.research-citation-claims.v1",
+  "as_of": "2026-11-14",
+  "project": "biobitworks/dna-forge",
+  "status": "LITERATURE_PROJECTION_NOT_EXPERIMENTAL_FCG",
+  "signing": "NOT_SIGNED",
+  "mmr": "NOT_COMPUTED",
+  "experimental_roots": "NOT_COMPUTED",
+  "identity_policy": "citation and claim IDs distinguish content from literature occurrence; not evidence of a signed source",
+  "claims": [
+    {"id":"CLM-01","text":"Human endometriosis can rarely occur in an individual reported as male; one case does not give prevalence or establish cis status","state":"SUPPORTED_CASE_ONLY"},
+    {"id":"CLM-02","text":"Maternal microchimerism proposed as an etiologic hypothesis","state":"HYPOTHESIS_NOT_ESTABLISHED"},
+    {"id":"CLM-03","text":"Y chromosome FISH on the sampled endometrial tissue in one 31-patient study did not detect male fetal microchimerism","state":"OBSERVED_NEGATIVE_SOURCE_STUDY"},
+    {"id":"CLM-04","text":"Ovarian follicle object detection was demonstrated on mouse histology not a clinical human PCOS diagnostic cohort","state":"SUPPORTED_METHOD_SCOPE"},
+    {"id":"CLM-05","text":"GSE153739 has 7 tissue samples: 4 cases and 3 controls","state":"SUPPORTED_ACCESSION_METADATA"},
+    {"id":"CLM-06","text":"GSE266265 has 60 donors with approximately 466371 profiled single cells","state":"SUPPORTED_ACCESSION_METADATA"},
+    {"id":"CLM-07","text":"MMP11 and VCAN showed compartment-specific immunostaining in an endometriosis tissue study","state":"SUPPORTED_SOURCE_STUDY"},
+    {"id":"CLM-08","text":"Immune and macrophage alterations in menstrual effluent have been reported in human cohorts","state":"SUPPORTED_SOURCE_ASSOCIATION"},
+    {"id":"CLM-09","text":"Kaggle endometriosis dataset rights and population sampling are not established by inspected listing","state":"UNKNOWN_RIGHTS"},
+    {"id":"CLM-10","text":"Ptarmigan-1 has been described in a company preprint and portal; independent target-specific reproduction is untested here","state":"PREPRINT_VENDOR_CLAIM_NOT_TESTED"}
+  ],
+  "edges": [
+    {"from":"SRC17","to":"CLM-01","type":"CASE_REPORT_DOCUMENTS"},
+    {"from":"SRC15","to":"CLM-02","type":"PREPRINT_PROPOSES"},
+    {"from":"SRC16","to":"CLM-03","type":"NEGATIVE_METHOD_RESULT_DOCUMENTS"},
+    {"from":"CLM-03","to":"CLM-02","type":"DISTINCT_HYPOTHESIS_NOT_DIRECTLY_TESTED"},
+    {"from":"SRC13","to":"CLM-04","type":"ANIMAL_METHOD_SCOPE"},
+    {"from":"SRC10","to":"CLM-05","type":"ACCESSION_METADATA_DOCUMENTS"},
+    {"from":"SRC11","to":"CLM-06","type":"ACCESSION_METADATA_DOCUMENTS"},
+    {"from":"SRC22","to":"CLM-06","type":"PEER_REVIEWED_COMPANION"},
+    {"from":"SRC18","to":"CLM-07","type":"ASSOCIATED_IHC_STUDY"},
+    {"from":"SRC19","to":"CLM-08","type":"HUMAN_OBSERVATIONAL_STUDY"},
+    {"from":"SRC20","to":"CLM-08","type":"PREPRINT_CONTEXT_ONLY"},
+    {"from":"SRC21","to":"CLM-08","type":"CELL_STATE_CONTEXT_ONLY"},
+    {"from":"SRC03","to":"CLM-09","type":"LICENSE_UNVERIFIED"},
+    {"from":"SRC04","to":"CLM-10","type":"VENDOR_DESCRIPTION"},
+    {"from":"SRC05","to":"CLM-10","type":"PREPRINT_METHOD"},
+    {"from":"SRC08","to":"CLM-10","type":"PORTAL_AVAILABLE_NOT_EXECUTED"}
+  ]
+}
