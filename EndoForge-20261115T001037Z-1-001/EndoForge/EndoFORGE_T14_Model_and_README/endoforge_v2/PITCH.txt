@@ -1,0 +1,89 @@
+EndoFORGE AI — hackathon pitch
+
+Tagline: Connect the history. Contextualize the hormones. Trace the evidence.
+
+TWO-MINUTE SCRIPT
+
+Endometriosis research needs to connect symptoms across time with the biological
+context in which measurements were taken. A pain score, a hormone measurement,
+and a molecular sample tell different stories when separated from that timeline.
+
+EndoFORGE AI is an explainable research workspace designed around primary care.
+It brings clinical histories, hormone trajectories, transcriptomic features and
+menstrual-blood research markers into one matched patient view. Endometriosis
+and PCOS remain separate targets, so overlapping patterns can be examined.
+
+The working local prototype uses a synthetic research cohort of 1,200 patients
+with repeated visits, missing information and matched specimens. It shows two
+research information cutoffs: an initial primary-care view and a later specialist
+pre-biopsy view. Information collected later cannot leak into earlier scores.
+
+Watch what happens when I remove an assay. The system uses a dedicated smaller
+baseline when possible, rather than pretending the missing modality was observed.
+We can inspect the contributing features, follow hormonal context, and export
+a matched research cohort. Every calculation runs locally with open-source tools.
+
+Our evaluation separates patients, preserves unknown outcomes and compares
+combined models against clinical-only baselines on the same held-out patients.
+Bootstrap intervals help show how stable these simulation results are. We do
+not assume that adding modalities improves performance; the comparison tests it.
+
+Today this demonstrates software, integration and evaluation feasibility on
+synthetic data. It does not establish clinical diagnostic or referral accuracy.
+The tissue experiment currently uses numeric surrogates, not a validated slide
+model. Earlier identification is the research goal, not a demonstrated outcome.
+
+Our next milestone is a clinician-led study with independently adjudicated
+outcomes and matched samples, followed by external and prospective validation.
+We are seeking a clinical and research-data collaborator to help define that
+study and evaluate whether this evidence workspace improves the care pathway.
+
+LIVE DEMO: ABOUT 90 SECONDS
+
+1. Open http://127.0.0.1:8503 and start on Pitch overview.
+   Show the synthetic cohort, patient separation and two information cutoffs.
+2. Open Patient journey. Choose Persistent pain pattern, then Overlapping
+   symptom pattern. Selection uses histories, not favorable model responses.
+3. Open the hormone history. Explain timing, observed changes and treatment
+   context. These measurements are not a diagnostic hormone panel.
+4. Select All available research modalities. Use Withhold entire modalities
+   to remove an available assay and show the active baseline change. If that
+   assay was already absent at the cutoff, select another case/stage first.
+5. Expand a contribution chart. Positive/negative terms explain the arithmetic,
+   not causal biology. Scores remain synthetic model outputs, not disease risk.
+6. Open Model evidence. Show paired comparisons, held-out routing evaluation
+   and bootstrap intervals. Do not describe synthetic AUROC as clinical accuracy.
+7. Open Research cohorts. Filter for matched assays and export locally.
+
+IF JUDGES ASK
+
+What is new here?
+The demonstrable integration combines patient/time matching, hormonal context,
+separate overlap-aware outputs, modality-availability routing and transparent
+model comparisons in a local workspace. We are not claiming a new validated
+biomarker or a novel diagnostic algorithm.
+
+Why use synthetic data?
+It permits reproducible software and leakage testing without exposing patient
+records. It cannot prove biological validity or clinical utility.
+
+Does the combined model work better?
+Not consistently in this simulation. We show that result rather than force an
+improvement claim. The clinical baseline is an essential comparator.
+
+What do the intervals mean?
+They resample the fixed held-out synthetic patients for already-fitted models.
+They do not capture training/generator uncertainty or clinical generalization.
+
+Does this diagnose endometriosis?
+No. It is a research prototype. Its targets, distributions and assay variables
+are simulated. Clinical use requires independent validation and appropriate
+clinical governance.
+
+Do you have real histology/transcriptomics models?
+Transcriptomic inputs are abstract simulated features. Tissue analysis uses
+numeric surrogates only. Raw RNA processing and image-based pathology remain
+future work; neither is represented as implemented clinical capability.
+
+Avoid these claims: clinically validated, diagnoses early, reduces diagnostic
+delay, real patient accuracy, validated biomarker, proven referral improvement.

@@ -1,0 +1,45 @@
+EndoFORGE AI V2 — Team T14 — email handoff
+
+For Byron / biobitworks
+
+The endoforge_v2 folder contains the model, synthetic data generator, Streamlit
+dashboard, tests, README, pitch notes, dependency lists and local app configuration.
+No virtual environment, generated patient records, predictions or exports are
+included. The application generates synthetic research data locally. It is not
+clinically validated and cannot diagnose or direct patient care.
+
+ADD TO GITHUB
+Upload the entire endoforge_v2 folder as a new top-level folder in dna-forge.
+Keep the folder name exactly endoforge_v2 because Python imports use it.
+Create a separate branch and pull request; do not overwrite existing project
+files. Keep main unchanged during the judging freeze. The organizers review
+main at the deadline, so coordinate the final snapshot with the team before
+the freeze begins. This handoff does not upload anything or submit the form.
+
+RUN ON WINDOWS
+Extract this ZIP. Open PowerShell in the extracted directory containing
+endoforge_v2. Use Python 3.11 or newer:
+
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r endoforge_v2\requirements.txt
+.\.venv\Scripts\python.exe -m endoforge_v2.evaluate
+.\.venv\Scripts\python.exe -m streamlit run endoforge_v2\app.py --server.address 127.0.0.1 --server.port 8503 --browser.gatherUsageStats false
+
+Open http://127.0.0.1:8503 on that same computer. Installation requires internet;
+computation runs locally. No paid API, patient upload or external inference.
+
+TEST
+.\.venv\Scripts\python.exe -m pytest endoforge_v2\test_v2.py -q
+
+V2 verification: 13 tests passed. The combined repository/V1/V2 check passed
+53 tests with one optional PyTorch-dependent test skipped. Detailed historical
+checks and limitations are in endoforge_v2/VALIDATION.txt.
+
+JUDGING NOTES
+The study-design demonstration uses a synthetic research cohort. Molecular and
+menstrual features are abstract simulation variables. Tissue research uses
+numeric surrogates, not a histology image model. Do not present synthetic scores
+as clinical diagnostic performance. See endoforge_v2/PITCH.txt for the demo.
+
+FORM STATUS
+Not submitted. The user explicitly requested no form submission yet.

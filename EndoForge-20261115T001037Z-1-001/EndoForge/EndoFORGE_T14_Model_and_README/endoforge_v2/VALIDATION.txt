@@ -1,0 +1,81 @@
+EndoFORGE V2 — actual local checks, 2026-11-14
+
+Submission-package verification:
+python -m pytest tests endoforge/test_project.py endoforge_v2/test_v2.py -q -ra
+53 passed, 1 skipped in 36.21 seconds. The skipped FCG test requires optional
+PyTorch, which is not installed. Repository data guard passed for 97 files.
+Custody: runs/20261114T232524Z-endoforge-v2-synthetic-f4bf28/record.json.
+Source and aggregate-output hashes are recorded; generated patient tables stay
+local and ignored. Preparing this branch does not change main.
+
+Hackathon presentation update — final validation:
+13 tests passed in 14.79 seconds. Additional coverage: missing-modality model
+fallback, bootstrap/paired-comparison arithmetic, label-blind demo selection,
+and held-out evaluation of availability-aware routing. App/model source hashes
+and prediction hashes gate reuse of precomputed audit tables for demo startup.
+Updated health check: HTTP 200, body ok, port 8503.
+Browser preview automation timed out; manual visual QA was not completed.
+
+Presentation language uses "synthetic research cohort". Source and clinical
+validation limits remain explicit. PITCH.txt includes a two-minute script,
+demo sequence and judge questions. V1 source checksums remain unchanged.
+
+New local audit outputs: performance_intervals.csv, paired_comparisons.csv,
+availability_metrics.csv. Bootstrap intervals use 200 held-out patient resamples
+with already-fitted models. They do not quantify training or generator
+uncertainty, patient-level clinical uncertainty, or external validity.
+
+Paired full-minus-clinical endometriosis AUROC differences:
+Primary care: -0.007729; bootstrap interval [-0.019702, 0.005775].
+Specialist: -0.015819; bootstrap interval [-0.042369, -0.000056].
+No improvement in endometriosis discrimination is claimed. Routing handles
+availability; it does not select a model by its score or held-out performance.
+
+Earlier V2 validation record follows for traceability:
+
+Independent folder: endoforge_v2. No V1 source files changed.
+V1 SHA-256 before/after matched:
+app.py: ec5c49cda9b745511dcc3d46576bc3ee7948f93521adb64358c790c602cf219e
+model.py: bcc033175dcdc5a104b11b163eaefa5a4794232121a2668805478b2c81f86177
+test_project.py: cde4aa2d1b12956c5e0e28531b347c66754ba7368e85af587b1ee72bc7c6c71f
+
+Final command:
+python -m pytest endoforge_v2/test_v2.py -q -ra
+Result: 9 passed in 11.06 seconds.
+Checks: matched IDs and unknown outcomes; orphan specimen rejection; future
+visit/assay/tissue exclusion; additional samples do not rewrite earlier views;
+hormonal-history summaries use observed past only; patient split and target-wise
+unknown-label exclusion; train-only imputation; exact log-odds explanations and
+all-missing abstention; Streamlit stage switching, whole-modality withholding
+and empty-cohort handling without application exceptions.
+
+Python compileall: passed.
+Streamlit: listening on loopback port 8503.
+GET /_stcore/health: HTTP 200, body ok. GET /: HTTP 200.
+Programmatic Streamlit interaction testing performed; manual browser visual
+inspection and download-click verification were not performed.
+
+Synthetic evaluation:
+1,200 patients, 9,600 visits, 921 transcriptomic samples, 976 menstrual-effluent
+samples and 404 numeric tissue-surrogate records. 900 training patients and
+300 held-out patients. Zero patient overlap. Known endometriosis outcomes in
+267 test patients; known PCOS outcomes in 282. Unknown outcomes are excluded
+separately per target and are never silently assigned a negative label.
+
+Endometriosis held-out synthetic AUROC:
+                                  Clinical-only   All research modalities
+Primary-care cutoff (day 0)        0.977780        0.970052
+Specialist cutoff (day 120)        0.984603        0.968784
+
+These high values reflect engineered generator relationships and repeated
+simulated observations. They are NOT clinical accuracy estimates. More modalities
+did not consistently improve results. No tuning was performed to force fusion
+to outperform the baseline. The same synthetic population is used for both
+care-stage views; there is no separately representative specialist cohort.
+Both targets are later invented disease labels, not validated referral decisions.
+
+Full metrics: outputs/metrics.csv. Source-hashed provenance: outputs/run_record.json.
+The generated tables and predictions remain local in ignored outputs/.
+No real patient data, real transcriptomic measurements, validated menstrual
+biomarker assay, image-based histology model, or clinical decision rules.
+No external validation or quantified clinical uncertainty. No clinical use.
