@@ -1,0 +1,250 @@
+{
+  "description": "Citation metadata; does not establish dataset admission, consent, signing, or model training",
+  "items": [
+    {
+      "admission": "SEPARATE_SYNTHETIC_LANE",
+      "category": "synthetic-health",
+      "data_license": "CHECK_PROJECT_TERMS",
+      "id": "SRC01",
+      "short_title": "Synthea synthetic patient generator",
+      "status": "REFERENCE_ONLY",
+      "url": "https://synthetichealth.github.io/synthea/",
+      "verification": "PRIMARY_LANDING_PAGE",
+      "year": "2026"
+    },
+    {
+      "admission": "SEPARATE_SYNTHETIC_LANE",
+      "category": "synthetic-health",
+      "data_license": "CHECK_SERVICE_TERMS",
+      "id": "SRC02",
+      "short_title": "SyntheticMass synthetic population service",
+      "status": "REFERENCE_ONLY",
+      "url": "https://synthea.mitre.org/",
+      "verification": "SECONDARY_LINK_FROM_SYNTHEA",
+      "year": "2026"
+    },
+    {
+      "admission": "NOT_ADMITTED",
+      "category": "clinical-tabular",
+      "data_license": "UNKNOWN",
+      "id": "SRC03",
+      "short_title": "Endometriosis Dataset by michaelanietie",
+      "status": "DATA_LICENSE_GATE",
+      "url": "https://www.kaggle.com/datasets/michaelanietie/endometriosis-dataset",
+      "verification": "PAGE_REACHABLE_LICENSE_UNREADABLE",
+      "year": "2024"
+    },
+    {
+      "admission": "REFERENCE_ONLY",
+      "category": "drug-screening",
+      "data_license": "TERMS_NOT_CONFIRMED",
+      "id": "SRC04",
+      "short_title": "Talus Bio Ptarmigan-1 launch article",
+      "status": "VENDOR_CLAIM",
+      "url": "https://www.talus.bio/blog/try-ptarmigan-1-structure-free-drug/",
+      "verification": "PRIMARY_VENDOR_BLOG",
+      "year": "2026"
+    },
+    {
+      "admission": "REFERENCE_ONLY",
+      "category": "preprint",
+      "data_license": "CC_BY_4_ARTICLE_PREPRINT",
+      "id": "SRC05",
+      "short_title": "Ptarmigan-1 structure-free site-resolved contrastive model",
+      "status": "PREPRINT_NOT_INDEPENDENTLY_REPLICATED",
+      "url": "https://www.biorxiv.org/content/10.64898/2026.07.28.741295v1",
+      "verification": "SEARCH_VERIFIED_FULL_TEXT_403",
+      "year": "2026"
+    },
+    {
+      "admission": "NOT_ADMITTED",
+      "category": "proteomics",
+      "data_license": "PER_ACCESSION_LICENSE_REQUIRED",
+      "id": "SRC06",
+      "short_title": "MassIVE proteomics public repository",
+      "status": "NO_DATASET_SELECTED",
+      "url": "https://massive.ucsd.edu/",
+      "verification": "REPOSITORY_LANDING_VERIFIED",
+      "year": "2026"
+    },
+    {
+      "admission": "NOT_ADMITTED",
+      "category": "event-resources",
+      "data_license": "UNKNOWN",
+      "id": "SRC07",
+      "short_title": "Humic labs November 14 hackathon resource repo",
+      "status": "UNAVAILABLE",
+      "url": "https://github.com/humic-labs/hackathon-2026-11-14-resources",
+      "verification": "GITHUB_404_OBSERVED",
+      "year": "2026"
+    },
+    {
+      "admission": "NOT_EXECUTED",
+      "category": "drug-screening",
+      "data_license": "TERMS_NOT_CONFIRMED",
+      "id": "SRC08",
+      "short_title": "Ptarmigan-1 online portal",
+      "status": "REFERENCE_ONLY",
+      "url": "https://ptarmigan.app/",
+      "verification": "PRIMARY_PORTAL_VERIFIED",
+      "year": "2026"
+    },
+    {
+      "admission": "NOT_ADMITTED",
+      "category": "human-symptoms",
+      "data_license": "CHECK_DATA_AND_ARTICLE_TERMS",
+      "id": "SRC09",
+      "short_title": "Self-report symptom-based endometriosis prediction",
+      "status": "SELECTION_BIAS",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10073113/",
+      "verification": "OPEN_ARTICLE_VERIFIED",
+      "year": "2023"
+    },
+    {
+      "admission": "NOT_ADMITTED",
+      "category": "transcriptomics",
+      "data_license": "CHECK_GEO_TERMS_AND_CONSENT",
+      "id": "SRC10",
+      "short_title": "GSE153739 endometrial RNA-seq",
+      "status": "SEVEN_TISSUE_SAMPLES",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE153739",
+      "verification": "GEO_SEARCH_METADATA_VERIFIED",
+      "year": "2021"
+    },
+    {
+      "admission": "NOT_ADMITTED",
+      "category": "single-cell",
+      "data_license": "CHECK_GEO_TERMS_AND_CONSENT",
+      "id": "SRC11",
+      "short_title": "GSE266265 60-donor endometrial atlas",
+      "status": "SIXTY_DONORS_NOT_466371_INDEPENDENT",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE266265",
+      "verification": "GEO_SEARCH_METADATA_VERIFIED",
+      "year": "2026"
+    },
+    {
+      "admission": "TOOL_NOT_RESEARCH_DATA",
+      "category": "engineering",
+      "data_license": "APP_TERMS",
+      "id": "SRC12",
+      "short_title": "Desktop Commander remote workflow",
+      "status": "ENGINEERING_ONLY",
+      "url": "https://desktopcommander.app/",
+      "verification": "USER_SUPPLIED_APP_LINK",
+      "year": "2026"
+    },
+    {
+      "admission": "NOT_ADMITTED",
+      "category": "animal-imaging",
+      "data_license": "ARTICLE_CC_BY_NC_ND_DATA_ON_REQUEST",
+      "id": "SRC13",
+      "short_title": "Ovarian follicle object detection",
+      "status": "MOUSE_HISTOLOGY_NOT_HUMAN_PCOS",
+      "url": "https://www.nature.com/articles/s41598-024-82904-8",
+      "verification": "OPEN_PMC_ARTICLE_VERIFIED",
+      "year": "2024"
+    },
+    {
+      "admission": "REFERENCE_ONLY",
+      "category": "histopathology",
+      "data_license": "RIGHTS_UNVERIFIED",
+      "id": "SRC14",
+      "short_title": "Polycystic ovary Pathology Outlines",
+      "status": "NOT_VERIFIED",
+      "url": "https://www.pathologyoutlines.com/topic/ovarypco.html",
+      "verification": "ROBOTS_BLOCKED",
+      "year": "2026"
+    },
+    {
+      "admission": "REFERENCE_ONLY",
+      "category": "hypothesis",
+      "data_license": "VERIFY_PREPRINT_TERMS",
+      "id": "SRC15",
+      "short_title": "Maternal microchimerism endometriosis hypothesis",
+      "status": "UNTESTED_CAUSAL_HYPOTHESIS",
+      "url": "https://www.preprints.org/manuscript/202109.0372",
+      "verification": "PREPRINT_PAGE_VERIFIED",
+      "year": "2021"
+    },
+    {
+      "admission": "REFERENCE_ONLY",
+      "category": "negative-experiment",
+      "data_license": "ARTICLE_TERMS_CHECK",
+      "id": "SRC16",
+      "short_title": "Male fetal microchimerism negative study",
+      "status": "NEGATIVE_Y_FISH_RESULT",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5933168/",
+      "verification": "OPEN_ARTICLE_VERIFIED",
+      "year": "2018"
+    },
+    {
+      "admission": "REFERENCE_ONLY",
+      "category": "rare-case",
+      "data_license": "ARTICLE_CC_BY_CASE",
+      "id": "SRC17",
+      "short_title": "Endometriosis in a man case report",
+      "status": "ONE_CASE_NOT_PREVALENCE",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5833878/",
+      "verification": "OPEN_ARTICLE_VERIFIED",
+      "year": "2018"
+    },
+    {
+      "admission": "REFERENCE_ONLY",
+      "category": "human-ihc",
+      "data_license": "CHECK_IMAGE_DATA_TERMS",
+      "id": "SRC18",
+      "short_title": "Endometriosis IHC biomarkers fluorescence",
+      "status": "MMP11_VCAN_IHC_NOT_PIXEL_LABELS",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11611954/",
+      "verification": "OPEN_ARTICLE_VERIFIED",
+      "year": "2024"
+    },
+    {
+      "admission": "REFERENCE_ONLY",
+      "category": "menstrual-immune",
+      "data_license": "CHECK_DATA_LICENSE",
+      "id": "SRC19",
+      "short_title": "Th17 and macrophages menstrual effluent",
+      "status": "HUMAN_MENSTRUAL_COHORT",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35697654/",
+      "verification": "PUBMED_ABSTRACT_VERIFIED",
+      "year": "2022"
+    },
+    {
+      "admission": "REFERENCE_ONLY",
+      "category": "menstrual-immune",
+      "data_license": "CHECK_DATA_LICENSE",
+      "id": "SRC20",
+      "short_title": "Menstrual effluent immune cells preprint",
+      "status": "IMMUNE_PREPRINT_NOT_CAUSAL",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40909689/",
+      "verification": "PUBMED_PREPRINT_ABSTRACT_VERIFIED",
+      "year": "2025"
+    },
+    {
+      "admission": "REFERENCE_ONLY",
+      "category": "immune-scRNA",
+      "data_license": "CHECK_DATA_LICENSE",
+      "id": "SRC21",
+      "short_title": "Macrophage phenotypes endometriotic niche",
+      "status": "MACROPHAGE_STATE_EVIDENCE",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11420174/",
+      "verification": "OPEN_ARTICLE_VERIFIED",
+      "year": "2024"
+    },
+    {
+      "admission": "REFERENCE_ONLY",
+      "category": "peer-reviewed-atlas",
+      "data_license": "CODE_AND_GEO_DATA_CHECK",
+      "id": "SRC22",
+      "short_title": "Endometriosis single-cell atlas companion study",
+      "status": "EXTERNAL_ATLAS_60_DONORS",
+      "url": "https://www.nature.com/articles/s41467-026-73020-4",
+      "verification": "PUBLISHED_ARTICLE_VERIFIED",
+      "year": "2026"
+    }
+  ],
+  "schema": "dnaforge.citation-registry.v1",
+  "snapshot": "2026-11-14",
+  "source_tsv_sha256": "5a8704e4e867508b73cf70c5888b55a5dfc7a98d19ace21ff950b952d90a61e4"
+}
