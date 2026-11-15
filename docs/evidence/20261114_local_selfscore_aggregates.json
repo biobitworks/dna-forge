@@ -1,0 +1,33 @@
+{
+  "developer_baseline": "not organizer controlled head-to-head; pack README approximate baselines",
+  "frozen_submissions_sha256": {
+    "submission_criteria.json": "1604ae1557ffad8e39c671a193fec113653984f2e8bf090791f5a15b62d88345",
+    "submission_slides_organ.csv": "8a69914d27c707c8a61694c8d8123f2139141cd5b79ac358193dda5da4cf7356",
+    "submission_slides_similar.csv": "ed38172b0075b0415fcce2866a3c68d55a1214e578d0ddc97c19c070fb90d423"
+  },
+  "key_sha256": "134100eccc525410486def7cbba3b59bc0f229c7a012d8b1c3cd436926f92983",
+  "local_observed_utc": "2026-11-15T00:51:18.545506+00:00",
+  "metrics": {
+    "c1_accuracy": 0.8955223880597015,
+    "c1_correct": 60,
+    "c1_n": 67,
+    "c2_p1": 0.8805970149253731,
+    "c2_p10": 0.8805970149253731,
+    "c2_p5": 0.8925373134328358,
+    "c2_unknown_label_candidate_slots": 1,
+    "criteria_fn": 0,
+    "criteria_fp": 0,
+    "criteria_macro_precision": 1.0,
+    "criteria_macro_recall": 1.0,
+    "criteria_mean_f1": 1.0,
+    "criteria_tp": 608
+  },
+  "mmr": "NOT_COMPUTED",
+  "official_website_score": "NOT_VERIFIED",
+  "organizer_uploaded": "NOT_VERIFIED",
+  "private_full_receipt_sha256": "e529749cd9ef368afeca001d3d92fa4c6c240a9bd6be002c42bb3f5f4d71fb32",
+  "schema": "dnaforge.local-selfscore-aggregate.v1",
+  "scoring_method": "Task A macro F1 across 30 criteria (TP FP FN); C1 exact organ/organGroup normalized accuracy 67 heldout; C2 organ-group agreement at ranks 1 5 10 with denom 67*k.",
+  "signing": "NOT_SIGNED",
+  "state": "OBSERVED_SELF_EVALUATED_WITH_DOWNLOADED_KEY_NOT_ORGANIZER_CERTIFIED"
+}
