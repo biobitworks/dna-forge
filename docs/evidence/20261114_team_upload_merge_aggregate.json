@@ -1,0 +1,161 @@
+{
+  "author_caveat": "Git author and shared repository account are recorded metadata, not cryptographically verified human or agent attribution",
+  "data_rights_state": "UNKNOWN",
+  "fco_source": "public git commit and PR metadata -> normalized snapshot -> dashboard claim",
+  "historical_exposure_state": "UNRESOLVED",
+  "local_test_limit": "EndoForge V2 tests were reported in own VALIDATION file; independent system Python test collection missing streamlit",
+  "main_ci_at_snapshot": {
+    "crossnode-evidence": "SUCCESS",
+    "data-guard": "SUCCESS"
+  },
+  "merged_pr_count": 21,
+  "merged_pr_numbers": [
+    1,
+    12,
+    13,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    27,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34
+  ],
+  "official_score_state": "LOCAL_ONLY_NOT_ORGANIZER_CERTIFIED",
+  "official_submission_state": "NOT_VERIFIED",
+  "open_pr_count": 0,
+  "pr_arms": {
+    "baseline_builder": [
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "cross_device_validation": [
+      23,
+      25,
+      27
+    ],
+    "judge_dashboard_scoring": [
+      33,
+      34
+    ],
+    "onboarding": [
+      1,
+      12,
+      21
+    ],
+    "presentation_and_research": [
+      29,
+      30,
+      31,
+      32
+    ],
+    "security_repair": [
+      24
+    ],
+    "teammate_data_requests": [
+      22
+    ]
+  },
+  "release_impact": "ADDITIVE_DEMO_AND_GOVERNANCE_SOURCE; FROZEN_SELECTED_CHALLENGE_OUTPUTS_UNCHANGED",
+  "repo": "biobitworks/dna-forge",
+  "schema": "dnaforge.team-uploads-merges-snapshot.v1",
+  "selected_submission_sha256": {
+    "submission_criteria.json": "1604ae1557ffad8e39c671a193fec113653984f2e8bf090791f5a15b62d88345",
+    "submission_slides_organ.csv": "8a69914d27c707c8a61694c8d8123f2139141cd5b79ac358193dda5da4cf7356",
+    "submission_slides_similar.csv": "ed38172b0075b0415fcce2866a3c68d55a1214e578d0ddc97c19c070fb90d423"
+  },
+  "snapshot_main_commit": "2f23887a3a0dcf94f2f679744f25210dc5b84286",
+  "snapshot_type": "PUBLIC_GIT_HISTORY_AND_PR_STATES_AT_FIXED_COMMIT",
+  "team_events": [
+    {
+      "git_author": "Claude",
+      "git_sha": "8a64a8411144",
+      "id": "initial",
+      "impact": "Starting source and private-data exclusion setup; no submitted model score by itself",
+      "kind": "direct_commit",
+      "scope": "README, ignore baseline",
+      "source": "https://github.com/biobitworks/dna-forge/commit/8a64a8411144",
+      "state": "MERGED_IN_MAIN",
+      "title": "Repository initial commit"
+    },
+    {
+      "git_author": "efrazar",
+      "git_sha": "139c2c47f589",
+      "id": "selector",
+      "impact": "Extra demonstration; no replacement of selected Task A/C1/C2 outputs. Earlier generated files entered public Git history and were later removed from current tree in PR #24. History remains unresolved",
+      "kind": "direct_commit",
+      "scope": "Separate Streamlit and alternative patient-selector approach",
+      "source": "https://github.com/biobitworks/dna-forge/commit/139c2c47f589",
+      "state": "SOURCE_IN_MAIN_HISTORIC_DATA_EXPOSURE",
+      "title": "Patient selector source and generated demo"
+    },
+    {
+      "git_author": "biobitworks account",
+      "id": "selector_repair",
+      "impact": "Prevents reintroducing generated rows to current Git tree; cannot erase already public prior history",
+      "kind": "merge_pr",
+      "pr": 24,
+      "source": "https://github.com/biobitworks/dna-forge/pull/24",
+      "state": "MERGED_DATA_GUARD_CURRENT_TREE_PASS",
+      "title": "Generated patient-selector files excluded from current tracked tree"
+    },
+    {
+      "git_author": "efrazar",
+      "git_sha": "00d3dbd2b3b4",
+      "id": "selector_cleanup",
+      "impact": "Adjusted demo files; no evidence of a new frozen challenge submission",
+      "kind": "direct_commit",
+      "source": "https://github.com/biobitworks/dna-forge/commit/00d3dbd2b3b4",
+      "state": "COMMITTED_ON_MAIN",
+      "title": "Patient selector demo cleanup"
+    },
+    {
+      "git_author": "efrazar",
+      "git_sha": "30b6e0799a61",
+      "id": "endoforge",
+      "impact": "Adds separate hypothesis-testing narrative and presentation/demo route; DOES NOT raise official Biobase test scores or train on licensed human samples. Validation record reported 13 tests PASS; independent MagicPro Python collection failed because Streamlit absent",
+      "kind": "direct_commit",
+      "scope": "Separate synthetic endometriosis/PCOS clinical-hormonal-molecular Streamlit app and tests",
+      "source": "https://github.com/biobitworks/dna-forge/commit/30b6e0799a61",
+      "state": "SOURCE_IN_MAIN_TESTS_REPORTED_IN_REPO_INDEPENDENT_ENV_BLOCKED",
+      "title": "EndoForge V2 research prototype uploaded as source"
+    },
+    {
+      "git_author": "biobitworks account",
+      "id": "team_model",
+      "impact": "Task A, C1 and C2 selected immutable output fingerprints; reused original pretrained slide vectors; local SVM heads",
+      "kind": "merge_pr",
+      "pr": 20,
+      "source": "https://github.com/biobitworks/dna-forge/pull/20",
+      "state": "MERGED_IN_MAIN",
+      "title": "Submission freeze and models from team branches"
+    },
+    {
+      "git_author": "biobitworks account",
+      "id": "review",
+      "impact": "Confirmed measurable post-key local gains on exact frozen outputs and original organizer script baselines; not official score portal",
+      "kind": "merge_pr",
+      "pr": 34,
+      "source": "https://github.com/biobitworks/dna-forge/pull/34",
+      "state": "MERGED_IN_MAIN",
+      "title": "Matched same-key baseline and team audit"
+    }
+  ],
+  "upload_semantics": "GitHub code upload / push / merge means source repository admission; no organizer challenge upload is evidenced"
+}
