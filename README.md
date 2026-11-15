@@ -322,3 +322,14 @@ GEO transcriptomics, IHC, proteomics and proposed Ptarmigan screening.
 They are separate PROPOSED research work; no unlicensed data has
 been imported or model trained using these sources. Reported man/woman
 does not prove self-identified cis status.
+
+## Interactive judge LOMO heatmap and local answer-key score
+
+The standalone judge dashboard is in
+docs/judges/LOMO_JUDGE_DASHBOARD_20261114.html.
+The presentation method note is
+docs/judges/LOMO_JUDGE_PRESENTATION_20261114.md.
+It distinguishes locally downloaded-key scoring from earlier
+development metrics, clean vs dirty LOMO predecessors, and
+organizer website scoring/upload receipts (NOT_VERIFIED).
+Only aggregate numbers are embedded, never the answer-key rows.
