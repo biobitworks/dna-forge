@@ -1,0 +1,23 @@
+id	category	short_title	year	url	verification	admission	data_license	status
+SRC01	synthetic-health	Synthea synthetic patient generator	2026	https://synthetichealth.github.io/synthea/	PRIMARY_LANDING_PAGE	SEPARATE_SYNTHETIC_LANE	CHECK_PROJECT_TERMS	REFERENCE_ONLY
+SRC02	synthetic-health	SyntheticMass synthetic population service	2026	https://synthea.mitre.org/	SECONDARY_LINK_FROM_SYNTHEA	SEPARATE_SYNTHETIC_LANE	CHECK_SERVICE_TERMS	REFERENCE_ONLY
+SRC03	clinical-tabular	Endometriosis Dataset by michaelanietie	2024	https://www.kaggle.com/datasets/michaelanietie/endometriosis-dataset	PAGE_REACHABLE_LICENSE_UNREADABLE	NOT_ADMITTED	UNKNOWN	DATA_LICENSE_GATE
+SRC04	drug-screening	Talus Bio Ptarmigan-1 launch article	2026	https://www.talus.bio/blog/try-ptarmigan-1-structure-free-drug/	PRIMARY_VENDOR_BLOG	REFERENCE_ONLY	TERMS_NOT_CONFIRMED	VENDOR_CLAIM
+SRC05	preprint	Ptarmigan-1 structure-free site-resolved contrastive model	2026	https://www.biorxiv.org/content/10.64898/2026.07.28.741295v1	SEARCH_VERIFIED_FULL_TEXT_403	REFERENCE_ONLY	CC_BY_4_ARTICLE_PREPRINT	PREPRINT_NOT_INDEPENDENTLY_REPLICATED
+SRC06	proteomics	MassIVE proteomics public repository	2026	https://massive.ucsd.edu/	REPOSITORY_LANDING_VERIFIED	NOT_ADMITTED	PER_ACCESSION_LICENSE_REQUIRED	NO_DATASET_SELECTED
+SRC07	event-resources	Humic labs November 14 hackathon resource repo	2026	https://github.com/humic-labs/hackathon-2026-11-14-resources	GITHUB_404_OBSERVED	NOT_ADMITTED	UNKNOWN	UNAVAILABLE
+SRC08	drug-screening	Ptarmigan-1 online portal	2026	https://ptarmigan.app/	PRIMARY_PORTAL_VERIFIED	NOT_EXECUTED	TERMS_NOT_CONFIRMED	REFERENCE_ONLY
+SRC09	human-symptoms	Self-report symptom-based endometriosis prediction	2023	https://pmc.ncbi.nlm.nih.gov/articles/PMC10073113/	OPEN_ARTICLE_VERIFIED	NOT_ADMITTED	CHECK_DATA_AND_ARTICLE_TERMS	SELECTION_BIAS
+SRC10	transcriptomics	GSE153739 endometrial RNA-seq	2021	https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE153739	GEO_SEARCH_METADATA_VERIFIED	NOT_ADMITTED	CHECK_GEO_TERMS_AND_CONSENT	SEVEN_TISSUE_SAMPLES
+SRC11	single-cell	GSE266265 60-donor endometrial atlas	2026	https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE266265	GEO_SEARCH_METADATA_VERIFIED	NOT_ADMITTED	CHECK_GEO_TERMS_AND_CONSENT	SIXTY_DONORS_NOT_466371_INDEPENDENT
+SRC12	engineering	Desktop Commander remote workflow	2026	https://desktopcommander.app/	USER_SUPPLIED_APP_LINK	TOOL_NOT_RESEARCH_DATA	APP_TERMS	ENGINEERING_ONLY
+SRC13	animal-imaging	Ovarian follicle object detection	2024	https://www.nature.com/articles/s41598-024-82904-8	OPEN_PMC_ARTICLE_VERIFIED	NOT_ADMITTED	ARTICLE_CC_BY_NC_ND_DATA_ON_REQUEST	MOUSE_HISTOLOGY_NOT_HUMAN_PCOS
+SRC14	histopathology	Polycystic ovary Pathology Outlines	2026	https://www.pathologyoutlines.com/topic/ovarypco.html	ROBOTS_BLOCKED	REFERENCE_ONLY	RIGHTS_UNVERIFIED	NOT_VERIFIED
+SRC15	hypothesis	Maternal microchimerism endometriosis hypothesis	2021	https://www.preprints.org/manuscript/202109.0372	PREPRINT_PAGE_VERIFIED	REFERENCE_ONLY	VERIFY_PREPRINT_TERMS	UNTESTED_CAUSAL_HYPOTHESIS
+SRC16	negative-experiment	Male fetal microchimerism negative study	2018	https://pmc.ncbi.nlm.nih.gov/articles/PMC5933168/	OPEN_ARTICLE_VERIFIED	REFERENCE_ONLY	ARTICLE_TERMS_CHECK	NEGATIVE_Y_FISH_RESULT
+SRC17	rare-case	Endometriosis in a man case report	2018	https://pmc.ncbi.nlm.nih.gov/articles/PMC5833878/	OPEN_ARTICLE_VERIFIED	REFERENCE_ONLY	ARTICLE_CC_BY_CASE	ONE_CASE_NOT_PREVALENCE
+SRC18	human-ihc	Endometriosis IHC biomarkers fluorescence	2024	https://pmc.ncbi.nlm.nih.gov/articles/PMC11611954/	OPEN_ARTICLE_VERIFIED	REFERENCE_ONLY	CHECK_IMAGE_DATA_TERMS	MMP11_VCAN_IHC_NOT_PIXEL_LABELS
+SRC19	menstrual-immune	Th17 and macrophages menstrual effluent	2022	https://pubmed.ncbi.nlm.nih.gov/35697654/	PUBMED_ABSTRACT_VERIFIED	REFERENCE_ONLY	CHECK_DATA_LICENSE	HUMAN_MENSTRUAL_COHORT
+SRC20	menstrual-immune	Menstrual effluent immune cells preprint	2025	https://pubmed.ncbi.nlm.nih.gov/40909689/	PUBMED_PREPRINT_ABSTRACT_VERIFIED	REFERENCE_ONLY	CHECK_DATA_LICENSE	IMMUNE_PREPRINT_NOT_CAUSAL
+SRC21	immune-scRNA	Macrophage phenotypes endometriotic niche	2024	https://pmc.ncbi.nlm.nih.gov/articles/PMC11420174/	OPEN_ARTICLE_VERIFIED	REFERENCE_ONLY	CHECK_DATA_LICENSE	MACROPHAGE_STATE_EVIDENCE
+SRC22	peer-reviewed-atlas	Endometriosis single-cell atlas companion study	2026	https://www.nature.com/articles/s41467-026-73020-4	PUBLISHED_ARTICLE_VERIFIED	REFERENCE_ONLY	CODE_AND_GEO_DATA_CHECK	EXTERNAL_ATLAS_60_DONORS
