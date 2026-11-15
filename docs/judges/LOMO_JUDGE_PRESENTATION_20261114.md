@@ -1,5 +1,24 @@
 # Judge LOMO dashboard — source-backed local self-evaluation
 
+
+## Same-key organizer baseline successor (post-4 PM)
+
+The interactive heatmap currently shows the original development
+LOMO arms and locally scored final output. The actual original
+Biobase baseline scripts have now been **re-executed and scored
+against the same post-key answers**: Task A keyword F1 0.272870
+versus frozen team F1 1.000000; C1 baseline 47/67 (70.15%)
+versus team 60/67 (89.55%); C2 baseline P@1/5/10
+77.61% / 66.87% / 57.16% versus frozen team
+88.06% / 89.25% / 88.06%. See the
+[complete all-lane review and paired comparison](TEAM_THESIS_TASK_COMMIT_AUDIT_20261114.md)
+and [source-hashed aggregate values](../evidence/20261114_postkey_matched_baselines_aggregate.json).
+The older rounded baseline in the visualization remains a historical
+predecessor and is **not** the measured baseline rerun.
+
+No organizer upload or official website score has been verified.
+
+
 Status: IMPLEMENTED and EXECUTED on MagicPro. Visit the locally
 running server:
 

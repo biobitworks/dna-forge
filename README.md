@@ -2,6 +2,60 @@
 
 **2026-11-14 | Research prototype | Not for clinical use**
 
+## Latest audited outcome — post-4 PM key scoring (successor T013)
+
+**Thesis:** Can explicit criterion-aware parsing and lightweight local
+models built on organizer-provided pathology embeddings improve cohort
+feasibility search and slide retrieval against the organizer baselines
+while making the computation reproducible and auditable? **Yes for
+these three separate synthetic competition tasks**, not for a linked
+patient-to-slide clinical cohort.
+
+The actual original keyword/GigaPath baseline scripts were
+re-executed against the **same downloaded answer key** as the
+unchanged frozen team predictions. This is a *local, post-key* score
+and NOT an organizer-certified leaderboard result:
+
+| Task (organizer pack scoring) | Re-executed reference | Frozen team | Gain |
+|---|---:|---:|---:|
+| A: mean F1, 30 report eligibility criteria | 0.27287 | **1.00000** | +0.72713 F1 |
+| C1: organ accuracy, 67 held-out slides | 47/67 = 70.15% | **60/67 = 89.55%** | **+19.40 pp** |
+| C2: same-group P@1 | 77.61% | **88.06%** | **+10.45 pp** |
+| C2: same-group P@5 | 66.87% | **89.25%** | **+22.39 pp** |
+| C2: same-group P@10 | 57.16% | **88.06%** | **+30.90 pp** |
+
+C1 paired correctness comparison: 14 team-only correct, one
+baseline-only correct; exact two-sided McNemar p = 0.0009765625.
+This is a system-level *same-key* comparison, not a causal estimate
+of the contribution of FCO/FCG or an independent hospital validation.
+The perfect report F1 is on a machine-generated synthetic test set
+whose training-side template was visible to the rule author; three
+of seven independent paraphrase challenges failed.
+
+**Git status at audit:** 20 merged PRs, zero open PRs, 12 open issues;
+MagicPro/MagicStudio exact selected-output replay 5/5; GitHub
+data-guard and crossnode CI PASS on predecessor main
+dd89bec6f7a4252bf52419113ae5e0b26563ad7b.
+The two older remote branch heads outside main's commit ancestry
+are stale/duplicate predecessors; they must **not** be blindly merged.
+Efrazar's EndoForge V2 and the Patient selector are additional,
+separate research/demo contributions, not the selected Task A/C1/C2
+files. The upstream DNAForge desktop app is also a separate lane.
+
+**Evidence and judge handoff:**
+[Complete thesis, exact scoring criteria and all-lane audit](docs/judges/TEAM_THESIS_TASK_COMMIT_AUDIT_20261114.md) |
+[Public-safe baseline contrast](docs/evidence/20261114_postkey_matched_baselines_aggregate.json) |
+[Interactive LOMO × model heatmap](docs/judges/LOMO_JUDGE_DASHBOARD_20261114.html) |
+[Judge slides v2](docs/judges/DNAForge_Biobase_Judge_Methodology_20261114_v2.pptx).
+
+**Still unresolved:** actual organizer website score and upload
+acceptance, Team ID/opt-in, full data agreement, historical
+public Git generated-data exposure, clinical generalization and
+supplier-domain shift. A Git commit or a local score is **not**
+proof of organizer submission. Sections below preserve the
+earlier pre-key workflow/status and should be read as historical
+predecessor evidence where a newer status is recorded above.
+
 We built an interpretable search engine for synthetic pathology reports,
 an organ classifier and similar-slide retrieval pipeline using supplied
 pretrained pathology embeddings, and a Fractal Custody Graph (FCO/FCG)
@@ -17,7 +71,7 @@ for tracing source data through computations to selected outputs.
 
 ~~~mermaid
 flowchart TD
-    A["5 organizer ZIP packs, licensed local source"] --> B["SHA-256 custody ingest and source FCO"]
+    A["5 organizer ZIP packs, local; terms UNKNOWN"] --> B["SHA-256 custody ingest and source FCO"]
     B --> R["9,010 labeled + 979 test reports"]
     B --> S["263 slide manifest and frozen image vectors"]
     R --> P["Parse diagnosis fields, 30 eligibility criteria"]

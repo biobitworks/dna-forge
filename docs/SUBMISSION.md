@@ -1,10 +1,37 @@
 # Submission: requirements, what we built, and the evidence
 
+## Post-key scoring and audit successor (reviewed 2026-11-14 PT)
+
+The following original submission table and R1–R10 mapping were
+authored **before** the organizer answer key was accessed. They remain
+the evidence for the original selected bytes, and are not overwritten.
+
+After key release, the original three files were reverified against
+restricted frozen copies (six SHA checks), scored locally using the
+downloaded answer key, and compared with freshly executed original
+keyword/GigaPath challenge baselines on that **same** key.
+See [full audit](judges/TEAM_THESIS_TASK_COMMIT_AUDIT_20261114.md) and
+[public-safe aggregate receipt](evidence/20261114_postkey_matched_baselines_aggregate.json).
+
+**Local results:** Task A mean F1 **1.000** (baseline 0.27287);
+C1 **60/67 = 89.55%** (baseline 47/67 = 70.15%);
+C2 P@1/5/10 **88.06% / 89.25% / 88.06%**
+(baseline **77.61% / 66.87% / 57.16%**).
+No new model was fitted using the released key; these were
+self-evaluation and baseline-reexecution calculations.
+
+**These scores are not yet certified by the organizers' scoring
+website. The final upload acceptance remains NOT_VERIFIED.**
+No answer-key rows or frozen output files were committed.
+
+---
+
+
 Each challenge requirement maps to the code that meets it and to the committed
 evidence (run records, output hashes, the fractal custody graph root), so a
-reviewer can trace every submitted file back to the Biobase packs. The final table
-below lists the chosen final files. Nothing in this file is an answer-key
-score.
+reviewer can trace every submitted file back to the Biobase packs. The original pre-key table
+below lists the selected files; it is not itself an answer-key score.
+The newer post-key **local** score is documented separately above.
 
 ## Final files (chosen 12:18 PM PT, freeze at 3:30 PM PT)
 
