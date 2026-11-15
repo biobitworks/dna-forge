@@ -309,3 +309,16 @@ on ethanol and a separately normalized 25-record ChEMBL IC50 sample
 single-job execution observations only: **DAISY VCC screening model
 training remains NOT_TESTED and NOT_ADMITTED**. Earlier zero-job
 and zero-data observations are preserved as predecessor states.
+
+## Sex-context and endometriosis/PCOS research extensions (not admitted to Biobase)
+
+The [22-source citation bibliography](docs/references/REFERENCES_20261114.md),
+[machine-readable source registry](docs/references/CITATION_REGISTRY_20261114.json),
+[claim graph](docs/references/RESEARCH_CLAIM_GRAPH_20261114.json),
+and [cis-male/cis-female gap and histologist training plan](docs/references/SEX_SPECIFIC_RESEARCH_GAPS_20261114.md)
+cover rare reported male endometriosis cases, female-cohort ascertainment,
+PCOS histology, menstrual macrophages, maternal/fetal microchimerism,
+GEO transcriptomics, IHC, proteomics and proposed Ptarmigan screening.
+They are separate PROPOSED research work; no unlicensed data has
+been imported or model trained using these sources. Reported man/woman
+does not prove self-identified cis status.
